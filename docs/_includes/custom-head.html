@@ -5,9 +5,6 @@
 <!-- Performance optimizations -->
 <link rel="preload" href="/assets/css/style.css" as="style">
 <link rel="dns-prefetch" href="//fonts.googleapis.com">
-{%- if page.layout == 'project' -%}
-  <link rel="preload" href="{{ og_image | default: '/media/og-images/default-project-og.webp' }}" as="image">
-{%- endif -%}
 
 <!-- Favicons -->
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
@@ -18,32 +15,15 @@
 <meta name="theme-color" content="#006aa7">
 
 {%- if page.layout == 'project' -%}
-  {%- assign og_image = '/media/og-images/default-project-og.webp' -%}
-  
-  {%- case page.permalink -%}
-    {%- when '/projects/gamebike' -%}
-      {%- assign og_image = '/media/og-images/gamebike-og.webp' -%}
-    {%- when '/projects/duplicating-keys-from-photographs' -%}
-      {%- assign og_image = '/media/og-images/key-duplication-og.webp' -%}
-    {%- when '/projects/cnc-machined-stereo-camera-mount' -%}
-      {%- assign og_image = '/media/og-images/stereo-camera-mount-og.webp' -%}
-    {%- when '/projects/barcode-scanner-shopping-list' -%}
-      {%- assign og_image = '/media/og-images/barcode-scanner-og.webp' -%}
-    {%- when '/projects/bamboo-lidar-mount' -%}
-      {%- assign og_image = '/media/og-images/bamboo-lidar-og.webp' -%}
-    {%- when '/projects/blender-pcd-io' -%}
-      {%- assign og_image = '/media/og-images/blender-pcd-io-og.webp' -%}
-    {%- when '/projects/electronics-tutorial-website' -%}
-      {%- assign og_image = '/media/og-images/electronics-tutorial-og.webp' -%}
-    {%- when '/projects/php-htmlifier' -%}
-      {%- assign og_image = '/media/og-images/php-htmlifier-og.webp' -%}
-    {%- when '/projects/bosch-indradrive-cs-ros-node' -%}
-      {%- assign og_image = '/media/og-images/bosch-ros-node-og.webp' -%}
-  {%- endcase -%}
-  
+  {%- if page.image -%}
+    {%- assign og_image = page.image -%}
+  {%- elsif page.featureimage -%}
+    {%- assign og_image = '/media' | append: page.permalink | append: '/' | append: page.featureimage -%}
+  {%- else -%}
+    {%- assign og_image = '/media/og-images/default-project-og.webp' -%}
+  {%- endif -%}
+
   <meta property="og:image" content="{{ site.url }}{{ og_image }}">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
   <meta property="og:image:type" content="image/webp">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="{{ site.url }}{{ og_image }}">
@@ -56,12 +36,12 @@
   const savedTheme = localStorage.getItem('theme');
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
   const theme = savedTheme || (prefersDark ? 'dark' : 'light');
-  
+
   // Apply theme immediately to prevent flash
   if (theme === 'dark') {
     document.documentElement.setAttribute('data-theme', 'dark');
   }
-  
+
   // Update theme color meta tag for dark mode
   function updateThemeColor(theme) {
     const themeColorMeta = document.querySelector('meta[name="theme-color"]');
@@ -69,48 +49,48 @@
       themeColorMeta.content = theme === 'dark' ? '#181818' : '#006aa7';
     }
   }
-  
+
   updateThemeColor(theme);
-  
+
   // Theme toggle functionality
   function initThemeToggle() {
     const toggleButton = document.getElementById('theme-toggle');
     if (!toggleButton) return;
-    
+
     function toggleTheme() {
       const currentTheme = document.documentElement.getAttribute('data-theme');
       const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      
+
       document.documentElement.setAttribute('data-theme', newTheme);
       localStorage.setItem('theme', newTheme);
       updateThemeColor(newTheme);
-      
+
       // Update button aria-label
-      toggleButton.setAttribute('aria-label', 
+      toggleButton.setAttribute('aria-label',
         newTheme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'
       );
     }
-    
+
     toggleButton.addEventListener('click', toggleTheme);
-    
+
     // Set initial aria-label
-    toggleButton.setAttribute('aria-label', 
+    toggleButton.setAttribute('aria-label',
       theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'
     );
-    
+
     // Listen for system theme changes
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
       if (!localStorage.getItem('theme')) {
         const newTheme = e.matches ? 'dark' : 'light';
         document.documentElement.setAttribute('data-theme', newTheme);
         updateThemeColor(newTheme);
-        toggleButton.setAttribute('aria-label', 
+        toggleButton.setAttribute('aria-label',
           newTheme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'
         );
       }
     });
   }
-  
+
   // Initialize when DOM is ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initThemeToggle);

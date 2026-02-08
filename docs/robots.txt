@@ -5,19 +5,4 @@ permalink: /robots.txt
 User-agent: *
 Allow: /
 
-# Auto-generated sitemap
 Sitemap: {{ site.url }}/sitemap.xml
-
-# Block development and build directories
-Disallow: /_site/
-Disallow: /.git/
-Disallow: /.sass-cache/
-Disallow: /node_modules/
-
-# Allow important pages
-Allow: /about/
-Allow: /projects/
-Allow: /links/
-
-# Crawl delay
-Crawl-delay: 0.5

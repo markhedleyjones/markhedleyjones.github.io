@@ -19,9 +19,9 @@
 # in the templates via {{ site.myvariable }}.
 
 title: Mark Hedley Jones
-description: >- # this means to ignore newlines until "baseurl:"
-  Projects and tools from an engineer interested in robotics, agriculture, rail, and building underground.
-baseurl: "" # the subpath of your site, e.g. /blog
+description: >-  # this means to ignore newlines until "baseurl:"
+  Robotics perception engineer working on SLAM, 3D mapping, and autonomous systems.
+baseurl: ""  # the subpath of your site, e.g. /blog
 url: "https://markhedleyjones.com"
 lang: en-NZ
 
@@ -45,7 +45,7 @@ plugins:
 minima:
   date_format: "%Y-%m-%d"
   social_links:
-    github:  markhedleyjones
+    github: markhedleyjones
     youtube_channel: UCdf6oLggbKcjfH21Hve9ijQ
 
 # Exclude from processing.

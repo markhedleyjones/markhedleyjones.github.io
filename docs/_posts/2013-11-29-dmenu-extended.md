@@ -11,7 +11,7 @@ excerpt_separator: \{% endhighlight %\}
 ---
 
 <p style="text-align: justify;">
-  An extension to the original [dmenu](https://tools.suckless.org/dmenu/) allowing super fast access to your files, folders, and programs.
+  An extension to the original <a href="https://tools.suckless.org/dmenu/">dmenu</a> allowing super fast access to your files, folders, and programs.
   dmenu-extended has support for plugins, command aliasing, file filtering, and customisation.
   The extension can also use rofi instead of dmenu for rendering the menu.
   It's best suited for tiling window managers such as i3, dwm, xmonad, awesome, etc.
