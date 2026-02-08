@@ -8,6 +8,9 @@ thumb: logo.webp
 description: A set of bash scripts for creating and running templated docker projects
 excerpt_separator: \{% endhighlight %\}
 ---
+
+**Note:** Docker-BBQ has been deprecated in favour of [Container Magic](/projects/container-magic).
+
 Creating flexible [docker](https://www.docker.com/) images with the ability quickly and efficiently develop and execute code can be time consuming.
 There are generally two competing goals, keeping images small for deployment, while making them usable during development.
 On top of that, there are a number of special flags and features of docker that can be forgotten when starting a new project.
@@ -37,7 +40,7 @@ My local development environment for [this website](https://github.com/MarkHedle
 ## Demonstration
 This clip is a little out-of-date, but it shows the general idea of the project.
 
-![](https://camo.githubusercontent.com/6fcee0f8047f64a59afd1b93ad59e6bfa9d6cf7081e65274c51bc26294d0e6e9/68747470733a2f2f7261772e6769746875622e636f6d2f6d61726b6865646c65796a6f6e65732f646f636b65722d6262712f6d61737465722f6d656469612f64656d6f2e676966)
+![](https://raw.githubusercontent.com/markhedleyjones/docker-bbq/master/media/demo.gif)
 
 <p style="text-align: center;">
   <a style="
