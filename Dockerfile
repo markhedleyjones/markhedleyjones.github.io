@@ -7,7 +7,7 @@
 ################################################################################
 # Stage: base
 ################################################################################
-FROM debian:bullseye-slim AS base
+FROM debian:bookworm-slim AS base
 
 # User configuration
 ARG USER_GID=1000 \
@@ -59,7 +59,7 @@ RUN if [ "${USER_NAME}" != "root" ]; then \
 # Switch to user
 USER ${USER_NAME}
 RUN gem install jekyll bundler
-COPY docs/Gemfile docs/Gemfile.lock /tmp/
+COPY --chown=${USER_UID}:${USER_GID} docs/Gemfile docs/Gemfile.lock /tmp/
 RUN cd /tmp && bundle install
 
 ################################################################################
