@@ -3,7 +3,7 @@ layout: project
 title:  "Calibration Checkerboard Collection"
 date:   2018-04-15 09:01:13 +0000
 relevance: 9
-modified_date: 2025-01-15
+modified_date: 2026-02-08
 permalink: /projects/calibration-checkerboard-collection
 image: /media/projects/calibration-checkerboard-collection/calibration-checkerboard-collection.svg
 description: Free camera calibration checkerboards for computer vision. Multiple formats, custom generator, no watermarks.
@@ -13,49 +13,19 @@ related_projects:
   - /projects/blender-pcd-io
   - /projects/bamboo-lidar-mount
 ---
-<style>
-.help-tip{
-  display: inline-block;
-  vertical-align: top;
-  color:  #777;
-  text-align: center;
-  background-color: #EEE;
-  border: 1px solid #AAA;
-  border-radius: 50%;
-  width: 12px;
-  height: 12px;
-  font-size: 10px;
-  line-height: 15px;
-  cursor: default;
-}
-</style>
-<p style="text-align: justify;">
-  <strong>Free camera calibration checkerboards</strong> for computer vision research and robotics applications. Compatible with <a href="https://opencv.org/">OpenCV</a>, <a href="https://wiki.ros.org/camera_calibration">ROS camera_calibration</a>, and other computer vision libraries.
-  Download high-quality PDF checkerboards in A4, A3, A2, and A1 formats with <strong>no watermarks or advertising</strong> - completely free for academic and commercial use.
-</p>
-
-<div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #28a745;">
-  <h3 style="margin-top: 0; color: #28a745;">✨ Features:</h3>
-  <ul style="margin-bottom: 0;">
-    <li><strong>100+ pre-made checkerboards</strong> in multiple sizes and formats</li>
-    <li><strong>Interactive generator</strong> for custom dimensions</li>
-    <li><strong>Perfect for stereo vision</strong> and camera calibration workflows</li>
-    <li><strong>High precision</strong> - accurate dimensions for reliable calibration</li>
-    <li><strong>Instant download</strong> - no registration required</li>
-  </ul>
-</div>
 <p>
-  <b>TIP:</b> Make sure to disable any page scaling or automatic page fitting features when printing otherwise the checker dimensions will be incorrect.
+  Free camera calibration checkerboards for computer vision research and robotics applications. Compatible with <a href="https://opencv.org/">OpenCV</a>, <a href="https://wiki.ros.org/camera_calibration">ROS camera_calibration</a>, and other computer vision libraries.
+  Download high-quality PDF checkerboards in A4, A3, A2, and A1 formats with no watermarks or advertising.
+</p>
+<p>
+  Disable any page scaling or automatic page fitting when printing, otherwise the checker dimensions will be incorrect.
 </p>
 
 <hr style="color: #CCC; margin: 20px 0">
 
 <h2>Generate Your Own Checkerboards</h2>
-<p style="text-align: justify;">
-  Generates Scalable Vector Graphic (SVG) files, which can be edited using free software such as <a href="https://inkscape.org/">Inkscape</a>.
-</p>
 <p>
-  <b>WARNING:</b> Your browser may become unresponsive if the dimensions become too extreme
+  Generates Scalable Vector Graphic (SVG) files, which can be edited using free software such as <a href="https://inkscape.org/">Inkscape</a>.
 </p>
 <style>
   table th {
@@ -63,7 +33,9 @@ related_projects:
     text-align: right;
   }
   table {
-    margin: 20px;
+    width: auto !important;
+    display: table !important;
+    margin: 20px auto;
   }
 </style>
 <table>
@@ -87,13 +59,13 @@ related_projects:
     </td>
   </tr>
   <tr>
-    <th><label for="checker_size_mm">Page width:</label></th>
+    <th><label for="page_width_mm">Page width:</label></th>
     <td>
       <input style="width: 80px; text-align: right;" type="number" id="page_width_mm" name="page_width_mm" disabled="disabled" onchange="generate_checkerboard()"> <span>mm</span>
     </td>
   </tr>
   <tr>
-    <th><label for="checker_size_mm">Page height:</label></th>
+    <th><label for="page_height_mm">Page height:</label></th>
     <td>
       <input style="width: 80px; text-align: right;" type="number" id="page_height_mm" name="page_height_mm" disabled="disabled" onchange="generate_checkerboard()"> <span>mm</span>
     </td>
@@ -102,33 +74,14 @@ related_projects:
 
 <div id="hidden-checkers" style="display: none"></div>
 
-<div style="display: flex; align-items: center; gap: 15px; margin: 20px 0; padding: 15px; background: #f8f9fa; border-radius: 6px; border-left: 4px solid #007bff;">
-  <div id="checkerboard" onclick="download_checkerboard()" style="cursor: pointer; display: inline-block; width: 200px; height: 141.417px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA; border-radius: 4px;">
+<div style="text-align: center; margin: 30px 0; padding: 24px; border: 1px solid #ddd; border-radius: 6px;">
+  <div id="checkerboard" onclick="download_checkerboard()" style="cursor: pointer; display: inline-block; width: 200px; height: 141.417px; border: 1px solid #CCC; box-shadow: 2px 2px 6px rgba(0,0,0,0.15); background-color: #fff;">
   </div>
-  <div style="flex: 1;">
-    <div style="font-weight: bold; color: #007bff; margin-bottom: 5px;">📋 Generated Checkerboard:</div>
-    <div id="generated_checkerboard" style="color: #666; font-size: 0.9em; line-height: 1.4;"></div>
-    <div style="margin-top: 8px; font-size: 0.85em; color: #28a745;">
-      💾 <strong>Click image above to download as SVG</strong>
-    </div>
+  <div id="generated_checkerboard" style="margin-top: 12px; line-height: 1.4;"></div>
+  <div style="margin-top: 4px; font-size: 0.85em; color: #666;">
+    Click to open as SVG — then print (Ctrl+P) to save as PDF
   </div>
 </div>
-
-<div style="background: #fff3cd; border: 1px solid #ffeaa7; border-radius: 6px; padding: 15px; margin: 15px 0;">
-  <div style="font-weight: bold; color: #856404; margin-bottom: 8px;">📄 How to Save as PDF:</div>
-  <ol style="margin: 0; padding-left: 18px; color: #856404; font-size: 0.9em;">
-    <li>Click the generated checkerboard above to download as SVG</li>
-    <li>Open the downloaded file in your browser</li>
-    <li>Print the document (File → Print or Ctrl+P)</li>
-    <li>Select <strong>"Save as PDF"</strong> as destination</li>
-    <li><strong>Set scale to 100%</strong> (uncheck "Fit to page") and disable headers/footers</li>
-    <li>Choose destination and save your PDF</li>
-  </ol>
-  <div style="margin-top: 10px; padding: 8px; background: #f8d7da; border-radius: 4px; font-size: 0.85em; color: #721c24;">
-    ⚠️ <strong>Important:</strong> Disable page scaling when printing - incorrect scaling will make calibration inaccurate!
-  </div>
-</div>
-<hr style="color: #CCC; margin: 20px 0">
 
 <script type="text/javascript">
 
@@ -152,16 +105,9 @@ function generate_footer() {
 }
 
 function download_checkerboard() {
-  let details = document.getElementById('generated_checkerboard').innerHTML.split(' ');
-  let filename = 'Checkerboard-' + details[0] + '-' + details[2] + '-' + details[5];
   let checkerboard = generate_header(page_width, page_height, false) + document.getElementById('checkers').innerHTML + generate_footer();
-  let element = document.createElement('a');
-  element.style.display = 'none';
-  element.setAttribute('href', 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(checkerboard));
-  element.setAttribute('download', filename);
-  document.body.appendChild(element);
-  element.click();
-  document.body.removeChild(element);
+  let blob = new Blob([checkerboard], {type: 'image/svg+xml'});
+  window.open(URL.createObjectURL(blob), '_blank');
 }
 
 function generate_checkerboard() {
@@ -252,140 +198,119 @@ function generate_checkerboard() {
 generate_checkerboard();
 </script>
 
-<div style="background: #e8f5e8; padding: 25px; border-radius: 8px; margin: 30px 0; border: 2px solid #28a745;">
-  <h2 style="margin-top: 0; color: #28a745; text-align: center;">🔥 Most Popular Downloads</h2>
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 20px;">
-
-    <div style="text-align: center; background: white; padding: 15px; border-radius: 6px; border: 1px solid #28a745;">
-      <a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A4-30mm-8x6.pdf">
-        <img loading="lazy" style="width: 150px; margin-bottom: 10px; border: 1px solid #CCC; box-shadow: 3px 3px 6px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A4-30mm-8x6.svg" width="150" height="106">
-        <div style="font-size: 0.9em; color: #28a745; font-weight: bold;">⭐ #1 Most Downloaded</div>
-        <div style="font-size: 0.85em; color: #666;">A4 - 30mm squares - 8x6 vertices</div>
-      </a>
-    </div>
-
-    <div style="text-align: center; background: white; padding: 15px; border-radius: 6px; border: 1px solid #28a745;">
-      <a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A4-25mm-8x6.pdf">
-        <img loading="lazy" style="width: 150px; margin-bottom: 10px; border: 1px solid #CCC; box-shadow: 3px 3px 6px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A4-25mm-8x6.svg" width="150" height="106">
-        <div style="font-size: 0.9em; color: #28a745; font-weight: bold;">⭐ Classic Choice</div>
-        <div style="font-size: 0.85em; color: #666;">A4 - 25mm squares - 8x6 vertices</div>
-      </a>
-    </div>
-
-    <div style="text-align: center; background: white; padding: 15px; border-radius: 6px; border: 1px solid #28a745;">
-      <a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A4-25mm-10x7.pdf">
-        <img loading="lazy" style="width: 150px; margin-bottom: 10px; border: 1px solid #CCC; box-shadow: 3px 3px 6px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A4-25mm-10x7.svg" width="150" height="106">
-        <div style="font-size: 0.9em; color: #28a745; font-weight: bold;">⭐ High Resolution</div>
-        <div style="font-size: 0.85em; color: #666;">A4 - 25mm squares - 10x7 vertices</div>
-      </a>
-    </div>
-
-  </div>
-</div>
-
 <hr style="color: #CCC; margin: 30px 0">
 
 <h2>8x6 Checkerboards</h2>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A4-25mm-8x6.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A4-25mm-8x6.svg" width="200" height="142">A4 - 25mm squares - 8x6 vertices, 9x7 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A4-30mm-8x6.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A4-30mm-8x6.svg" width="200" height="142">A4 - 30mm squares - 8x6 vertices, 9x7 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-35mm-8x6.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-35mm-8x6.svg" width="200" height="142">A3 - 35mm squares - 8x6 vertices, 9x7 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-40mm-8x6.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-40mm-8x6.svg" width="200" height="142">A3 - 40mm squares - 8x6 vertices, 9x7 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-55mm-8x6.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-55mm-8x6.svg" width="200" height="142">A2 - 55mm squares - 8x6 vertices, 9x7 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-60mm-8x6.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-60mm-8x6.svg" width="200" height="142">A2 - 60mm squares - 8x6 vertices, 9x7 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-75mm-8x6.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-75mm-8x6.svg" width="200" height="142">A1 - 75mm squares - 8x6 vertices, 9x7 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-80mm-8x6.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-80mm-8x6.svg" width="200" height="142">A1 - 80mm squares - 8x6 vertices, 9x7 squares</a></p>
+<div class="checkerboard-grid">
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A4-25mm-8x6.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A4-25mm-8x6.svg">A4 - 25mm squares - 8x6 vertices, 9x7 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A4-30mm-8x6.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A4-30mm-8x6.svg">A4 - 30mm squares - 8x6 vertices, 9x7 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-35mm-8x6.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-35mm-8x6.svg">A3 - 35mm squares - 8x6 vertices, 9x7 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-40mm-8x6.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-40mm-8x6.svg">A3 - 40mm squares - 8x6 vertices, 9x7 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-55mm-8x6.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-55mm-8x6.svg">A2 - 55mm squares - 8x6 vertices, 9x7 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-60mm-8x6.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-60mm-8x6.svg">A2 - 60mm squares - 8x6 vertices, 9x7 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-75mm-8x6.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-75mm-8x6.svg">A1 - 75mm squares - 8x6 vertices, 9x7 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-80mm-8x6.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-80mm-8x6.svg">A1 - 80mm squares - 8x6 vertices, 9x7 squares</a>
+</div>
 <h2>A4 Checkerboards</h2>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A4-20mm-13x9.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A4-20mm-13x9.svg" width="200" height="142">A4 - 20mm squares - 13x9 vertices, 14x10 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A4-25mm-10x7.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A4-25mm-10x7.svg" width="200" height="142">A4 - 25mm squares - 10x7 vertices, 11x8 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A4-30mm-8x6.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A4-30mm-8x6.svg" width="200" height="142">A4 - 30mm squares - 8x6 vertices, 9x7 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A4-35mm-7x4.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A4-35mm-7x4.svg" width="200" height="142">A4 - 35mm squares - 7x4 vertices, 8x5 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A4-40mm-6x4.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A4-40mm-6x4.svg" width="200" height="142">A4 - 40mm squares - 6x4 vertices, 7x5 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A4-45mm-5x3.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A4-45mm-5x3.svg" width="200" height="142">A4 - 45mm squares - 5x3 vertices, 6x4 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A4-50mm-4x2.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A4-50mm-4x2.svg" width="200" height="142">A4 - 50mm squares - 4x2 vertices, 5x3 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A4-55mm-4x2.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A4-55mm-4x2.svg" width="200" height="142">A4 - 55mm squares - 4x2 vertices, 5x3 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A4-60mm-3x2.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A4-60mm-3x2.svg" width="200" height="142">A4 - 60mm squares - 3x2 vertices, 4x3 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A4-65mm-3x2.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A4-65mm-3x2.svg" width="200" height="142">A4 - 65mm squares - 3x2 vertices, 4x3 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A4-70mm-3x2.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A4-70mm-3x2.svg" width="200" height="142">A4 - 70mm squares - 3x2 vertices, 4x3 squares</a></p>
+<div class="checkerboard-grid">
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A4-20mm-13x9.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A4-20mm-13x9.svg">A4 - 20mm squares - 13x9 vertices, 14x10 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A4-25mm-10x7.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A4-25mm-10x7.svg">A4 - 25mm squares - 10x7 vertices, 11x8 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A4-30mm-8x6.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A4-30mm-8x6.svg">A4 - 30mm squares - 8x6 vertices, 9x7 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A4-35mm-7x4.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A4-35mm-7x4.svg">A4 - 35mm squares - 7x4 vertices, 8x5 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A4-40mm-6x4.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A4-40mm-6x4.svg">A4 - 40mm squares - 6x4 vertices, 7x5 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A4-45mm-5x3.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A4-45mm-5x3.svg">A4 - 45mm squares - 5x3 vertices, 6x4 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A4-50mm-4x2.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A4-50mm-4x2.svg">A4 - 50mm squares - 4x2 vertices, 5x3 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A4-55mm-4x2.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A4-55mm-4x2.svg">A4 - 55mm squares - 4x2 vertices, 5x3 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A4-60mm-3x2.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A4-60mm-3x2.svg">A4 - 60mm squares - 3x2 vertices, 4x3 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A4-65mm-3x2.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A4-65mm-3x2.svg">A4 - 65mm squares - 3x2 vertices, 4x3 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A4-70mm-3x2.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A4-70mm-3x2.svg">A4 - 70mm squares - 3x2 vertices, 4x3 squares</a>
+</div>
 <h2>A3 Checkerboards</h2>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-20mm-19x13.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-20mm-19x13.svg" width="200" height="142">A3 - 20mm squares - 19x13 vertices, 20x14 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-25mm-15x10.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-25mm-15x10.svg" width="200" height="142">A3 - 25mm squares - 15x10 vertices, 16x11 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-30mm-12x8.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-30mm-12x8.svg" width="200" height="142">A3 - 30mm squares - 12x8 vertices, 13x9 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-35mm-10x7.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-35mm-10x7.svg" width="200" height="142">A3 - 35mm squares - 10x7 vertices, 11x8 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-40mm-8x6.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-40mm-8x6.svg" width="200" height="142">A3 - 40mm squares - 8x6 vertices, 9x7 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-40mm-9x6.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-40mm-9x6.svg" width="200" height="142">A3 - 40mm squares - 9x6 vertices, 10x7 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-45mm-8x5.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-45mm-8x5.svg" width="200" height="142">A3 - 45mm squares - 8x5 vertices, 9x6 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-50mm-7x4.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-50mm-7x4.svg" width="200" height="142">A3 - 50mm squares - 7x4 vertices, 8x5 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-55mm-6x4.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-55mm-6x4.svg" width="200" height="142">A3 - 55mm squares - 6x4 vertices, 7x5 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-60mm-5x3.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-60mm-5x3.svg" width="200" height="142">A3 - 60mm squares - 5x3 vertices, 6x4 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-65mm-5x3.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-65mm-5x3.svg" width="200" height="142">A3 - 65mm squares - 5x3 vertices, 6x4 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-70mm-4x3.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-70mm-4x3.svg" width="200" height="142">A3 - 70mm squares - 4x3 vertices, 5x4 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-75mm-4x2.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-75mm-4x2.svg" width="200" height="142">A3 - 75mm squares - 4x2 vertices, 5x3 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-80mm-4x2.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-80mm-4x2.svg" width="200" height="142">A3 - 80mm squares - 4x2 vertices, 5x3 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-85mm-3x2.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-85mm-3x2.svg" width="200" height="142">A3 - 85mm squares - 3x2 vertices, 4x3 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-90mm-3x2.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-90mm-3x2.svg" width="200" height="142">A3 - 90mm squares - 3x2 vertices, 4x3 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-95mm-3x2.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-95mm-3x2.svg" width="200" height="142">A3 - 95mm squares - 3x2 vertices, 4x3 squares</a></p>
+<div class="checkerboard-grid">
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-20mm-19x13.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-20mm-19x13.svg">A3 - 20mm squares - 19x13 vertices, 20x14 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-25mm-15x10.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-25mm-15x10.svg">A3 - 25mm squares - 15x10 vertices, 16x11 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-30mm-12x8.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-30mm-12x8.svg">A3 - 30mm squares - 12x8 vertices, 13x9 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-35mm-10x7.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-35mm-10x7.svg">A3 - 35mm squares - 10x7 vertices, 11x8 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-40mm-8x6.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-40mm-8x6.svg">A3 - 40mm squares - 8x6 vertices, 9x7 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-40mm-9x6.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-40mm-9x6.svg">A3 - 40mm squares - 9x6 vertices, 10x7 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-45mm-8x5.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-45mm-8x5.svg">A3 - 45mm squares - 8x5 vertices, 9x6 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-50mm-7x4.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-50mm-7x4.svg">A3 - 50mm squares - 7x4 vertices, 8x5 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-55mm-6x4.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-55mm-6x4.svg">A3 - 55mm squares - 6x4 vertices, 7x5 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-60mm-5x3.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-60mm-5x3.svg">A3 - 60mm squares - 5x3 vertices, 6x4 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-65mm-5x3.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-65mm-5x3.svg">A3 - 65mm squares - 5x3 vertices, 6x4 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-70mm-4x3.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-70mm-4x3.svg">A3 - 70mm squares - 4x3 vertices, 5x4 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-75mm-4x2.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-75mm-4x2.svg">A3 - 75mm squares - 4x2 vertices, 5x3 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-80mm-4x2.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-80mm-4x2.svg">A3 - 80mm squares - 4x2 vertices, 5x3 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-85mm-3x2.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-85mm-3x2.svg">A3 - 85mm squares - 3x2 vertices, 4x3 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-90mm-3x2.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-90mm-3x2.svg">A3 - 90mm squares - 3x2 vertices, 4x3 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-95mm-3x2.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A3-95mm-3x2.svg">A3 - 95mm squares - 3x2 vertices, 4x3 squares</a>
+</div>
 <h2>A2 Checkerboards</h2>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-20mm-28x19.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-20mm-28x19.svg" width="200" height="142">A2 - 20mm squares - 28x19 vertices, 29x20 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-25mm-22x15.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-25mm-22x15.svg" width="200" height="142">A2 - 25mm squares - 22x15 vertices, 23x16 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-30mm-18x13.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-30mm-18x13.svg" width="200" height="142">A2 - 30mm squares - 18x13 vertices, 19x14 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-35mm-15x11.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-35mm-15x11.svg" width="200" height="142">A2 - 35mm squares - 15x11 vertices, 16x12 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-40mm-13x9.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-40mm-13x9.svg" width="200" height="142">A2 - 40mm squares - 13x9 vertices, 14x10 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-45mm-12x8.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-45mm-12x8.svg" width="200" height="142">A2 - 45mm squares - 12x8 vertices, 13x9 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-50mm-10x7.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-50mm-10x7.svg" width="200" height="142">A2 - 50mm squares - 10x7 vertices, 11x8 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-55mm-9x6.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-55mm-9x6.svg" width="200" height="142">A2 - 55mm squares - 9x6 vertices, 10x7 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-60mm-8x6.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-60mm-8x6.svg" width="200" height="142">A2 - 60mm squares - 8x6 vertices, 9x7 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-65mm-8x5.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-65mm-8x5.svg" width="200" height="142">A2 - 65mm squares - 8x5 vertices, 9x6 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-70mm-7x4.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-70mm-7x4.svg" width="200" height="142">A2 - 70mm squares - 7x4 vertices, 8x5 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-75mm-6x4.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-75mm-6x4.svg" width="200" height="142">A2 - 75mm squares - 6x4 vertices, 7x5 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-80mm-6x4.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-80mm-6x4.svg" width="200" height="142">A2 - 80mm squares - 6x4 vertices, 7x5 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-85mm-5x3.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-85mm-5x3.svg" width="200" height="142">A2 - 85mm squares - 5x3 vertices, 6x4 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-90mm-5x3.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-90mm-5x3.svg" width="200" height="142">A2 - 90mm squares - 5x3 vertices, 6x4 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-95mm-5x3.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-95mm-5x3.svg" width="200" height="142">A2 - 95mm squares - 5x3 vertices, 6x4 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-100mm-4x3.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-100mm-4x3.svg" width="200" height="142">A2 - 100mm squares - 4x3 vertices, 5x4 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-105mm-4x3.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-105mm-4x3.svg" width="200" height="142">A2 - 105mm squares - 4x3 vertices, 5x4 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-110mm-4x2.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-110mm-4x2.svg" width="200" height="142">A2 - 110mm squares - 4x2 vertices, 5x3 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-115mm-4x2.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-115mm-4x2.svg" width="200" height="142">A2 - 115mm squares - 4x2 vertices, 5x3 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-120mm-3x2.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-120mm-3x2.svg" width="200" height="142">A2 - 120mm squares - 3x2 vertices, 4x3 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-125mm-3x2.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-125mm-3x2.svg" width="200" height="142">A2 - 125mm squares - 3x2 vertices, 4x3 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-130mm-3x2.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-130mm-3x2.svg" width="200" height="142">A2 - 130mm squares - 3x2 vertices, 4x3 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-135mm-3x2.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-135mm-3x2.svg" width="200" height="142">A2 - 135mm squares - 3x2 vertices, 4x3 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-140mm-3x2.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-140mm-3x2.svg" width="200" height="142">A2 - 140mm squares - 3x2 vertices, 4x3 squares</a></p>
+<div class="checkerboard-grid">
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-20mm-28x19.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-20mm-28x19.svg">A2 - 20mm squares - 28x19 vertices, 29x20 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-25mm-22x15.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-25mm-22x15.svg">A2 - 25mm squares - 22x15 vertices, 23x16 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-30mm-18x13.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-30mm-18x13.svg">A2 - 30mm squares - 18x13 vertices, 19x14 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-35mm-15x11.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-35mm-15x11.svg">A2 - 35mm squares - 15x11 vertices, 16x12 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-40mm-13x9.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-40mm-13x9.svg">A2 - 40mm squares - 13x9 vertices, 14x10 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-45mm-12x8.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-45mm-12x8.svg">A2 - 45mm squares - 12x8 vertices, 13x9 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-50mm-10x7.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-50mm-10x7.svg">A2 - 50mm squares - 10x7 vertices, 11x8 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-55mm-9x6.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-55mm-9x6.svg">A2 - 55mm squares - 9x6 vertices, 10x7 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-60mm-8x6.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-60mm-8x6.svg">A2 - 60mm squares - 8x6 vertices, 9x7 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-65mm-8x5.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-65mm-8x5.svg">A2 - 65mm squares - 8x5 vertices, 9x6 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-70mm-7x4.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-70mm-7x4.svg">A2 - 70mm squares - 7x4 vertices, 8x5 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-75mm-6x4.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-75mm-6x4.svg">A2 - 75mm squares - 6x4 vertices, 7x5 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-80mm-6x4.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-80mm-6x4.svg">A2 - 80mm squares - 6x4 vertices, 7x5 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-85mm-5x3.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-85mm-5x3.svg">A2 - 85mm squares - 5x3 vertices, 6x4 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-90mm-5x3.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-90mm-5x3.svg">A2 - 90mm squares - 5x3 vertices, 6x4 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-95mm-5x3.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-95mm-5x3.svg">A2 - 95mm squares - 5x3 vertices, 6x4 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-100mm-4x3.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-100mm-4x3.svg">A2 - 100mm squares - 4x3 vertices, 5x4 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-105mm-4x3.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-105mm-4x3.svg">A2 - 105mm squares - 4x3 vertices, 5x4 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-110mm-4x2.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-110mm-4x2.svg">A2 - 110mm squares - 4x2 vertices, 5x3 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-115mm-4x2.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-115mm-4x2.svg">A2 - 115mm squares - 4x2 vertices, 5x3 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-120mm-3x2.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-120mm-3x2.svg">A2 - 120mm squares - 3x2 vertices, 4x3 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-125mm-3x2.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-125mm-3x2.svg">A2 - 125mm squares - 3x2 vertices, 4x3 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-130mm-3x2.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-130mm-3x2.svg">A2 - 130mm squares - 3x2 vertices, 4x3 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-135mm-3x2.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-135mm-3x2.svg">A2 - 135mm squares - 3x2 vertices, 4x3 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-140mm-3x2.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A2-140mm-3x2.svg">A2 - 140mm squares - 3x2 vertices, 4x3 squares</a>
+</div>
 <h2>A1 Checkerboards</h2>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-20mm-41x28.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-20mm-41x28.svg" width="200" height="142">A1 - 20mm squares - 41x28 vertices, 42x29 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-25mm-32x22.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-25mm-32x22.svg" width="200" height="142">A1 - 25mm squares - 32x22 vertices, 33x23 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-30mm-27x18.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-30mm-27x18.svg" width="200" height="142">A1 - 30mm squares - 27x18 vertices, 28x19 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-35mm-23x15.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-35mm-23x15.svg" width="200" height="142">A1 - 35mm squares - 23x15 vertices, 24x16 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-40mm-20x13.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-40mm-20x13.svg" width="200" height="142">A1 - 40mm squares - 20x13 vertices, 21x14 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-45mm-17x12.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-45mm-17x12.svg" width="200" height="142">A1 - 45mm squares - 17x12 vertices, 18x13 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-50mm-15x10.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-50mm-15x10.svg" width="200" height="142">A1 - 50mm squares - 15x10 vertices, 16x11 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-55mm-14x9.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-55mm-14x9.svg" width="200" height="142">A1 - 55mm squares - 14x9 vertices, 15x10 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-60mm-13x8.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-60mm-13x8.svg" width="200" height="142">A1 - 60mm squares - 13x8 vertices, 14x9 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-65mm-11x8.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-65mm-11x8.svg" width="200" height="142">A1 - 65mm squares - 11x8 vertices, 12x9 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-70mm-11x7.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-70mm-11x7.svg" width="200" height="142">A1 - 70mm squares - 11x7 vertices, 12x8 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-75mm-10x6.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-75mm-10x6.svg" width="200" height="142">A1 - 75mm squares - 10x6 vertices, 11x7 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-80mm-8x6.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-80mm-8x6.svg" width="200" height="142">A1 - 80mm squares - 8x6 vertices, 9x7 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-80mm-9x6.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-80mm-9x6.svg" width="200" height="142">A1 - 80mm squares - 9x6 vertices, 10x7 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-85mm-8x5.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-85mm-8x5.svg" width="200" height="142">A1 - 85mm squares - 8x5 vertices, 9x6 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-90mm-8x5.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-90mm-8x5.svg" width="200" height="142">A1 - 90mm squares - 8x5 vertices, 9x6 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-95mm-7x5.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-95mm-7x5.svg" width="200" height="142">A1 - 95mm squares - 7x5 vertices, 8x6 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-100mm-7x4.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-100mm-7x4.svg" width="200" height="142">A1 - 100mm squares - 7x4 vertices, 8x5 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-105mm-7x4.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-105mm-7x4.svg" width="200" height="142">A1 - 105mm squares - 7x4 vertices, 8x5 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-110mm-6x4.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-110mm-6x4.svg" width="200" height="142">A1 - 110mm squares - 6x4 vertices, 7x5 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-115mm-6x4.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-115mm-6x4.svg" width="200" height="142">A1 - 115mm squares - 6x4 vertices, 7x5 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-120mm-6x4.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-120mm-6x4.svg" width="200" height="142">A1 - 120mm squares - 6x4 vertices, 7x5 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-125mm-5x3.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-125mm-5x3.svg" width="200" height="142">A1 - 125mm squares - 5x3 vertices, 6x4 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-130mm-5x3.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-130mm-5x3.svg" width="200" height="142">A1 - 130mm squares - 5x3 vertices, 6x4 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-135mm-5x3.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-135mm-5x3.svg" width="200" height="142">A1 - 135mm squares - 5x3 vertices, 6x4 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-140mm-5x3.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-140mm-5x3.svg" width="200" height="142">A1 - 140mm squares - 5x3 vertices, 6x4 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-145mm-4x3.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-145mm-4x3.svg" width="200" height="142">A1 - 145mm squares - 4x3 vertices, 5x4 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-150mm-4x2.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-150mm-4x2.svg" width="200" height="142">A1 - 150mm squares - 4x2 vertices, 5x3 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-155mm-4x2.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-155mm-4x2.svg" width="200" height="142">A1 - 155mm squares - 4x2 vertices, 5x3 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-160mm-4x2.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-160mm-4x2.svg" width="200" height="142">A1 - 160mm squares - 4x2 vertices, 5x3 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-165mm-4x2.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-165mm-4x2.svg" width="200" height="142">A1 - 165mm squares - 4x2 vertices, 5x3 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-170mm-3x2.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-170mm-3x2.svg" width="200" height="142">A1 - 170mm squares - 3x2 vertices, 4x3 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-175mm-3x2.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-175mm-3x2.svg" width="200" height="142">A1 - 175mm squares - 3x2 vertices, 4x3 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-180mm-3x2.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-180mm-3x2.svg" width="200" height="142">A1 - 180mm squares - 3x2 vertices, 4x3 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-185mm-3x2.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-185mm-3x2.svg" width="200" height="142">A1 - 185mm squares - 3x2 vertices, 4x3 squares</a></p>
-<p><a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-190mm-3x2.pdf"><img loading="lazy" style="width: 200px; margin-right: 15px; border: 1px solid #CCC; box-shadow: 5px 5px 10px #AAA;" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-190mm-3x2.svg" width="200" height="142">A1 - 190mm squares - 3x2 vertices, 4x3 squares</a></p>
+<div class="checkerboard-grid">
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-20mm-41x28.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-20mm-41x28.svg">A1 - 20mm squares - 41x28 vertices, 42x29 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-25mm-32x22.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-25mm-32x22.svg">A1 - 25mm squares - 32x22 vertices, 33x23 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-30mm-27x18.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-30mm-27x18.svg">A1 - 30mm squares - 27x18 vertices, 28x19 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-35mm-23x15.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-35mm-23x15.svg">A1 - 35mm squares - 23x15 vertices, 24x16 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-40mm-20x13.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-40mm-20x13.svg">A1 - 40mm squares - 20x13 vertices, 21x14 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-45mm-17x12.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-45mm-17x12.svg">A1 - 45mm squares - 17x12 vertices, 18x13 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-50mm-15x10.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-50mm-15x10.svg">A1 - 50mm squares - 15x10 vertices, 16x11 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-55mm-14x9.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-55mm-14x9.svg">A1 - 55mm squares - 14x9 vertices, 15x10 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-60mm-13x8.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-60mm-13x8.svg">A1 - 60mm squares - 13x8 vertices, 14x9 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-65mm-11x8.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-65mm-11x8.svg">A1 - 65mm squares - 11x8 vertices, 12x9 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-70mm-11x7.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-70mm-11x7.svg">A1 - 70mm squares - 11x7 vertices, 12x8 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-75mm-10x6.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-75mm-10x6.svg">A1 - 75mm squares - 10x6 vertices, 11x7 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-80mm-8x6.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-80mm-8x6.svg">A1 - 80mm squares - 8x6 vertices, 9x7 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-80mm-9x6.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-80mm-9x6.svg">A1 - 80mm squares - 9x6 vertices, 10x7 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-85mm-8x5.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-85mm-8x5.svg">A1 - 85mm squares - 8x5 vertices, 9x6 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-90mm-8x5.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-90mm-8x5.svg">A1 - 90mm squares - 8x5 vertices, 9x6 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-95mm-7x5.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-95mm-7x5.svg">A1 - 95mm squares - 7x5 vertices, 8x6 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-100mm-7x4.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-100mm-7x4.svg">A1 - 100mm squares - 7x4 vertices, 8x5 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-105mm-7x4.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-105mm-7x4.svg">A1 - 105mm squares - 7x4 vertices, 8x5 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-110mm-6x4.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-110mm-6x4.svg">A1 - 110mm squares - 6x4 vertices, 7x5 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-115mm-6x4.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-115mm-6x4.svg">A1 - 115mm squares - 6x4 vertices, 7x5 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-120mm-6x4.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-120mm-6x4.svg">A1 - 120mm squares - 6x4 vertices, 7x5 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-125mm-5x3.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-125mm-5x3.svg">A1 - 125mm squares - 5x3 vertices, 6x4 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-130mm-5x3.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-130mm-5x3.svg">A1 - 130mm squares - 5x3 vertices, 6x4 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-135mm-5x3.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-135mm-5x3.svg">A1 - 135mm squares - 5x3 vertices, 6x4 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-140mm-5x3.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-140mm-5x3.svg">A1 - 140mm squares - 5x3 vertices, 6x4 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-145mm-4x3.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-145mm-4x3.svg">A1 - 145mm squares - 4x3 vertices, 5x4 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-150mm-4x2.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-150mm-4x2.svg">A1 - 150mm squares - 4x2 vertices, 5x3 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-155mm-4x2.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-155mm-4x2.svg">A1 - 155mm squares - 4x2 vertices, 5x3 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-160mm-4x2.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-160mm-4x2.svg">A1 - 160mm squares - 4x2 vertices, 5x3 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-165mm-4x2.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-165mm-4x2.svg">A1 - 165mm squares - 4x2 vertices, 5x3 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-170mm-3x2.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-170mm-3x2.svg">A1 - 170mm squares - 3x2 vertices, 4x3 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-175mm-3x2.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-175mm-3x2.svg">A1 - 175mm squares - 3x2 vertices, 4x3 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-180mm-3x2.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-180mm-3x2.svg">A1 - 180mm squares - 3x2 vertices, 4x3 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-185mm-3x2.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-185mm-3x2.svg">A1 - 185mm squares - 3x2 vertices, 4x3 squares</a>
+<a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-190mm-3x2.pdf"><img loading="lazy" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-190mm-3x2.svg">A1 - 190mm squares - 3x2 vertices, 4x3 squares</a>
+</div>
 
 

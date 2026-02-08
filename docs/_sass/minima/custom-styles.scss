@@ -14,6 +14,44 @@
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
+// Checkerboard download grid
+.post-content .checkerboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 150px);
+  gap: 10px;
+  margin: 12px 0 24px;
+
+  a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    min-width: 0;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    text-decoration: none;
+    color: inherit;
+    font-size: 0.75em;
+    line-height: 1.3;
+    text-align: center;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.03);
+    }
+  }
+
+  img {
+    width: 150px;
+    height: auto;
+    display: block;
+    margin: 0 0 6px;
+    border-radius: 0;
+    box-shadow: none;
+    background-color: #fff;
+  }
+}
+
 // Ensure images in markdown don't exceed container
 img {
   max-width: 100%;
