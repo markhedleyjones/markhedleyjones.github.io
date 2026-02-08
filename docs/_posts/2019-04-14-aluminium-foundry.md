@@ -21,13 +21,13 @@ The electric version cost approximately 200 NZD (£100/$120) for materials and t
 
 The first image shows the initial frame assembly. The electric element wire was embedded in the fire-bricks as they were being cemented together. The completed unit is shown ready for initial testing. As a crucible, I cut and welded a section of 40mm (1.6") box-section mild steel to a steel plate. Two holes were drilled into the sides of the crucible, which allowed tongs to lock in for raising and lowering into the furnace, as well as pouring the molten aluminium out.
 
-![IMG_20160828_095713](/media/aluminium-foundry/IMG_20160828_095713.webp)
+![IMG_20160828_095713](/media/projects/aluminium-foundry/IMG_20160828_095713.webp)
 
 <div style="display: flex; gap: 10px; align-items: flex-start;">
-<img src="/media/aluminium-foundry/IMG_20160828_104715.webp" alt="IMG_20160828_104715" style="width: 49%;">
-<img src="/media/aluminium-foundry/IMG_20160828_103840.webp" alt="IMG_20160828_103840" style="width: 49%;">
+<img src="/media/projects/aluminium-foundry/IMG_20160828_104715.webp" alt="IMG_20160828_104715" style="width: 49%;">
+<img src="/media/projects/aluminium-foundry/IMG_20160828_103840.webp" alt="IMG_20160828_103840" style="width: 49%;">
 </div>
-![IMG_20160828_125740](/media/aluminium-foundry/IMG_20160828_125740.webp)
+![IMG_20160828_125740](/media/projects/aluminium-foundry/IMG_20160828_125740.webp)
 
 ## Safety Considerations
 
@@ -37,31 +37,31 @@ The electric furnace was operated with RCD (residual current device) protection 
 
 Unfortunately, after running the furnace for about 30 minutes, the electric element wire burnt itself out. After replacing the element, the same problem occurred. Looking back, I believe this was due to several factors: firstly, I may not have uncoiled the nichrome wire sufficiently, potentially causing shorts where the wire touched itself. Secondly, embedding the wire directly into the insulating fire-bricks likely created hot-spots, particularly in the corners of the square chamber. A round chamber design might have provided better heat distribution. The wire was correctly sized for the 2kW power requirement, so the failures were likely due to poor installation technique rather than undersized components.
 
-![Burnt-out heating element](/media/aluminium-foundry/IMG_20160911_104849.webp)
+![Burnt-out heating element](/media/projects/aluminium-foundry/IMG_20160911_104849.webp)
 
 In the end, I broke the bricks apart and added an entry hole for a propane torch.
 
-![Propane powered foundry](/media/aluminium-foundry/IMG_20161106_152910.webp)
+![Propane powered foundry](/media/projects/aluminium-foundry/IMG_20161106_152910.webp)
 
 # Propane Foundry
 
 For the second version of the foundry I decided to have the propane torch come up from the underside of the furnace to keep the heat even. I reused the same frame, but instead of using fire-bricks, I used fire-tiles which were thinner. The propane setup cost approximately 300 NZD (£150/$180) including the bottle, adjustable regulator, fittings, and flashback arrestor for safety.
 
 <div style="display: flex; gap: 10px; align-items: flex-start;">
-<img src="/media/aluminium-foundry/IMG_20170122_174136.webp" alt="IMG_20170122_174136" style="width: 49%;">
-<img src="/media/aluminium-foundry/IMG_20170305_104747.webp" alt="IMG_20170305_104747" style="width: 49%;">
+<img src="/media/projects/aluminium-foundry/IMG_20170122_174136.webp" alt="IMG_20170122_174136" style="width: 49%;">
+<img src="/media/projects/aluminium-foundry/IMG_20170305_104747.webp" alt="IMG_20170305_104747" style="width: 49%;">
 </div>
-![Adding new entry port](/media/aluminium-foundry/IMG_20170305_104733.webp)
+![Adding new entry port](/media/projects/aluminium-foundry/IMG_20170305_104733.webp)
 
-![Burner positioning](/media/aluminium-foundry/IMG_20170305_104802.webp)
+![Burner positioning](/media/projects/aluminium-foundry/IMG_20170305_104802.webp)
 
 A length of wood was bolted to the frame to keep the burner in position.
 
 The burner itself was made from a combination of pneumatic tool fittings, a MIG welding handpiece insert that I brazed to the inside of a hose connection fitting, and a long pipe with tap that I purchased from the BBQ section of a hardware store. The adjustable propane regulator was purchased from eBay.
 
-![Furnace assembly connected to propane tank](/media/aluminium-foundry/IMG_20170305_104717.webp)
+![Furnace assembly connected to propane tank](/media/projects/aluminium-foundry/IMG_20170305_104717.webp)
 
-![Final furnace design](/media/aluminium-foundry/IMG_20170305_104710.webp)
+![Final furnace design](/media/projects/aluminium-foundry/IMG_20170305_104710.webp)
 
 # Final Result
 
@@ -71,11 +71,11 @@ The burner itself was made from a combination of pneumatic tool fittings, a MIG 
 
 As a trial, I had made a stainless steel mould to see if I could cast a small hexagon. It was made from 8mm laser cut stainless steel plate that was stacked to make a hexagonal cavity. The animation below shows how it was constructed.
 
-![Stainless Steel Mould Construction](/media/aluminium-foundry/DSC_6477-ANIMATION.webp)
+![Stainless Steel Mould Construction](/media/projects/aluminium-foundry/DSC_6477-ANIMATION.webp)
 
 The idea was to pour aluminium in one of the holes in the top until the aluminium became visible at the exit hole. The image below shows the mould bolted together.
 
-![Assembled aluminium mould](/media/aluminium-foundry/IMG_20170305_120411.webp)
+![Assembled aluminium mould](/media/projects/aluminium-foundry/IMG_20170305_120411.webp)
 
 The first problem was that as heat was lost to the mould, the aluminium would solidify inside the sprue and cause a blockage. To try and solve this, I heated the mould up to roughly the same temperature as the aluminium and tried again. This time the aluminium made it part-way into the cavity, but still didn't fill the hexagonal volume.
 
