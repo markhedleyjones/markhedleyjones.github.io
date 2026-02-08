@@ -2,6 +2,7 @@
 layout: project
 title: "Container Magic"
 date: 2026-02-08
+relevance: 6
 permalink: /projects/container-magic
 featureimage: logo.webp
 thumb: logo.webp

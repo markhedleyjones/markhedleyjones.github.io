@@ -2,6 +2,7 @@
 layout: project
 title:  "Import/Export Point Cloud Data in Blender"
 date:   2021-05-12 09:01:13 +0000
+relevance: 8
 modified_date: 2025-08-16
 permalink: /projects/blender-pcd-io
 featureimage: feature.webp

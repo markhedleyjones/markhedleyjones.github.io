@@ -2,6 +2,7 @@
 layout: project
 title:  "Python Tone Generator"
 date:   2014-06-29 09:01:13 +0000
+relevance: 3
 permalink: /projects/python-tone-generator
 featureimage: logo.svg
 thumb: logo.svg

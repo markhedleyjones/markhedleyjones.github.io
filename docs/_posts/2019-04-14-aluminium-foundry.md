@@ -2,6 +2,7 @@
 layout: project
 title:  "Aluminium Foundry"
 date:   2019-04-14 09:01:13 +0000
+relevance: 4
 modified_date: 2025-08-13 06:30:00 +0000
 permalink: /projects/aluminium-foundry
 featureimage: feature.webp

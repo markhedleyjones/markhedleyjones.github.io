@@ -2,6 +2,7 @@
 layout: project
 title:  "Docker-BBQ"
 date:   2022-07-23 19:12:00 +0000
+relevance: 4
 permalink: /projects/docker-bbq
 featureimage: logo.webp
 thumb: logo.webp

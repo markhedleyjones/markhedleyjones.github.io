@@ -2,6 +2,7 @@
 layout: project
 title:  "dmenu-extended"
 date:   2013-11-29 09:01:13 +0000
+relevance: 5
 permalink: /projects/dmenu-extended
 featureimage: logo.svg
 thumb: logo.svg

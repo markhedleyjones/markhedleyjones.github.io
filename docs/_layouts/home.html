@@ -13,7 +13,7 @@ layout: default
   {% if site.paginate %}
     {% assign posts = paginator.posts | where: "layout","project" %}
   {% else %}
-    {% assign posts = site.posts | where: "layout","project" %}
+    {% assign posts = site.posts | where: "layout","project" | sort: "relevance" | reverse %}
   {% endif %}
 
 
