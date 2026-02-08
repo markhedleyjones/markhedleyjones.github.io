@@ -114,13 +114,13 @@
     border-radius: 8px;
     box-shadow: 0 4px 8px var(--color-shadow);
     text-align: left;
-    
+
     .menu-icon {
       svg path {
         fill: var(--color-nav-text);
       }
     }
-    
+
     .trigger {
       background-color: var(--color-nav-bg);
       border-top: 1px solid var(--color-border);
@@ -133,29 +133,29 @@
       display: flex;
       flex-direction: column;
     }
-    
+
     .page-link {
       border-bottom: 1px solid var(--color-border-light);
       transition: background-color 0.2s ease, color 0.2s ease;
       text-align: left;
       margin-left: 0;
-      
+
       &:last-child {
         border-bottom: none;
       }
-      
+
       &:hover, &:focus {
         background-color: var(--color-button-hover);
         color: var(--color-link-hover);
       }
-      
+
       &.active {
         background-color: var(--color-button-bg);
         color: var(--color-link);
         font-weight: 500;
       }
     }
-    
+
     .theme-toggle {
       margin-left: 0;
       align-self: stretch;
@@ -171,16 +171,16 @@
       color: var(--color-nav-text);
       transition: background-color 0.2s ease, color 0.2s ease;
       min-height: 36px;
-      
+
       &:last-child {
         border-bottom: none;
       }
-      
+
       &:hover, &:focus {
         background-color: var(--color-button-hover);
         color: var(--color-link-hover);
       }
-      
+
       .theme-icon {
         margin: 2px 0;
       }
@@ -246,7 +246,7 @@ a {
   font-weight: 300;
   opacity: 0.6;
   transition: opacity 0.2s ease;
-  
+
   &:hover {
     opacity: 1;
   }
@@ -290,7 +290,7 @@ pre, code {
     border-color: var(--color-border) !important;
     color: var(--color-text) !important;
   }
-  
+
   .highlight {
     background-color: var(--color-code-bg) !important;
   }
@@ -379,10 +379,19 @@ table {
   background-color: var(--color-link) !important;
 }
 
+// Homepage project card thumbnail backgrounds (for transparent images)
+.grid-item img {
+  background-color: #fff;
+}
+
 // Homepage project grid cards
 [data-theme="dark"] .grid-item {
   background-color: var(--color-project-card-bg) !important;
   box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+[data-theme="dark"] .grid-item img {
+  background-color: #fff;
 }
 
 [data-theme="dark"] .grid-item:hover {

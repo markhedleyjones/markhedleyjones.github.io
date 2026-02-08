@@ -15,7 +15,7 @@ layout: default
     "url": "{{ site.url }}/about/"
   },
   "creator": {
-    "@type": "Person", 
+    "@type": "Person",
     "name": "{{ site.author.name | default: site.title }}"
   },
   "datePublished": "{{ page.date | date_to_xmlschema }}",
@@ -75,7 +75,7 @@ layout: default
         {%- endif -%}</p>
         {%- if page.modified_date -%}
           <p class="post-meta" style="margin-top: 5px; font-style: italic;">
-            Last updated: 
+            Last updated:
             {%- assign mdate = page.modified_date | date_to_xmlschema -%}
             <time class="dt-modified" datetime="{{ mdate }}" itemprop="dateModified">
               {{ mdate | date: date_format }}
@@ -83,10 +83,10 @@ layout: default
           </p>
         {%- endif -%}
         {%- if page.image -%}
-          <img style="max-height: 400px; border-radius: 0.5rem;" alt="Project logo" src="{{ page.image}}"/>
+          <img style="max-height: 400px; border-radius: 0.5rem; background-color: var(--color-project-card-bg); padding: 10px;" alt="Project logo" src="{{ page.image}}"/>
         {%- endif -%}
         {%- if page.featureimage -%}
-          <img style="border-radius: 0.5rem;" alt="Project logo" src="/media{{ page.permalink }}/{{ page.featureimage }}"/>
+          <img style="border-radius: 0.5rem; background-color: var(--color-project-card-bg); padding: 10px;" alt="Project logo" src="/media{{ page.permalink }}/{{ page.featureimage }}"/>
         {%- endif -%}
     </header>
     <hr style="color: #CCC; margin: 20px 0">

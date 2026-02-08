@@ -45,10 +45,10 @@ layout: default
           " onclick="window.location = '{{ post.url | relative_url }}';">
           {%- if site.show_excerpts -%}
             {%- if post.image -%}
-              <a style="color: #525252;" class="post-link" href="{{ post.url | relative_url }}"><img loading="lazy" src="{{ post.image }}" width="320" height="240" style="width: 320px; height: 240px; border-radius: 0.5rem;"/></a>
+              <a style="color: #525252;" class="post-link" href="{{ post.url | relative_url }}"><img loading="lazy" src="{{ post.image }}" width="320" height="240" style="width: 320px; height: 240px; border-radius: 0.5rem; background-color: #fff;"/></a>
             {%- endif -%}
             {%- if post.thumb -%}
-              <a style="color: #525252;" class="post-link" href="{{ post.url | relative_url }}"><img loading="lazy" src="/media{{ post.permalink }}/{{ post.thumb }}" width="320" height="240" style="width: 320px; height: 240px; border-top-left-radius: 0.5rem; border-top-right-radius: 0.5rem;"/></a>
+              <a style="color: #525252;" class="post-link" href="{{ post.url | relative_url }}"><img loading="lazy" src="/media{{ post.permalink }}/{{ post.thumb }}" width="320" height="240" style="width: 320px; height: 240px; border-top-left-radius: 0.5rem; border-top-right-radius: 0.5rem; background-color: #fff;"/></a>
             {%- endif -%}
           {%- endif -%}
           <div style="position: relative; bottom: 0; left: 10px; right: 10px; width: 300px; height: 150px; top: 10px">

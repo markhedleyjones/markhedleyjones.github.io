@@ -17,7 +17,7 @@ excerpt_separator: \{% endhighlight %\}
   It's best suited for tiling window managers such as i3, dwm, xmonad, awesome, etc.
 </p>
 <p style="text-align: center; margin: 50px 0">
-  <img alt="Demonstration of dmenu-extended" src="https://camo.githubusercontent.com/ce8d8bda44c521bcacbe3966a85bcc6a06d81bf2036973f4b0d2e9dcdf435441/68747470733a2f2f7261772e6769746875622e636f6d2f6d61726b6865646c65796a6f6e65732f646d656e752d657874656e6465642f6d61737465722f646f63732f64656d6f2e676966">
+  <img alt="Demonstration of dmenu-extended" src="https://raw.githubusercontent.com/MarkHedleyJones/dmenu-extended/master/docs/demo.gif">
 </p>
 
 <p style="text-align: center;">
