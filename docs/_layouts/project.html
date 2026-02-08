@@ -94,18 +94,6 @@ layout: default
       {{ content }}
     </div>
 
-    {%- if page.keywords -%}
-    <div style="background: var(--color-highlight-bg); padding: 20px; border-radius: 6px; margin: 30px 0; border-left: 4px solid var(--color-link);">
-      <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--color-text); font-size: 1.1em;">🏷️ Keywords</h3>
-      <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-        {%- assign keywords_list = page.keywords | split: ', ' -%}
-        {%- for keyword in keywords_list -%}
-          <span style="background: var(--color-button-bg); color: var(--color-text); padding: 4px 8px; border-radius: 4px; font-size: 0.9em; border: 1px solid var(--color-border);">{{ keyword | strip }}</span>
-        {%- endfor -%}
-      </div>
-    </div>
-    {%- endif -%}
-
     {%- include related-projects.html -%}
 
     <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
