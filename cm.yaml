@@ -1,0 +1,42 @@
+project:
+  name: markhedleyjones-github-io
+  workspace: docs
+
+user:
+  production:
+    name: user
+    uid: 1000
+    gid: 1000
+
+stages:
+  base:
+    from: debian:bullseye-slim
+    packages:
+      apt:
+        - build-essential
+        - ruby-full
+        - zlib1g-dev
+    env:
+      GEM_HOME: ${WORKDIR}/gems
+      PATH: ${WORKDIR}/gems/bin:$PATH
+    steps:
+      - install_system_packages
+      - create_user
+      - switch_user
+      - RUN gem install jekyll bundler
+      - COPY docs/Gemfile docs/Gemfile.lock /tmp/
+      - RUN cd /tmp && bundle install
+
+  development:
+    from: base
+
+  production:
+    from: base
+
+commands:
+  serve:
+    command: cd ${WORKSPACE} && bundle exec jekyll serve --host 0.0.0.0 --port 4111 --livereload --livereload-port 4112
+    description: Start Jekyll dev server with live reload
+    ports:
+      - "4111:4111"
+      - "4112:4112"
