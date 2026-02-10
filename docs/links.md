@@ -32,7 +32,7 @@ This page is an experiment in storing web-links longer term and to facilitate sh
 ## Learning & Knowledgebases
 * [Awesome Robotic Tooling](https://project-awesome.org/protontypes/awesome-robotic-tooling) - list of tooling for professional robotic development in C++ and Python
 * [Awesome](https://github.com/sindresorhus/awesome) - a massive collection of useful projects and information from many disciplines
-* [The Book of Secret Knowledge](https://github.com/trimstray/the-book-of-secret-knowledge) - a repository of cheetsheets and helpful resources
+* [The Book of Secret Knowledge](https://github.com/trimstray/the-book-of-secret-knowledge) - a repository of cheatsheets and helpful resources
 
 ## Programming
 * [Best Practices Around Production Ready Web Apps with Docker Compose](https://nickjanetakis.com/blog/best-practices-around-production-ready-web-apps-with-docker-compose)
