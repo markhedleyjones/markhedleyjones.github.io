@@ -4,7 +4,7 @@ title: Notes
 permalink: /notes/
 ---
 
-<div class="home" style="margin: 20px">
+<div class="notes-page">
   {% if site.paginate %}
     {% assign notes = paginator.posts | where: "layout","note" %}
   {% else %}
@@ -12,14 +12,18 @@ permalink: /notes/
   {% endif %}
 
   {%- if notes.size > 0 -%}
-    <ul>
-      {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+    {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+    <div class="notes-list">
       {%- for note in notes -%}
-        <li>
-          <a href="{{ note.permalink }}">{{ note.title }}</a>{% if note.description %} <span>— {{note.description}}</span>{% endif %}
-        </li>
+        <a class="note-item" href="{{ note.permalink }}">
+          <span class="note-item-title">{{ note.title }}</span>
+          {%- if note.description %}
+            <span class="note-item-desc">— {{ note.description }}</span>
+          {%- endif %}
+          <span class="note-item-date">{{ note.date | date: "%Y-%m-%d" }}</span>
+        </a>
       {%- endfor -%}
-    </ul>
+    </div>
 
     {% if site.paginate %}
       <div class="pager">
@@ -42,16 +46,3 @@ permalink: /notes/
   {%- endif -%}
 
 </div>
-<style>
-ul {
-  list-style-type: none;
-  margin-left: 0;
-}
-ul li a:hover {
-  text-decoration: underline;
-}
-
-ul li span {
-  color: var(--color-text-muted);
-}
-</style>

@@ -154,6 +154,70 @@ img {
   color: var(--color-text-muted);
 }
 
+// Notes page
+.notes-page {
+  margin: 20px;
+}
+
+.notes-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.note-item {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 10px 0;
+  text-decoration: none;
+  color: inherit;
+  border-bottom: 1px solid var(--color-border);
+
+  &:first-child {
+    border-top: 1px solid var(--color-border);
+  }
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:hover .note-item-title {
+    text-decoration: underline;
+  }
+
+  &:visited {
+    color: inherit;
+  }
+}
+
+.note-item-title {
+  color: var(--color-link);
+}
+
+.note-item-desc {
+  color: var(--color-text-muted);
+  flex: 1;
+}
+
+.note-item-date {
+  color: var(--color-text-muted);
+  font-size: 0.85em;
+  white-space: nowrap;
+  margin-left: auto;
+}
+
+@media (max-width: 600px) {
+  .note-item {
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .note-item-date {
+    margin-left: 0;
+    font-size: 0.8em;
+  }
+}
+
 // Responsive video containers
 .video-container {
   position: relative;
