@@ -38,7 +38,6 @@ This page is an experiment in storing web-links longer term and to facilitate sh
 * [Best Practices Around Production Ready Web Apps with Docker Compose](https://nickjanetakis.com/blog/best-practices-around-production-ready-web-apps-with-docker-compose)
 * [Comprehensive Python Cheatsheet](https://github.com/gto76/python-cheatsheet) - cheatsheet of standard Python functions
 * [Functools - The Power of Higher-Order Functions in Python](https://martinheinz.dev/blog/52) - really useful library to extend functions
-* [Threads in ROS and Python](https://martinheinz.dev/blog/52) - good reference for how threads are used in ROS
 
 ## News & Current Events
 * [Hackernews](https://news.ycombinator.com/) - technology news (where a lot of the content listed on this page was found)
