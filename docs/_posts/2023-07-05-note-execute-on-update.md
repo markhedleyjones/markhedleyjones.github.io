@@ -1,7 +1,7 @@
 ---
 layout: note
 title:  "Execute command on file update"
-date:   2023-07-04
+date:   2023-07-05
 permalink: /notes/execute-on-update
 description: "- automatically re-run a script when you save it"
 ---
