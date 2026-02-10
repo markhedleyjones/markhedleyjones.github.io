@@ -80,6 +80,80 @@ img {
   font-style: italic;
 }
 
+// Homepage project grid
+.home {
+  margin: 20px;
+}
+
+.grid-container {
+  display: grid;
+  grid-auto-columns: max-content;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 50px;
+  box-sizing: border-box;
+  justify-content: space-evenly;
+  justify-items: center;
+  align-content: space-evenly;
+  align-items: center;
+}
+
+.grid-item {
+  border-radius: 0.5rem;
+  display: inline-block;
+  box-sizing: border-box;
+  text-align: center;
+  box-shadow: 2px 2px 4px 2px var(--color-shadow);
+  width: 320px;
+  height: 400px;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 3px 3px 8px 3px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.grid-item-image {
+  img {
+    width: 320px;
+    height: 240px;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    background-color: #fff;
+  }
+}
+
+.grid-item-body {
+  position: relative;
+  bottom: 0;
+  left: 10px;
+  right: 10px;
+  width: 300px;
+  height: 150px;
+  top: 10px;
+}
+
+.grid-item-title {
+  margin: 0 0 5px 0;
+  text-decoration: none;
+
+  a {
+    color: var(--color-text);
+    font-size: 23px !important;
+  }
+}
+
+.grid-item-description {
+  color: var(--color-text-muted);
+}
+
+.grid-item-date {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  font-size: 0.8em;
+  color: var(--color-text-muted);
+}
+
 // Responsive video containers
 .video-container {
   position: relative;
