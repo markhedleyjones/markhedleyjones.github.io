@@ -49,6 +49,8 @@ layout: default
         </div>
       {%- endfor -%}
 
+    </div>
+
     {% if site.paginate %}
       <div class="pager">
         <ul class="pagination">
@@ -67,6 +69,24 @@ layout: default
       </div>
     {%- endif %}
 
+  {%- endif -%}
+
+  {% assign notes = site.posts | where: "layout","note" %}
+  {%- if notes.size > 0 -%}
+    <div class="home-notes-section">
+      <h2 class="home-notes-heading"><a href="/notes/">Technical Notes</a></h2>
+      <div class="notes-list">
+        {%- for note in notes limit:5 -%}
+          <a class="note-item" href="{{ note.permalink }}">
+            <span class="note-item-title">{{ note.title }}</span>
+            {%- if note.description %}
+              <span class="note-item-desc">— {{ note.description }}</span>
+            {%- endif %}
+            <span class="note-item-date">{{ note.date | date: "%Y-%m-%d" }}</span>
+          </a>
+        {%- endfor -%}
+      </div>
+    </div>
   {%- endif -%}
 
 </div>
