@@ -3,7 +3,7 @@ layout: note
 title:  "Execute command on file update"
 date:   2023-07-05
 permalink: /notes/execute-on-update
-description: "- automatically re-run a script when you save it"
+description: "automatically re-run a script when you save it"
 ---
 
 When developing scripts, the following can save a lot of time switching between terminal windows to re-run your script after making changes.

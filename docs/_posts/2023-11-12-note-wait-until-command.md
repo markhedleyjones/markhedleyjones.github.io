@@ -3,7 +3,7 @@ layout: note
 title:  "Execute a bash command at a specific time"
 date:   2023-11-12
 permalink: /notes/execute-bash-command-at-specific-time
-description: "- schedule your bash command with this trick"
+description: "schedule your bash command with this trick"
 ---
 
 The following bash function, when entered into your ~/.bashrc file, will allow you to execute a command at a specific time.

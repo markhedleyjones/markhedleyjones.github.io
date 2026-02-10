@@ -16,7 +16,7 @@ permalink: /notes/
       {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
       {%- for note in notes -%}
         <li>
-          <a href="{{ note.permalink }}">{{ note.title }}</a> <span>{{note.description}}</span>
+          <a href="{{ note.permalink }}">{{ note.title }}</a>{% if note.description %} <span>— {{note.description}}</span>{% endif %}
         </li>
       {%- endfor -%}
     </ul>

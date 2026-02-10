@@ -4,7 +4,7 @@ title:  "Using Tracy Profiler"
 date:   2023-12-05
 modified_date: 2025-08-16
 permalink: /notes/using-tracy-profiler
-description: "- a comprehensive guide to profiling C++ applications with Tracy"
+description: "a comprehensive guide to profiling C++ applications with Tracy"
 ---
 
 [Tracy Profiler](https://github.com/wolfpld/tracy) is a real-time profiler for C++ applications that I've been using in my recent projects. Unlike traditional sampling profilers, Tracy provides exact timing data with minimal overhead.

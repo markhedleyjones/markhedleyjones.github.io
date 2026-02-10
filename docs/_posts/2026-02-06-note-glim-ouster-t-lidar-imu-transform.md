@@ -3,7 +3,7 @@ layout: note
 title:  "GLIM T_lidar_imu for Ouster LiDARs"
 date:   2026-02-06
 permalink: /notes/glim-ouster-t-lidar-imu-transform
-description: "- the documented transform is missing a 180° rotation"
+description: "the documented transform is missing a 180° rotation"
 ---
 
 [GLIM](https://github.com/koide3/glim)'s documented `T_lidar_imu` transform for Ouster LiDARs is wrong. Using it causes the trajectory to fly off within seconds of starting.

@@ -3,7 +3,7 @@ layout: note
 title:  "Dictionaries in Bash"
 date:   2023-07-03
 permalink: /notes/dictionaries-in-bash
-description: "- a way to associate two values in a Bash array"
+description: "a way to associate two values in a Bash array"
 ---
 
 Rather than creating multiple arrays in Bash and using an index to reference associated data in each array, you can store key-value pairs in a single array. This is useful when you want to associate two values together.

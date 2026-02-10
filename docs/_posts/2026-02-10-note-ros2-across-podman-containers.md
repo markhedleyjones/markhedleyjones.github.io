@@ -3,7 +3,7 @@ layout: note
 title:  "ROS2 across Podman containers"
 date:   2026-02-10
 permalink: /notes/ros2-across-podman-containers
-description: "- podman-compose silently breaks Fast DDS shared memory transport"
+description: "podman-compose silently breaks Fast DDS shared memory transport"
 ---
 
 [Fast DDS](https://fast-dds.docs.eprosima.com/) (the default ROS2 middleware in Jazzy) uses UDP multicast to discover other nodes, but transfers data via shared memory (`/dev/shm`) when both nodes are on the same machine. This avoids serialisation overhead for high-bandwidth topics like point clouds.
