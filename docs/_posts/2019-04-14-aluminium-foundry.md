@@ -24,9 +24,9 @@ The first image shows the initial frame assembly. The electric element wire was 
 
 ![Frame assembly with heating element wire](/media/projects/aluminium-foundry/IMG_20160828_095713.webp)
 
-<div style="display: flex; gap: 10px; align-items: flex-start;">
-<img src="/media/projects/aluminium-foundry/IMG_20160828_104715.webp" alt="Nichrome element wire embedded in fire-bricks" style="width: 49%;">
-<img src="/media/projects/aluminium-foundry/IMG_20160828_103840.webp" alt="Heating element wire detail" style="width: 49%;">
+<div class="image-pair">
+<img src="/media/projects/aluminium-foundry/IMG_20160828_104715.webp" alt="Nichrome element wire embedded in fire-bricks">
+<img src="/media/projects/aluminium-foundry/IMG_20160828_103840.webp" alt="Heating element wire detail">
 </div>
 ![Completed electric foundry ready for testing](/media/projects/aluminium-foundry/IMG_20160828_125740.webp)
 
@@ -48,9 +48,9 @@ In the end, I broke the bricks apart and added an entry hole for a propane torch
 
 For the second version of the foundry I decided to have the propane torch come up from the underside of the furnace to keep the heat even. I reused the same frame, but instead of using fire-bricks, I used fire-tiles which were thinner. The propane setup cost approximately 300 NZD (£150/$180) including the bottle, adjustable regulator, fittings, and flashback arrestor for safety.
 
-<div style="display: flex; gap: 10px; align-items: flex-start;">
-<img src="/media/projects/aluminium-foundry/IMG_20170122_174136.webp" alt="Propane foundry frame with fire-tiles" style="width: 49%;">
-<img src="/media/projects/aluminium-foundry/IMG_20170305_104747.webp" alt="Fire-tile cutting for propane entry" style="width: 49%;">
+<div class="image-pair">
+<img src="/media/projects/aluminium-foundry/IMG_20170122_174136.webp" alt="Propane foundry frame with fire-tiles">
+<img src="/media/projects/aluminium-foundry/IMG_20170305_104747.webp" alt="Fire-tile cutting for propane entry">
 </div>
 ![Adding new entry port](/media/projects/aluminium-foundry/IMG_20170305_104733.webp)
 
@@ -67,7 +67,7 @@ The burner itself was made from a combination of pneumatic tool fittings, a MIG 
 # Final Result
 
 <div class="video-container">
-<iframe src="https://www.youtube-nocookie.com/embed/y7v98cf1fbg" title="Aluminium foundry melting and casting" style="border:0" allowfullscreen></iframe>
+<iframe src="https://www.youtube-nocookie.com/embed/y7v98cf1fbg" title="Aluminium foundry melting and casting" allowfullscreen></iframe>
 </div>
 
 # Casting Trial

@@ -18,52 +18,32 @@ excerpt_separator: \{% endhighlight %\}
   My job was to revamp an existing site and turn it into something more professional.
   A large part of the code-base was rewritten, utilising libraries for page generation (PHP HTMLifier), restructured MySQL database, and creating a fresh looking front-end.
 </p>
-<div style="text-align: center;">
-  <div style="display: inline-block; width: 48%;">
-    <p style="text-align: center;">
-      Before:
-    </p>
+<div class="image-pair">
+  <div>
+    <p>Before:</p>
     <img loading="lazy" src="/media/projects/electronics-tutorial-website/etutorials_original.webp" alt="Etutorials original">
   </div>
-  <div style="display: inline-block; width: 48%;">
-    <p style="text-align: center;">
-      After:
-    </p>
+  <div>
+    <p>After:</p>
     <img loading="lazy" src="/media/projects/electronics-tutorial-website/etutorials_revision.webp" alt="Etutorials revision">
   </div>
 </div>
-<p style="text-align: center; margin-top: 20px">
-  <a style="
-  background-color: #489be0;
-  color: #fff;
-  border: none;
-  vertical-align: middle;
-  line-height: 40px;
-  min-height: 42px;
-  font-size: 14px;
-  text-decoration: none;
-  text-align: center;
-  display: inline-block;
-  padding: 0 25px;
-  " href="https://enel111.waikato.ac.nz">
-    Visit Live Site
-  </a>
-</p>
-<h2 style="text-align: left;">Answering questions:</h2>
-<p style="text-align: center;">
+<a class="github-btn" href="https://enel111.waikato.ac.nz">
+  Visit Live Site
+</a>
+<h2>Answering questions:</h2>
+<p>
   <img loading="lazy" src="/media/projects/electronics-tutorial-website/projects_etutorial_responseAnimated.webp" alt="Animated Screenshot showing a tutorial question being answered.">
 </p>
-<p style="text-align: center;">
-</p>
-<h2 style="text-align: left;">Backend:</h2>
-<p style="text-align: justify;">
+<h2>Backend:</h2>
+<p>
   Almost all of the existing code was replaced.
   My HTML generation library for PHP (<a href="http://markhedleyjones.com/projects/PHP-HTMLifier">PHP-HTMLifier</a>) was used throughout to generate pages.
   This library removes the need to spread echo statements throughout an otherwise HTML document, making the code much easier to read and maintain.
   The SQL database had redundant fields removed and inconsistent field names made consistent.
   New linker tables were added to remove data duplication and facilitate simpler updates.
 </p>
-<p style="text-align: justify;">
+<p>
   One thing I really liked about
   <a href="https://www.djangoproject.com/">
     Django
@@ -77,7 +57,7 @@ excerpt_separator: \{% endhighlight %\}
   Imitating this, I implemented wrappers around database tables that handled rows the same way.
   This made dealing with the database much cleaner and simpler.
 </p>
-<p style="text-align: justify;">
+<p>
   The following code snippet gives an example of how compact the page generation logic has been made.
   Note the
   <code>

@@ -14,12 +14,12 @@ related_projects:
   - /projects/cnc-machined-stereo-camera-mount
 excerpt_separator: \{% endhighlight %\}
 ---
-<p style="text-align: justify;">
-  Can you copy a key from a photo? It turns out you can. I wanted to try it for myself and see if I could use my CNC milling machine to cut the key from a blank key purchased at a hardware store. The duplicated key worked perfectly on the first try. And yes, this guide is showing you how to break into my house.
+<p>
+  Can you copy a key from a photo? It turns out you can. I wanted to try it for myself and see if I could use my CNC milling machine to cut the key from a blank key purchased in a hardware store. The duplicated key worked perfectly on the first try. And yes, this guide is showing you how to break into my house.
 </p>
-<h2 style="text-align: justify;">Briefly</h2>
+<h2>Briefly</h2>
 To duplicate the key, this guide will take you through each of the following steps:
-<ol style="text-align: justify;">
+<ol>
   <li>Calibrate the camera</li>
   <li>Photograph the key</li>
   <li>Trace the key outline</li>
@@ -27,43 +27,43 @@ To duplicate the key, this guide will take you through each of the following ste
   <li>Create the toolpaths for the CNC machine.</li>
   <li>Cut the blank key</li>
 </ol>
-<p style="text-align: justify;">
+<p>
   The first step of calibrating the camera was unnecessary with the camera setup I used. The corrections had almost no impact on the image I took, but I'd still reccomend doing them. With lower quality pictures or different lenses, this calibration will becoming increasingly important. I used a Nikon D7000 DSLR camera with a Nikkor 16-85mm lens set at 85mm. Calibration of the camera and lens was done by photographing a checkerboard and running an OpenCV camera calibration script on the checkerboard images. I found that displaying the checkerboard on a computer screen worked quite well. Inkscape was used to trace the key outline and generate CAD files (DXF format). Solidworks and HSMWorks was used to model the key and create the toolpaths for the CNC machine. An OmioCNC X82200 EPL CNC machine was then used to cut the key profile.
 </p>
 <h2>Camera calibration</h2>
-<p style="text-align: justify;">
+<p>
   The point of camera calibration is to determine how images from a particular camera are distorted. Sources of distortion can be the lens, think fish-eye lenses like a Go-Pro, and alignment of the image sensor to the lens. To account for this, the camera used to photograph the key was also used to photograph a checkerboard pattern from a variety of distances and orientations. Those images were then fed into a Python script that opened these images, finds the corners of the checkerboard patterns. This step was probably not necessary for the quality of photo I took of the key, but was a good exercise anyway.
 </p>
 <h2>Photographing the key</h2>
-<p style="text-align: center; float: right; margin: 0 20px;">
+<p>
   <img loading="lazy" src="/media/projects/duplicating-keys-from-photographs/photo-of-key.webp" alt="Photo of key" width="320" height="240">
 </p>
-<p style="text-align: justify;">
-  Using the highest focal length I had access to (85mm) I took a photo of the target key with the smallest aperture setting on the camera. A high focal length was used to help minimise any lens distortion resulting from a wide field of view. The small aperture was used because it puts everything in focus and increases the exposure time. With a long exposure time I could move a light source around to reduce shadowing. An exposure time of about three seconds was used with the camera mounted on a tripod. The result is shown to the right.
+<p>
+  Using the highest focal length I had access to (85mm) I took a photo of the target key with the smallest aperture setting on the camera. A high focal length was used to help minimise any lens distortion resulting from a wide field of view. The small aperture was used because it puts everything in focus and increases the exposure time. With a long exposure time I could move a light source around to reduce shadowing. An exposure time of about three seconds was used with the camera mounted on a tripod. The result is shown above.
 </p>
-<h2 style="text-align: left;">Trace the key outline</h2>
-<p style="text-align: justify;">
+<h2>Trace the key outline</h2>
+<p>
   The undistorted photo was imported into Inkscape and rescaled to match the dimensions of the actual key. In a way this was cheating as I measured the length of the target key using vernier callipers. If you don't have access to the physical key you could measure the blank key, or place a fiducial marker (such as a ruler) in the image at time of capture. The traced vector path was then exported from Inkscape as a DXF file for importing into SolidWorks.
 </p>
 <p>
   <img loading="lazy" src="/media/projects/duplicating-keys-from-photographs/screenshot.webp" alt="Inkscape Screenshot">
 </p>
 <h2>Determine Cutting Profile</h2>
-<p style="float: right; text-align: center;">
+<p>
   <img loading="lazy" src="/media/projects/duplicating-keys-from-photographs/key_template.svg" alt="Key template" width="300" height="200">
 </p>
-<p style="text-align: justify;">
+<p>
   This could be done either in the CAD package or Inkscape. For illustration purposes I've shown the cutting profile as created in Inkscape, but for creating the cutting profile this was done in SolidWorks. HSMWorks (a CAM package that runs inside SolidWorks) was used to generate the machining toolpaths. The first pass was a rough clearing operation to remove most of the material. The second pass was a contoured profile cut that left the desired contour.
 </p>
 <h2>Cut the blank key</h2>
-<p style="text-align: justify;">
+<p>
 To hold the key down I cut the shape of the key out from a piece of MDF. A well was cut into the MDF underneath where the profile was to be cut. To keep the key from jumping out of its I screwed a piece of wood over the top while cutting. One mistake I made was assuming that the dimensions of the blank key would be the same as the target key - they wern't. This meant that the profile wasn't cut in the right spot.</p>
-<p style="text-align: center;">
-  <img loading="lazy" src="/media/projects/duplicating-keys-from-photographs/DSC_5101.webp" alt="DSC 5101" width="49.7%">
-  <img loading="lazy" src="/media/projects/duplicating-keys-from-photographs/DSC_5100.webp" alt="DSC 5100" width="49.7%">
-</p>
-<h2 style="text-align: left;">Result</h2>
-<p style="text-align: justify;">
+<div class="image-pair">
+  <img loading="lazy" src="/media/projects/duplicating-keys-from-photographs/DSC_5101.webp" alt="Key in CNC jig">
+  <img loading="lazy" src="/media/projects/duplicating-keys-from-photographs/DSC_5100.webp" alt="CNC cutting the key profile">
+</div>
+<h2>Result</h2>
+<p>
 I'm really happy with the shape of the contour in the new key (front), it's smooth and follows the original contours very well. You can see the misalignment between the keys when looking at the fronf of the key (notice the front key sticks out a millimeter or so further). Luckily, the position error of the contour didn't affect the operation of the key, as the following video proves.</p>
 <p>
 <img loading="lazy" src="/media/projects/duplicating-keys-from-photographs/DSC_5115.webp" alt="Comparison of new key (dark blue) with original key (light blue)"></p>
@@ -71,7 +71,7 @@ I'm really happy with the shape of the contour in the new key (front), it's smoo
   <iframe src="https://www.youtube-nocookie.com/embed/-KiafLnPxmo?controls=1" title="Testing a key duplicated from a photograph" loading="lazy" allowfullscreen></iframe>
 </div>
 <h2>Camera Calibration and Image Undistortion</h2>
-<p style="text-align: justify;">
+<p>
   The code used to calibrate the camera and undistort the photo of the key is given below. This code came straight from the OpenCV camera calibration tutorial so there is nothing special here. I have put it here purely for convenience.
 </p>
 {% highlight python %}
