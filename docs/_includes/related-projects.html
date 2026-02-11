@@ -1,20 +1,20 @@
 {%- if page.related_projects and page.related_projects.size > 0 -%}
-<div style="margin: 60px 0 40px;">
+<div class="related-projects">
   <h2>Related Projects</h2>
-  <div style="display: flex; flex-wrap: wrap; gap: 16px; margin-top: 16px; justify-content: center;">
+  <div class="related-projects-grid">
 
     {%- for project_permalink in page.related_projects -%}
       {%- assign project = site.posts | where: "permalink", project_permalink | first -%}
       {%- if project -%}
-        <a href="{{ project.permalink }}" class="related-project-card" style="display: block; text-decoration: none; color: inherit; border-radius: 0.5rem; overflow: hidden; box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.15); width: 200px;">
+        <a href="{{ project.permalink }}" class="related-project-card">
           {%- if project.thumb -%}
-            <img loading="lazy" src="/media{{ project.permalink }}/{{ project.thumb }}" width="200" height="150" style="width: 200px; height: 150px; display: block; object-fit: cover; background-color: #fff;">
+            <img loading="lazy" src="/media{{ project.permalink }}/{{ project.thumb }}" width="200" height="150">
           {%- elsif project.image -%}
-            <img loading="lazy" src="{{ project.image }}" width="200" height="150" style="width: 200px; height: 150px; display: block; object-fit: cover; background-color: #fff;">
+            <img loading="lazy" src="{{ project.image }}" width="200" height="150">
           {%- endif -%}
-          <div style="padding: 10px;">
-            <div style="font-weight: bold; font-size: 0.9em; color: var(--color-link);">{{ project.title }}</div>
-            <div style="font-size: 0.8em; color: var(--color-text-muted); margin-top: 4px;">{{ project.description | truncatewords: 12 }}</div>
+          <div class="related-project-info">
+            <div class="related-project-title">{{ project.title }}</div>
+            <div class="related-project-desc">{{ project.description | truncatewords: 12 }}</div>
           </div>
         </a>
       {%- endif -%}
@@ -22,15 +22,4 @@
 
   </div>
 </div>
-
-<style>
-.related-project-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 3px 3px 8px 3px rgba(0,0,0,0.2);
-  transition: all 0.2s ease;
-}
-.related-project-card {
-  transition: all 0.2s ease;
-}
-</style>
 {%- endif -%}

@@ -23,20 +23,7 @@ This frustration led me to create a Blender add-on that brings PCD import/export
 The add-on handles the most common PCD formats (ASCII, binary, and binary compressed) and integrates seamlessly with Blender's existing import/export system. While it doesn't support coloured point clouds yet (due to how Blender handles mesh vertices), it's been incredibly useful for preprocessing LiDAR data and cleaning up point clouds before feeding them into computer vision pipelines.
 
 <p style="text-align: center;">
-  <a style="
-    background-color: #489be0;
-    color: #fff;
-    border: none;
-    vertical-align: middle;
-    line-height: 40px;
-    min-height: 42px;
-    font-size: 14px;
-    text-decoration: none;
-    text-align: center;
-    display: inline-block;
-    padding: 0 25px;
-    margin: 20px 0;
-    " href="https://github.com/MarkHedleyJones/blender-pcd-io">
+  <a class="github-btn" href="https://github.com/MarkHedleyJones/blender-pcd-io">
     View/Download project on GitHub
   </a>
 </p>

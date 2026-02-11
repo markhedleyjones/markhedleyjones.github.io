@@ -50,10 +50,10 @@ layout: default
 }
 </script>
 
-<div style="width: 100%; max-width: 1000px; margin: auto">
-  <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting" style="margin: 20px">
+<div class="project-container">
+  <article class="post h-entry project-article" itemscope itemtype="http://schema.org/BlogPosting">
 
-    <header class="post-header" style="text-align: center">
+    <header class="post-header project-header">
       <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
       <p class="post-meta">
         {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
@@ -83,13 +83,13 @@ layout: default
           </p>
         {%- endif -%}
         {%- if page.image -%}
-          <img style="max-height: 400px; border-radius: 0.5rem; background-color: var(--color-project-card-bg); padding: 10px;" alt="Project logo" src="{{ page.image}}"/>
+          <img class="project-hero-image" alt="Project logo" src="{{ page.image}}"/>
         {%- endif -%}
         {%- if page.featureimage -%}
-          <img style="border-radius: 0.5rem; background-color: var(--color-project-card-bg); padding: 10px;" alt="Project logo" src="/media{{ page.permalink }}/{{ page.featureimage }}"/>
+          <img class="project-feature-image" alt="Project logo" src="/media{{ page.permalink }}/{{ page.featureimage }}"/>
         {%- endif -%}
     </header>
-    <hr style="color: #CCC; margin: 20px 0">
+    <hr class="project-separator">
     <div class="post-content e-content" itemprop="articleBody">
       {{ content }}
     </div>

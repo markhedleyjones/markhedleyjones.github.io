@@ -44,19 +44,7 @@ This clip is a little out-of-date, but it shows the general idea of the project.
 ![](https://raw.githubusercontent.com/markhedleyjones/docker-bbq/master/media/demo.gif)
 
 <p style="text-align: center;">
-  <a style="
-    background-color: #489be0;
-    color: #fff;
-    border: none;
-    vertical-align: middle;
-    line-height: 40px;
-    min-height: 42px;
-    font-size: 14px;
-    text-decoration: none;
-    text-align: center;
-    display: inline-block;
-    padding: 0 25px;
-    " href="https://github.com/MarkHedleyJones/docker-bbq">
+  <a class="github-btn" href="https://github.com/MarkHedleyJones/docker-bbq">
     View/Download project on GitHub
   </a>
 </p>
