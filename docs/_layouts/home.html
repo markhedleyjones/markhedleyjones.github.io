@@ -34,7 +34,7 @@ layout: default
       <h2 class="home-notes-heading"><a href="/notes/">Technical Notes</a></h2>
       <div class="notes-list">
         {%- for note in notes limit:5 -%}
-          <a class="note-item" href="{{ note.permalink }}">
+          <a class="note-item" href="{{ note.permalink | relative_url }}">
             <span class="note-item-title">{{ note.title }}</span>
             {%- if note.description %}
               <span class="note-item-desc">— {{ note.description }}</span>

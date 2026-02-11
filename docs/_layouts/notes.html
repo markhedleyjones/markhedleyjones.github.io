@@ -13,7 +13,7 @@ layout: page
     {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
     <div class="notes-list">
       {%- for note in notes -%}
-        <a class="note-item" href="{{ note.permalink }}">
+        <a class="note-item" href="{{ note.permalink | relative_url }}">
           <span class="note-item-title">{{ note.title }}</span>
           {%- if note.description %}
             <span class="note-item-desc">— {{ note.description }}</span>
