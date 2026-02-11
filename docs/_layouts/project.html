@@ -51,13 +51,14 @@ layout: default
 </script>
 
 <div class="project-container">
-  <article class="post h-entry project-article" itemscope itemtype="http://schema.org/BlogPosting">
+  <article class="post project-article">
 
     <header class="post-header project-header">
-      <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
+      <h1 class="post-title">{{ page.title | escape }}</h1>
       <p class="post-meta">
         {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-        <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+        Published:
+        <time datetime="{{ page.date | date_to_xmlschema }}">
           {{ page.date | date: date_format }}
         </time>
         {%- if page.date_end -%}
@@ -66,22 +67,20 @@ layout: default
             {{ page.date_end | date: date_format }}
           </time>
         {%- endif -%}
+        {%- if page.modified_date -%}
+          {%- assign mdate = page.modified_date | date_to_xmlschema -%}
+          · Last updated:
+          <time datetime="{{ mdate }}">
+            {{ mdate | date: date_format }}
+          </time>
+        {%- endif -%}
         {%- if page.author -%}
-          • {% for author in page.author %}
-            <span itemprop="author" itemscope itemtype="http://schema.org/Person">
-              <span class="p-author h-card" itemprop="name">{{ author }}</span></span>
+          · {% for author in page.author %}
+              <span>{{ author }}</span>
               {%- if forloop.last == false %}, {% endif -%}
           {% endfor %}
-        {%- endif -%}</p>
-        {%- if page.modified_date -%}
-          <p class="post-meta project-modified-date">
-            Last updated:
-            {%- assign mdate = page.modified_date | date_to_xmlschema -%}
-            <time class="dt-modified" datetime="{{ mdate }}" itemprop="dateModified">
-              {{ mdate | date: date_format }}
-            </time>
-          </p>
         {%- endif -%}
+      </p>
         {%- if page.image -%}
           <img class="project-hero-image" alt="{{ page.title | escape }}" src="{{ page.image}}"/>
         {%- endif -%}
@@ -90,12 +89,11 @@ layout: default
         {%- endif -%}
     </header>
     <hr class="project-separator">
-    <div class="post-content e-content" itemprop="articleBody">
+    <div class="post-content">
       {{ content }}
     </div>
 
     {%- include related-projects.html -%}
 
-    <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
   </article>
 </div>
