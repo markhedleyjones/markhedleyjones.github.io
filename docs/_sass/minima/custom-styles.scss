@@ -157,6 +157,28 @@ img {
   margin-top: auto;
 }
 
+@media (max-width: 600px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .grid-item {
+    width: 100%;
+  }
+
+  .grid-item-image img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  .grid-item-body {
+    width: 100%;
+  }
+}
+
 // Notes page
 .notes-page {
   margin: 20px;
