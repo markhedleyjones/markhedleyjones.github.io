@@ -65,7 +65,7 @@ The burner itself was made from a combination of pneumatic tool fittings, a MIG 
 
 # Final Result
 
-<iframe width="100%" height="480px" src="https://www.youtube.com/embed/y7v98cf1fbg" frameborder="0" allowfullscreen="true"></iframe>
+<iframe width="100%" height="480px" src="https://www.youtube.com/embed/y7v98cf1fbg" style="border:0" allowfullscreen="true"></iframe>
 
 # Casting Trial
 
