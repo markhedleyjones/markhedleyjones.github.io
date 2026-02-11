@@ -712,6 +712,20 @@
   margin-top: 4px;
 }
 
+// 404 page
+.error-page {
+  margin: 10px auto;
+  max-width: 600px;
+  text-align: center;
+
+  h1 {
+    margin: 30px 0;
+    font-size: 4em;
+    line-height: 1;
+    letter-spacing: -1px;
+  }
+}
+
 // Responsive video containers
 .video-container {
   position: relative;
