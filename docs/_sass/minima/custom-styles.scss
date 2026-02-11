@@ -390,6 +390,252 @@ img {
   video {
     border-radius: $radius-lg;
   }
+
+  .profile-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: -20px 0 0 0;
+    padding: 30px 40px;
+    background: var(--color-highlight-bg);
+    border-radius: $radius-md;
+    border: 1px solid var(--color-border);
+  }
+
+  .profile-header-inner {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+  }
+
+  .profile-photo {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 2px solid var(--color-border);
+  }
+
+  .profile-name {
+    margin: 0 0 12px 0;
+    color: var(--color-text);
+    font-size: 1.8em;
+    font-weight: 400;
+  }
+
+  .profile-role {
+    margin: 0 0 8px 0;
+    color: var(--color-text-muted);
+    font-size: 1.1em;
+  }
+
+  .profile-contact {
+    margin: 0;
+    color: var(--color-text);
+
+    a {
+      color: var(--color-link);
+      text-decoration: none;
+    }
+  }
+
+  .section {
+    margin: 80px 0;
+  }
+
+  .profile-header + .section {
+    margin-top: 30px;
+  }
+
+  .section-title {
+    font-size: 2em;
+    font-weight: 400;
+    color: var(--color-text);
+    margin-bottom: 40px;
+    text-align: left;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  .subsection {
+    margin: 60px 0;
+  }
+
+  .subsection-title {
+    font-size: 1.4em;
+    font-weight: 500;
+    color: var(--color-text);
+    margin-bottom: 25px;
+  }
+
+  .work-content {
+    margin-bottom: 40px;
+
+    p {
+      margin-bottom: 20px;
+      color: var(--color-text);
+    }
+  }
+
+  .two-column-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin: 40px 0;
+    align-items: start;
+
+    > * {
+      vertical-align: top;
+    }
+
+    p:first-child {
+      margin-top: 0;
+    }
+
+    .media-container {
+      margin: 0;
+    }
+  }
+
+  .publications-section {
+    background: var(--color-highlight-bg);
+    padding: 40px;
+    border-radius: $radius-md;
+    margin: 40px 0;
+    border: 1px solid var(--color-border);
+  }
+
+  .publications-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      margin-bottom: 0;
+      border-bottom: 1px solid var(--color-border-light);
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+
+    a {
+      display: block;
+      color: var(--color-link);
+      text-decoration: none;
+      line-height: 1.5;
+      padding: 15px;
+      margin: 0;
+      transition: background 0.2s ease;
+      border-radius: $radius-sm;
+
+      &:hover {
+        background: var(--color-button-hover);
+        text-decoration: none;
+      }
+    }
+  }
+
+  .publications-toggle-wrapper {
+    margin-top: 25px;
+    text-align: right;
+  }
+
+  .publications-toggle {
+    background: none;
+    color: var(--color-text-muted);
+    border: none;
+    padding: 8px 0;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-family: inherit;
+    transition: color 0.2s ease;
+  }
+
+  .publications-extra {
+    display: none;
+
+    .publications-list {
+      border-top: 1px solid var(--color-border-light);
+    }
+  }
+
+  .cv-section {
+    text-align: center;
+    margin: 60px 0;
+  }
+
+  .cv-link {
+    display: inline-block;
+    background: var(--color-button-bg);
+    padding: 20px;
+    border-radius: $radius-lg;
+    text-decoration: none;
+    box-shadow: 0 2px 4px var(--color-shadow);
+    transition: transform 0.2s ease;
+    border: 1px solid var(--color-border);
+
+    img {
+      border-radius: $radius-sm;
+      max-width: 300px;
+      margin: 0;
+    }
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px var(--color-shadow);
+    }
+  }
+
+  .divider {
+    border: none;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--color-border), transparent);
+    margin: 60px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-content {
+    .two-column-layout {
+      grid-template-columns: 1fr;
+      gap: 30px;
+
+      .media-container img,
+      .media-container video,
+      .video-container {
+        width: 100%;
+      }
+    }
+
+    .section {
+      margin: 60px 0;
+    }
+
+    .profile-header + .section {
+      margin-top: 40px;
+    }
+
+    .publications-section {
+      padding: 30px 20px;
+    }
+
+    .profile-header-inner {
+      flex-direction: column;
+      text-align: center;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .profile-header {
+      margin-bottom: 30px;
+    }
+
+    .profile-photo {
+      order: -1;
+    }
+  }
 }
 
 .project-separator {
