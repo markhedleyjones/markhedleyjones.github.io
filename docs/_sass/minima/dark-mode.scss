@@ -331,11 +331,6 @@ table {
   }
 }
 
-// Project cards and content areas
-.post-content img {
-  box-shadow: 0 2px 8px var(--color-shadow);
-}
-
 // Homepage project grid cards
 [data-theme="dark"] .grid-item {
   background-color: var(--color-project-card-bg);

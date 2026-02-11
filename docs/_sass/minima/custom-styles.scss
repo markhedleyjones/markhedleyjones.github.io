@@ -52,12 +52,6 @@
   }
 }
 
-// Ensure images in markdown don't exceed container
-img {
-  max-width: 100%;
-  height: auto;
-}
-
 // Media containers for consistent styling
 .media-container {
   margin: 40px 0;
@@ -99,6 +93,7 @@ img {
 
 .grid-item {
   border-radius: $radius-md;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
@@ -126,8 +121,8 @@ img {
   img {
     width: 320px;
     height: 240px;
-    border-top-left-radius: $radius-md;
-    border-top-right-radius: $radius-md;
+    object-fit: cover;
+    display: block;
     background-color: var(--color-image-bg);
   }
 }
@@ -142,11 +137,11 @@ img {
   flex: 1;
 }
 
-.grid-item-title {
+.grid-item .grid-item-title {
   margin: 0 0 5px 0;
   text-decoration: none;
   color: var(--color-text);
-  font-size: 23px !important;
+  font-size: 23px;
 }
 
 .grid-item-description {
@@ -697,7 +692,7 @@ img {
     height: 150px;
     display: block;
     object-fit: cover;
-    background-color: #fff;
+    background-color: var(--color-image-bg);
   }
 }
 

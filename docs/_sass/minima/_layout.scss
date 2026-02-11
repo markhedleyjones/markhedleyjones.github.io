@@ -86,7 +86,7 @@
     margin-left: 20px;
 
     &.active {
-      color: lighten($text-color, 40%);
+      color: var(--color-text-muted);
       pointer-events: none;
       cursor: default;
     }
