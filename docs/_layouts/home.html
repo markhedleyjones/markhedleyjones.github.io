@@ -83,6 +83,11 @@ layout: default
           </a>
         {%- endfor -%}
       </div>
+      {%- if notes.size > 5 -%}
+        <div class="show-more-notes">
+          <a href="/notes/" class="show-more-btn">View all notes &#x25B8;</a>
+        </div>
+      {%- endif -%}
     </div>
   {%- endif -%}
 

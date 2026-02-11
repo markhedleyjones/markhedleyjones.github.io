@@ -355,7 +355,8 @@ img {
 }
 
 // Show more projects toggle
-.show-more-projects {
+.show-more-projects,
+.show-more-notes {
   text-align: center;
   margin: 30px 0;
 }
@@ -368,6 +369,16 @@ img {
   cursor: pointer;
   font-size: 0.9em;
   font-family: inherit;
+  text-decoration: none;
+
+  &:hover {
+    color: var(--color-link);
+    text-decoration: none;
+  }
+
+  &:visited {
+    color: var(--color-text-muted);
+  }
 }
 
 .more-projects-hidden {
