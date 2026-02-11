@@ -25,57 +25,27 @@ layout: default
     {%- assign visible_limit = 10 -%}
     <div class="grid-container">
       {%- for post in posts limit: visible_limit -%}
-        <a class="grid-item" href="{{ post.url | relative_url }}">
-          {%- if site.show_excerpts -%}
-            {%- if post.image -%}
-              <span class="grid-item-image"><img loading="lazy" src="{{ post.image }}" width="320" height="240"/></span>
-            {%- endif -%}
-            {%- if post.thumb -%}
-              <span class="grid-item-image"><img loading="lazy" src="/media{{ post.permalink }}/{{ post.thumb }}" width="320" height="240"/></span>
-            {%- endif -%}
-          {%- endif -%}
-          <span class="grid-item-body">
-            <h3 class="grid-item-title">{{ post.title | escape }}</h3>
-            {%- if site.show_excerpts -%}
-              {%- if post.description -%}
-                <p class="grid-item-description">{{ post.description }}</p>
-              {%- endif -%}
-            {%- endif -%}
-            <span class="grid-item-date">{{ post.date | date: date_format }}</span>
-          </span>
-        </a>
+        {%- include project-card.html -%}
       {%- endfor -%}
     </div>
 
     {%- if posts.size > visible_limit -%}
-      <div class="show-more-projects">
-        <button class="show-more-btn" onclick="document.getElementById('more-projects').style.display='grid'; this.parentElement.style.display='none';">
+      <div class="show-more-projects" id="show-more-wrapper">
+        <button class="show-more-btn" id="show-more-btn">
           Show more projects &#x25BC;
         </button>
       </div>
       <div id="more-projects" class="grid-container more-projects-hidden">
         {%- for post in posts offset: visible_limit -%}
-          <a class="grid-item" href="{{ post.url | relative_url }}">
-            {%- if site.show_excerpts -%}
-              {%- if post.image -%}
-                <span class="grid-item-image"><img loading="lazy" src="{{ post.image }}" width="320" height="240"/></span>
-              {%- endif -%}
-              {%- if post.thumb -%}
-                <span class="grid-item-image"><img loading="lazy" src="/media{{ post.permalink }}/{{ post.thumb }}" width="320" height="240"/></span>
-              {%- endif -%}
-            {%- endif -%}
-            <span class="grid-item-body">
-              <h3 class="grid-item-title">{{ post.title | escape }}</h3>
-              {%- if site.show_excerpts -%}
-                {%- if post.description -%}
-                  <p class="grid-item-description">{{ post.description }}</p>
-                {%- endif -%}
-              {%- endif -%}
-              <span class="grid-item-date">{{ post.date | date: date_format }}</span>
-            </span>
-          </a>
+          {%- include project-card.html -%}
         {%- endfor -%}
       </div>
+      <script>
+        document.getElementById('show-more-btn').addEventListener('click', function() {
+          document.getElementById('more-projects').style.display = 'grid';
+          document.getElementById('show-more-wrapper').style.display = 'none';
+        });
+      </script>
     {%- endif -%}
 
     {% if site.paginate %}

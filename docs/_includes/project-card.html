@@ -1,0 +1,19 @@
+<a class="grid-item" href="{{ post.url | relative_url }}">
+  {%- if site.show_excerpts -%}
+    {%- if post.image -%}
+      <span class="grid-item-image"><img loading="lazy" src="{{ post.image }}" alt="{{ post.title | escape }}" width="320" height="240"/></span>
+    {%- endif -%}
+    {%- if post.thumb -%}
+      <span class="grid-item-image"><img loading="lazy" src="/media{{ post.permalink }}/{{ post.thumb }}" alt="{{ post.title | escape }}" width="320" height="240"/></span>
+    {%- endif -%}
+  {%- endif -%}
+  <span class="grid-item-body">
+    <h3 class="grid-item-title">{{ post.title | escape }}</h3>
+    {%- if site.show_excerpts -%}
+      {%- if post.description -%}
+        <p class="grid-item-description">{{ post.description }}</p>
+      {%- endif -%}
+    {%- endif -%}
+    <span class="grid-item-date">{{ post.date | date: date_format }}</span>
+  </span>
+</a>
