@@ -16,13 +16,15 @@
   {%- elsif page.featureimage -%}
     {%- assign og_image = '/media' | append: page.permalink | append: '/' | append: page.featureimage -%}
   {%- else -%}
-    {%- assign og_image = '/media/og-images/default-project-og.webp' -%}
+    {%- assign og_image = '/assets/favicons/favicon-512x512.png' -%}
   {%- endif -%}
-
   <meta property="og:image" content="{{ site.url }}{{ og_image }}">
-  <meta property="og:image:type" content="image/webp">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="{{ site.url }}{{ og_image }}">
+{%- else -%}
+  <meta property="og:image" content="{{ site.url }}/assets/favicons/favicon-512x512.png">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:image" content="{{ site.url }}/assets/favicons/favicon-512x512.png">
 {%- endif -%}
 
 <!-- Dark Mode JavaScript - Load early to prevent flash -->
