@@ -94,17 +94,18 @@ img {
   justify-content: space-evenly;
   justify-items: center;
   align-content: space-evenly;
-  align-items: center;
+  align-items: stretch;
 }
 
 .grid-item {
   border-radius: 0.5rem;
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
   box-sizing: border-box;
   text-align: center;
   box-shadow: 2px 2px 4px 2px var(--color-shadow);
   width: 320px;
-  height: 400px;
+  min-height: 400px;
   cursor: pointer;
   transition: box-shadow 0.2s ease, transform 0.2s ease;
 
@@ -128,9 +129,10 @@ img {
   box-sizing: border-box;
   padding: 10px;
   width: 320px;
-  height: 160px;
+  min-height: 160px;
   display: flex;
   flex-direction: column;
+  flex: 1;
 }
 
 .grid-item-title {
@@ -146,7 +148,6 @@ img {
 .grid-item-description {
   color: var(--color-text-muted);
   flex: 1;
-  overflow: hidden;
 }
 
 .grid-item-date {
