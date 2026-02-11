@@ -8,9 +8,9 @@
       {%- if project -%}
         <a href="{{ project.permalink }}" class="related-project-card">
           {%- if project.thumb -%}
-            <img loading="lazy" src="/media{{ project.permalink }}/{{ project.thumb }}" width="200" height="150">
+            <img loading="lazy" src="/media{{ project.permalink }}/{{ project.thumb }}" alt="{{ project.title | escape }}" width="200" height="150">
           {%- elsif project.image -%}
-            <img loading="lazy" src="{{ project.image }}" width="200" height="150">
+            <img loading="lazy" src="{{ project.image }}" alt="{{ project.title | escape }}" width="200" height="150">
           {%- endif -%}
           <div class="related-project-info">
             <div class="related-project-title">{{ project.title }}</div>
