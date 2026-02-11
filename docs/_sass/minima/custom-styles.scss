@@ -106,9 +106,11 @@ img {
   width: 320px;
   height: 400px;
   cursor: pointer;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
 
   &:hover {
-    box-shadow: 3px 3px 8px 3px rgba(0, 0, 0, 0.2);
+    box-shadow: 3px 3px 12px 3px rgba(0, 0, 0, 0.25);
+    transform: translateY(-2px);
   }
 }
 
