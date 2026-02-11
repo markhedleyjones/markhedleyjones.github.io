@@ -48,7 +48,7 @@
     margin: 0 0 6px;
     border-radius: 0;
     box-shadow: none;
-    background-color: #fff;
+    background-color: var(--color-image-bg);
   }
 }
 
@@ -128,7 +128,7 @@ img {
     height: 240px;
     border-top-left-radius: $radius-md;
     border-top-right-radius: $radius-md;
-    background-color: #fff;
+    background-color: var(--color-image-bg);
   }
 }
 
@@ -444,7 +444,7 @@ img {
     height: 150px;
     display: block;
     object-fit: cover;
-    background-color: #fff;
+    background-color: var(--color-image-bg);
   }
 }
 
