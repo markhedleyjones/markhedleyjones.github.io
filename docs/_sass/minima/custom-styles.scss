@@ -180,6 +180,9 @@
     height: 240px;
     object-fit: cover;
     display: block;
+    border-radius: 0;
+    box-shadow: none;
+    margin: 0;
     background-color: var(--color-image-bg);
   }
 }
@@ -233,6 +236,11 @@
   .grid-item-body {
     width: 100%;
   }
+}
+
+// Projects page
+.projects-page {
+  margin: 20px;
 }
 
 // Notes page

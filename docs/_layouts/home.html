@@ -14,7 +14,7 @@ layout: default
 
   {%- if posts.size > 0 -%}
     {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-    {%- assign highlight_limit = 6 -%}
+    {%- assign highlight_limit = 9 -%}
     <div class="grid-container">
       {%- for post in posts limit: highlight_limit -%}
         {%- include project-card.html -%}
