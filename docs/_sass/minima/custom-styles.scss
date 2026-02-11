@@ -240,6 +240,15 @@ img {
   }
 }
 
+// Footer social icon borders — override minima's hardcoded Sass variable
+.social-media-list li a {
+  border-color: var(--color-border);
+
+  &:hover {
+    border-color: var(--color-text-muted);
+  }
+}
+
 // Footer
 .footer-content {
   display: flex;
