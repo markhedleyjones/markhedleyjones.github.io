@@ -52,13 +52,12 @@ layout: default
     </div>
 
     {%- if posts.size > visible_limit -%}
-      <div class="show-more-projects" style="text-align: center; margin: 30px 0;">
-        <button onclick="document.getElementById('more-projects').style.display='grid'; this.parentElement.style.display='none';"
-                style="background: none; color: var(--color-text-muted); border: none; padding: 8px 16px; cursor: pointer; font-size: 0.9em; font-family: inherit;">
+      <div class="show-more-projects">
+        <button class="show-more-btn" onclick="document.getElementById('more-projects').style.display='grid'; this.parentElement.style.display='none';">
           Show more projects &#x25BC;
         </button>
       </div>
-      <div id="more-projects" class="grid-container" style="display: none; margin-top: 50px;">
+      <div id="more-projects" class="grid-container more-projects-hidden">
         {%- for post in posts offset: visible_limit -%}
           <div class="grid-item" onclick="window.location = '{{ post.url | relative_url }}';">
             {%- if site.show_excerpts -%}

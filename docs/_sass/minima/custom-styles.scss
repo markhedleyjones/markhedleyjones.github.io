@@ -300,15 +300,52 @@ img {
   }
 }
 
-// Project page layout
+// Shared content wrapper for page, note, and project layouts
+.content-wrapper,
 .project-container {
   width: 100%;
   max-width: 1000px;
-  margin: auto;
+  margin: 0 auto;
 }
 
+.content-article,
 .project-article {
   margin: 20px;
+}
+
+.content-article {
+  img,
+  iframe,
+  video {
+    border-radius: 10px;
+  }
+}
+
+// Note layout divider
+.note-divider {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: 20px 0;
+}
+
+// Show more projects toggle
+.show-more-projects {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.show-more-btn {
+  background: none;
+  color: var(--color-text-muted);
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 0.9em;
+  font-family: inherit;
+}
+
+.more-projects-hidden {
+  display: none;
 }
 
 .project-header {
