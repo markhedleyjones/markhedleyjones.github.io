@@ -205,8 +205,19 @@
   }
 }
 
-// Smooth transition for theme changes
-* {
+// Smooth transition for theme changes on key structural elements
+body,
+a,
+.site-header,
+.site-footer,
+.site-nav,
+.site-title,
+.grid-item,
+.related-project-card,
+.theme-toggle,
+pre, code,
+.highlight,
+table, th, td {
   transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
