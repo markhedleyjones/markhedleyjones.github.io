@@ -21,13 +21,13 @@ The electric version cost approximately 200 NZD (£100/$120) for materials and t
 
 The first image shows the initial frame assembly. The electric element wire was embedded in the fire-bricks as they were being cemented together. The completed unit is shown ready for initial testing. As a crucible, I cut and welded a section of 40mm (1.6") box-section mild steel to a steel plate. Two holes were drilled into the sides of the crucible, which allowed tongs to lock in for raising and lowering into the furnace, as well as pouring the molten aluminium out.
 
-![IMG_20160828_095713](/media/projects/aluminium-foundry/IMG_20160828_095713.webp)
+![Frame assembly with heating element wire](/media/projects/aluminium-foundry/IMG_20160828_095713.webp)
 
 <div style="display: flex; gap: 10px; align-items: flex-start;">
-<img src="/media/projects/aluminium-foundry/IMG_20160828_104715.webp" alt="IMG_20160828_104715" style="width: 49%;">
-<img src="/media/projects/aluminium-foundry/IMG_20160828_103840.webp" alt="IMG_20160828_103840" style="width: 49%;">
+<img src="/media/projects/aluminium-foundry/IMG_20160828_104715.webp" alt="Nichrome element wire embedded in fire-bricks" style="width: 49%;">
+<img src="/media/projects/aluminium-foundry/IMG_20160828_103840.webp" alt="Heating element wire detail" style="width: 49%;">
 </div>
-![IMG_20160828_125740](/media/projects/aluminium-foundry/IMG_20160828_125740.webp)
+![Completed electric foundry ready for testing](/media/projects/aluminium-foundry/IMG_20160828_125740.webp)
 
 ## Safety Considerations
 
@@ -48,8 +48,8 @@ In the end, I broke the bricks apart and added an entry hole for a propane torch
 For the second version of the foundry I decided to have the propane torch come up from the underside of the furnace to keep the heat even. I reused the same frame, but instead of using fire-bricks, I used fire-tiles which were thinner. The propane setup cost approximately 300 NZD (£150/$180) including the bottle, adjustable regulator, fittings, and flashback arrestor for safety.
 
 <div style="display: flex; gap: 10px; align-items: flex-start;">
-<img src="/media/projects/aluminium-foundry/IMG_20170122_174136.webp" alt="IMG_20170122_174136" style="width: 49%;">
-<img src="/media/projects/aluminium-foundry/IMG_20170305_104747.webp" alt="IMG_20170305_104747" style="width: 49%;">
+<img src="/media/projects/aluminium-foundry/IMG_20170122_174136.webp" alt="Propane foundry frame with fire-tiles" style="width: 49%;">
+<img src="/media/projects/aluminium-foundry/IMG_20170305_104747.webp" alt="Fire-tile cutting for propane entry" style="width: 49%;">
 </div>
 ![Adding new entry port](/media/projects/aluminium-foundry/IMG_20170305_104733.webp)
 
