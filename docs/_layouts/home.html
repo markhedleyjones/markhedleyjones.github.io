@@ -21,9 +21,10 @@ layout: default
     {%- if page.list_title -%}
       <h2 class="post-list-heading">{{ page.list_title }}</h2>
     {%- endif -%}
+    {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+    {%- assign visible_limit = 10 -%}
     <div class="grid-container">
-      {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-      {%- for post in posts -%}
+      {%- for post in posts limit: visible_limit -%}
         <div class="grid-item" onclick="window.location = '{{ post.url | relative_url }}';">
           {%- if site.show_excerpts -%}
             {%- if post.image -%}
@@ -48,8 +49,43 @@ layout: default
           </div>
         </div>
       {%- endfor -%}
-
     </div>
+
+    {%- if posts.size > visible_limit -%}
+      <div class="show-more-projects" style="text-align: center; margin: 30px 0;">
+        <button onclick="document.getElementById('more-projects').style.display='grid'; this.parentElement.style.display='none';"
+                style="background: none; color: var(--color-text-muted); border: none; padding: 8px 16px; cursor: pointer; font-size: 0.9em;">
+          Show more projects &#x25BC;
+        </button>
+      </div>
+      <div id="more-projects" class="grid-container" style="display: none; margin-top: 50px;">
+        {%- for post in posts offset: visible_limit -%}
+          <div class="grid-item" onclick="window.location = '{{ post.url | relative_url }}';">
+            {%- if site.show_excerpts -%}
+              {%- if post.image -%}
+                <a class="grid-item-image" href="{{ post.url | relative_url }}"><img loading="lazy" src="{{ post.image }}" width="320" height="240"/></a>
+              {%- endif -%}
+              {%- if post.thumb -%}
+                <a class="grid-item-image" href="{{ post.url | relative_url }}"><img loading="lazy" src="/media{{ post.permalink }}/{{ post.thumb }}" width="320" height="240"/></a>
+              {%- endif -%}
+            {%- endif -%}
+            <div class="grid-item-body">
+              <h3 class="grid-item-title">
+                <a href="{{ post.url | relative_url }}">
+                  {{ post.title | escape }}
+                </a>
+              </h3>
+              {%- if site.show_excerpts -%}
+                {%- if post.description -%}
+                  <p class="grid-item-description">{{ post.description }}</p>
+                {%- endif -%}
+              {%- endif -%}
+              <span class="grid-item-date">{{ post.date | date: date_format }}</span>
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
 
     {% if site.paginate %}
       <div class="pager">
