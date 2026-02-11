@@ -25,29 +25,25 @@ layout: default
     {%- assign visible_limit = 10 -%}
     <div class="grid-container">
       {%- for post in posts limit: visible_limit -%}
-        <div class="grid-item" onclick="window.location = '{{ post.url | relative_url }}';">
+        <a class="grid-item" href="{{ post.url | relative_url }}">
           {%- if site.show_excerpts -%}
             {%- if post.image -%}
-              <a class="grid-item-image" href="{{ post.url | relative_url }}"><img loading="lazy" src="{{ post.image }}" width="320" height="240"/></a>
+              <span class="grid-item-image"><img loading="lazy" src="{{ post.image }}" width="320" height="240"/></span>
             {%- endif -%}
             {%- if post.thumb -%}
-              <a class="grid-item-image" href="{{ post.url | relative_url }}"><img loading="lazy" src="/media{{ post.permalink }}/{{ post.thumb }}" width="320" height="240"/></a>
+              <span class="grid-item-image"><img loading="lazy" src="/media{{ post.permalink }}/{{ post.thumb }}" width="320" height="240"/></span>
             {%- endif -%}
           {%- endif -%}
-          <div class="grid-item-body">
-            <h3 class="grid-item-title">
-              <a href="{{ post.url | relative_url }}">
-                {{ post.title | escape }}
-              </a>
-            </h3>
+          <span class="grid-item-body">
+            <h3 class="grid-item-title">{{ post.title | escape }}</h3>
             {%- if site.show_excerpts -%}
               {%- if post.description -%}
                 <p class="grid-item-description">{{ post.description }}</p>
               {%- endif -%}
             {%- endif -%}
             <span class="grid-item-date">{{ post.date | date: date_format }}</span>
-          </div>
-        </div>
+          </span>
+        </a>
       {%- endfor -%}
     </div>
 
@@ -59,29 +55,25 @@ layout: default
       </div>
       <div id="more-projects" class="grid-container more-projects-hidden">
         {%- for post in posts offset: visible_limit -%}
-          <div class="grid-item" onclick="window.location = '{{ post.url | relative_url }}';">
+          <a class="grid-item" href="{{ post.url | relative_url }}">
             {%- if site.show_excerpts -%}
               {%- if post.image -%}
-                <a class="grid-item-image" href="{{ post.url | relative_url }}"><img loading="lazy" src="{{ post.image }}" width="320" height="240"/></a>
+                <span class="grid-item-image"><img loading="lazy" src="{{ post.image }}" width="320" height="240"/></span>
               {%- endif -%}
               {%- if post.thumb -%}
-                <a class="grid-item-image" href="{{ post.url | relative_url }}"><img loading="lazy" src="/media{{ post.permalink }}/{{ post.thumb }}" width="320" height="240"/></a>
+                <span class="grid-item-image"><img loading="lazy" src="/media{{ post.permalink }}/{{ post.thumb }}" width="320" height="240"/></span>
               {%- endif -%}
             {%- endif -%}
-            <div class="grid-item-body">
-              <h3 class="grid-item-title">
-                <a href="{{ post.url | relative_url }}">
-                  {{ post.title | escape }}
-                </a>
-              </h3>
+            <span class="grid-item-body">
+              <h3 class="grid-item-title">{{ post.title | escape }}</h3>
               {%- if site.show_excerpts -%}
                 {%- if post.description -%}
                   <p class="grid-item-description">{{ post.description }}</p>
                 {%- endif -%}
               {%- endif -%}
               <span class="grid-item-date">{{ post.date | date: date_format }}</span>
-            </div>
-          </div>
+            </span>
+          </a>
         {%- endfor -%}
       </div>
     {%- endif -%}

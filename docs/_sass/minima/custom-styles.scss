@@ -108,10 +108,17 @@ img {
   min-height: 400px;
   cursor: pointer;
   transition: box-shadow 0.2s ease, transform 0.2s ease;
+  text-decoration: none;
+  color: inherit;
+
+  &:visited {
+    color: inherit;
+  }
 
   &:hover {
     box-shadow: 3px 3px 12px 3px rgba(0, 0, 0, 0.25);
     transform: translateY(-2px);
+    text-decoration: none;
   }
 }
 
@@ -138,11 +145,8 @@ img {
 .grid-item-title {
   margin: 0 0 5px 0;
   text-decoration: none;
-
-  a {
-    color: var(--color-text);
-    font-size: 23px !important;
-  }
+  color: var(--color-text);
+  font-size: 23px !important;
 }
 
 .grid-item-description {
