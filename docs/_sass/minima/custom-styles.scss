@@ -123,13 +123,12 @@ img {
 }
 
 .grid-item-body {
-  position: relative;
-  bottom: 0;
-  left: 10px;
-  right: 10px;
-  width: 300px;
-  height: 150px;
-  top: 10px;
+  box-sizing: border-box;
+  padding: 10px;
+  width: 320px;
+  height: 160px;
+  display: flex;
+  flex-direction: column;
 }
 
 .grid-item-title {
@@ -144,14 +143,15 @@ img {
 
 .grid-item-description {
   color: var(--color-text-muted);
+  flex: 1;
+  overflow: hidden;
 }
 
 .grid-item-date {
-  position: absolute;
-  bottom: 5px;
-  right: 5px;
   font-size: 0.8em;
   color: var(--color-text-muted);
+  text-align: right;
+  margin-top: auto;
 }
 
 // Notes page
