@@ -223,6 +223,9 @@ img {
 // Homepage notes section
 .home-notes-section {
   margin-top: 60px;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .home-notes-heading {
@@ -240,7 +243,7 @@ img {
   }
 }
 
-// Footer social icon borders — override minima's hardcoded Sass variable
+// Footer social icon borders - override minima's hardcoded Sass variable
 .social-media-list li a {
   border-color: var(--color-border);
 
