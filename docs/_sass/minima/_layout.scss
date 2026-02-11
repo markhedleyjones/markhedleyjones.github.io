@@ -3,7 +3,8 @@
  */
 .site-header {
   border-top: 0px;
-  border-bottom: 1px solid $border-color-01;
+  border-bottom: 1px solid var(--color-border);
+  background-color: var(--color-header-bg);
   min-height: $spacing-unit * 1.865;
   line-height: $base-line-height * $base-font-size * 2.25;
 
@@ -17,6 +18,11 @@
   letter-spacing: -1px;
   margin-bottom: 0;
   float: left;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
 
   @include media-query($on-palm) {
     padding-right: 45px;
@@ -24,16 +30,25 @@
 
   &,
   &:visited {
-    color: $site-title-color;
+    color: var(--color-nav-text);
   }
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.site-logo {
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .site-nav {
   position: absolute;
   top: 9px;
   right: $spacing-unit / 2;
-  background-color: $background-color;
-  border: 1px solid $border-color-01;
+  background-color: var(--color-nav-bg);
+  border: 1px solid var(--color-nav-border);
   border-radius: $radius-sm;
   text-align: right;
 
@@ -50,7 +65,7 @@
     text-align: center;
 
     > svg path {
-      fill: $border-color-03;
+      fill: var(--color-text-muted);
     }
   }
 
@@ -74,7 +89,7 @@
   }
 
   .page-link {
-    color: $text-color;
+    color: var(--color-nav-text);
     line-height: $base-line-height;
     display: block;
     padding: 5px 10px;
@@ -128,7 +143,8 @@
  * Site footer
  */
 .site-footer {
-  border-top: 1px solid $border-color-01;
+  border-top: 1px solid var(--color-border);
+  background-color: var(--color-footer-bg);
   padding: $spacing-unit 0;
 }
 
@@ -150,7 +166,7 @@
 .footer-col-wrapper,
 .social-links {
   @include relative-font-size(0.9375);
-  color: $brand-color;
+  color: var(--color-text-muted);
 }
 
 .footer-col {
@@ -230,7 +246,7 @@
 
 .post-meta {
   font-size: $small-font-size;
-  color: $brand-color;
+  color: var(--color-text-muted);
 }
 
 .post-link {
@@ -303,8 +319,8 @@
     a {
       display: block;
       padding: $spacing-unit / 4;
-      border: 1px solid $border-color-01;
-      &:hover { border-color: $border-color-02 }
+      border: 1px solid var(--color-border);
+      &:hover { border-color: var(--color-text-muted) }
     }
   }
 }
@@ -329,7 +345,7 @@
       border: 1px solid transparent;
 
       &.pager-edge {
-        color: $border-color-01;
+        color: var(--color-border);
         border: 1px dashed;
       }
     }

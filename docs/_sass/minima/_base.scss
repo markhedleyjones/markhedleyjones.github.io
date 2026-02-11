@@ -20,8 +20,8 @@ dl, dd, ol, ul, figure {
  */
 body {
   font: $base-font-weight #{$base-font-size}/#{$base-line-height} $base-font-family;
-  color: $text-color;
-  background-color: $background-color;
+  color: var(--color-text);
+  background-color: var(--color-bg);
   -webkit-text-size-adjust: 100%;
   -webkit-font-feature-settings: "kern" 1;
      -moz-font-feature-settings: "kern" 1;
@@ -112,15 +112,15 @@ h1, h2, h3, h4, h5, h6 {
  * Links
  */
 a {
-  color: $link-base-color;
+  color: var(--color-link);
   text-decoration: none;
 
   &:visited {
-    color: $link-visited-color;
+    color: var(--color-link-visited);
   }
 
   &:hover {
-    color: $link-hover-color;
+    color: var(--color-link-hover);
     text-decoration: underline;
   }
 
@@ -138,8 +138,8 @@ a {
  * Blockquotes
  */
 blockquote {
-  color: $brand-color;
-  border-left: 4px solid $border-color-01;
+  color: var(--color-text-muted);
+  border-left: 4px solid var(--color-border);
   padding-left: $spacing-unit / 2;
   @include relative-font-size(1.125);
   font-style: italic;
@@ -162,9 +162,9 @@ pre,
 code {
   font-family: $code-font-family;
   font-size: 0.9375em;
-  border: 1px solid $border-color-01;
+  border: 1px solid var(--color-border);
   border-radius: $radius-sm;
-  background-color: $code-background-color;
+  background-color: var(--color-code-bg);
 }
 
 code {
@@ -184,11 +184,11 @@ pre {
 
 .highlight {
   border-radius: $radius-sm;
-  background-color: $code-background-color;
+  background-color: var(--color-code-bg);
   @extend %vertical-rhythm;
 
   .highlighter-rouge & {
-    background-color: $code-background-color;
+    background-color: var(--color-code-bg);
   }
 }
 
@@ -234,7 +234,7 @@ pre {
 }
 
 .grey {
-  color: #828282;
+  color: var(--color-text-muted);
 }
 
 .svg-icon {
@@ -254,23 +254,23 @@ table {
   margin-bottom: $spacing-unit;
   width: 100%;
   text-align: $table-text-align;
-  color: $table-text-color;
+  color: var(--color-text);
   border-collapse: collapse;
-  border: 1px solid $table-border-color;
+  border: 1px solid var(--color-border);
   tr {
     &:nth-child(even) {
-      background-color: $table-zebra-color;
+      background-color: var(--color-highlight-bg);
     }
   }
   th, td {
     padding: ($spacing-unit / 3) ($spacing-unit / 2);
   }
   th {
-    background-color: $table-header-bg-color;
-    border: 1px solid $table-header-border;
+    background-color: var(--color-highlight-bg);
+    border: 1px solid var(--color-border-light);
   }
   td {
-    border: 1px solid $table-border-color;
+    border: 1px solid var(--color-border);
   }
 
   @include media-query($on-laptop) {

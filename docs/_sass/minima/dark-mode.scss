@@ -223,112 +223,22 @@ table, th, td {
   transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
-// Override specific elements to use CSS variables
-body {
-  background-color: var(--color-bg);
-  color: var(--color-text);
-}
-
-a {
-  color: var(--color-link);
-
-  &:visited {
-    color: var(--color-link-visited);
-  }
-
-  &:hover {
-    color: var(--color-link-hover);
-  }
-}
-
-.site-header {
-  background-color: var(--color-header-bg);
-  border-bottom-color: var(--color-border);
-}
-
-.site-footer {
-  background-color: var(--color-footer-bg);
-  border-top-color: var(--color-border);
-}
-
-.site-title,
-.site-title:visited {
-  color: var(--color-nav-text);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-weight: 300;
-  opacity: 0.6;
-  transition: opacity 0.2s ease;
-
-  &:hover {
-    opacity: 1;
-  }
-}
-
-.site-logo {
-  display: inline-block;
-  vertical-align: middle;
-  filter: none;
-}
-
 // Ensure logo shows up properly in dark mode
 [data-theme="dark"] .site-logo {
   filter: brightness(0.9) saturate(1.1);
 }
 
-.site-nav {
-  background-color: var(--color-nav-bg);
-  border-color: var(--color-nav-border);
-
-  .page-link {
-    color: var(--color-nav-text);
-  }
-}
-
-// Code blocks
-[data-theme="dark"] {
-  pre, code {
-    background-color: var(--color-code-bg);
-    border-color: var(--color-border);
-    color: var(--color-text);
-  }
-
-  .highlight,
-  .highlighter-rouge .highlight {
-    background-color: var(--color-code-bg);
-  }
-
-  .highlight {
-    .c     { color: #8a8a8a; }
-    .gp    { color: #888; }
-    .gh    { color: #bbb; }
-    .go    { color: #aaa; }
-    .nn    { color: #888; }
-    .bp    { color: #bbb; }
-    .na    { color: #4dd0e1; }
-    .no    { color: #4dd0e1; }
-    .nt    { color: #81C784; }
-  }
-}
-
-// Tables
-table {
-  border-color: var(--color-border);
-  color: var(--color-text);
-
-  th {
-    background-color: var(--color-highlight-bg);
-    border-color: var(--color-border-light);
-  }
-
-  td {
-    border-color: var(--color-border);
-  }
-
-  tr:nth-child(even) {
-    background-color: var(--color-highlight-bg);
-  }
+// Dark mode syntax highlighting colours
+[data-theme="dark"] .highlight {
+  .c     { color: #8a8a8a; }
+  .gp    { color: #888; }
+  .gh    { color: #bbb; }
+  .go    { color: #aaa; }
+  .nn    { color: #888; }
+  .bp    { color: #bbb; }
+  .na    { color: #4dd0e1; }
+  .no    { color: #4dd0e1; }
+  .nt    { color: #81C784; }
 }
 
 // Homepage project grid cards
