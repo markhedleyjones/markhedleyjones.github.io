@@ -7,6 +7,7 @@ permalink: /projects/docker-bbq
 featureimage: logo.webp
 thumb: logo.webp
 description: A set of bash scripts for creating and running templated docker projects
+keywords: Docker, bash, development environment, containerisation, templates, DevOps
 modified_date: 2026-02-08
 excerpt_separator: \{% endhighlight %\}
 ---

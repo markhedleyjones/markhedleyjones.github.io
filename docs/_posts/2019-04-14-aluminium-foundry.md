@@ -8,6 +8,7 @@ permalink: /projects/aluminium-foundry
 featureimage: feature.webp
 thumb: thumb.webp
 description: Melt aluminium with a home-made aluminium foundry
+keywords: aluminium foundry, metal casting, propane furnace, maker project, metalworking
 excerpt_separator: \{% endhighlight %\}
 ---
 

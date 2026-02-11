@@ -7,6 +7,7 @@ permalink: /projects/dmenu-extended
 featureimage: logo.svg
 thumb: logo.svg
 description: A menu offering super fast access to your files, folders, and programs
+keywords: dmenu, Linux, application launcher, file search, desktop, productivity, open source
 excerpt_separator: \{% endhighlight %\}
 ---
 
