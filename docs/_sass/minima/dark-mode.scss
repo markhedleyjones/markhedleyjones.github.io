@@ -287,27 +287,29 @@ a {
 }
 
 // Code blocks
-pre, code {
-  background-color: var(--color-code-bg);
-  border-color: var(--color-border);
-  color: var(--color-text);
-}
+[data-theme="dark"] {
+  pre, code {
+    background-color: var(--color-code-bg);
+    border-color: var(--color-border);
+    color: var(--color-text);
+  }
 
-.highlight {
-  background-color: var(--color-code-bg);
-}
+  .highlight,
+  .highlighter-rouge .highlight {
+    background-color: var(--color-code-bg);
+  }
 
-// Improve syntax highlighting contrast in dark mode
-[data-theme="dark"] .highlight {
-  .c     { color: #8a8a8a; }
-  .gp    { color: #888; }
-  .gh    { color: #bbb; }
-  .go    { color: #aaa; }
-  .nn    { color: #888; }
-  .bp    { color: #bbb; }
-  .na    { color: #4dd0e1; }
-  .no    { color: #4dd0e1; }
-  .nt    { color: #81C784; }
+  .highlight {
+    .c     { color: #8a8a8a; }
+    .gp    { color: #888; }
+    .gh    { color: #bbb; }
+    .go    { color: #aaa; }
+    .nn    { color: #888; }
+    .bp    { color: #bbb; }
+    .na    { color: #4dd0e1; }
+    .no    { color: #4dd0e1; }
+    .nt    { color: #81C784; }
+  }
 }
 
 // Tables
