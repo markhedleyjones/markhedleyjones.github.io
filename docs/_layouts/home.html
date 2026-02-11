@@ -10,62 +10,22 @@ layout: default
   {{ content }}
 
 
-  {% if site.paginate %}
-    {% assign posts = paginator.posts | where: "layout","project" | sort: "relevance" | reverse %}
-  {% else %}
-    {% assign posts = site.posts | where: "layout","project" | sort: "relevance" | reverse %}
-  {% endif %}
-
+  {% assign posts = site.posts | where: "layout","project" | sort: "relevance" | reverse %}
 
   {%- if posts.size > 0 -%}
-    {%- if page.list_title -%}
-      <h2 class="post-list-heading">{{ page.list_title }}</h2>
-    {%- endif -%}
     {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-    {%- assign visible_limit = 10 -%}
+    {%- assign highlight_limit = 6 -%}
     <div class="grid-container">
-      {%- for post in posts limit: visible_limit -%}
+      {%- for post in posts limit: highlight_limit -%}
         {%- include project-card.html -%}
       {%- endfor -%}
     </div>
 
-    {%- if posts.size > visible_limit -%}
-      <div class="show-more-projects" id="show-more-wrapper">
-        <button class="show-more-btn" id="show-more-btn">
-          Show more projects &#x25BC;
-        </button>
+    {%- if posts.size > highlight_limit -%}
+      <div class="show-more-projects">
+        <a href="/projects/" class="show-more-btn">View all projects &#x25B8;</a>
       </div>
-      <div id="more-projects" class="grid-container more-projects-hidden">
-        {%- for post in posts offset: visible_limit -%}
-          {%- include project-card.html -%}
-        {%- endfor -%}
-      </div>
-      <script>
-        document.getElementById('show-more-btn').addEventListener('click', function() {
-          document.getElementById('more-projects').style.display = 'grid';
-          document.getElementById('show-more-wrapper').style.display = 'none';
-        });
-      </script>
     {%- endif -%}
-
-    {% if site.paginate %}
-      <div class="pager">
-        <ul class="pagination">
-        {%- if paginator.previous_page %}
-          <li><a href="{{ paginator.previous_page_path | relative_url }}" class="previous-page">{{ paginator.previous_page }}</a></li>
-        {%- else %}
-          <li><div class="pager-edge">•</div></li>
-        {%- endif %}
-          <li><div class="current-page">{{ paginator.page }}</div></li>
-        {%- if paginator.next_page %}
-          <li><a href="{{ paginator.next_page_path | relative_url }}" class="next-page">{{ paginator.next_page }}</a></li>
-        {%- else %}
-          <li><div class="pager-edge">•</div></li>
-        {%- endif %}
-        </ul>
-      </div>
-    {%- endif %}
-
   {%- endif -%}
 
   {% assign notes = site.posts | where: "layout","note" %}

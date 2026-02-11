@@ -1,0 +1,16 @@
+---
+layout: page
+---
+
+<div class="projects-page">
+  {% assign posts = site.posts | where: "layout","project" | sort: "relevance" | reverse %}
+
+  {%- if posts.size > 0 -%}
+    {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+    <div class="grid-container">
+      {%- for post in posts -%}
+        {%- include project-card.html -%}
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+</div>
