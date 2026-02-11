@@ -21,28 +21,18 @@ related_projects:
   Disable any page scaling or automatic page fitting when printing, otherwise the checker dimensions will be incorrect.
 </p>
 
-<hr style="border-color: var(--color-border); margin: 20px 0">
+<div class="checkerboard-generator">
+<hr>
 
 <h2>Generate Your Own Checkerboards</h2>
 <p>
   Generates Scalable Vector Graphic (SVG) files, which can be edited using free software such as <a href="https://inkscape.org/">Inkscape</a>.
 </p>
-<style>
-  table th {
-    font-weight: normal;
-    text-align: right;
-  }
-  table {
-    width: auto !important;
-    display: table !important;
-    margin: 20px auto;
-  }
-</style>
 <table>
   <tr>
     <th><label for="page_size">Page size:</label></th>
     <td>
-      <select name="page_size" id="page_size" onchange="generate_checkerboard()">
+      <select name="page_size" id="page_size">
         <option value="A0">A0</option>
         <option value="A1">A1</option>
         <option value="A2">A2</option>
@@ -55,30 +45,29 @@ related_projects:
   <tr>
     <th><label for="checker_size_mm">Checker size:</label></th>
     <td>
-      <input style="width: 80px; text-align: right;" type="number" id="checker_size_mm" name="checker_size_mm" step="1.0" min="0" max="1189" value="25" onchange="generate_checkerboard()"> <span>mm</span>
+      <input class="checker-input" type="number" id="checker_size_mm" name="checker_size_mm" step="1.0" min="0" max="1189" value="25"> <span>mm</span>
     </td>
   </tr>
   <tr>
     <th><label for="page_width_mm">Page width:</label></th>
     <td>
-      <input style="width: 80px; text-align: right;" type="number" id="page_width_mm" name="page_width_mm" disabled="disabled" onchange="generate_checkerboard()"> <span>mm</span>
+      <input class="checker-input" type="number" id="page_width_mm" name="page_width_mm" disabled="disabled"> <span>mm</span>
     </td>
   </tr>
   <tr>
     <th><label for="page_height_mm">Page height:</label></th>
     <td>
-      <input style="width: 80px; text-align: right;" type="number" id="page_height_mm" name="page_height_mm" disabled="disabled" onchange="generate_checkerboard()"> <span>mm</span>
+      <input class="checker-input" type="number" id="page_height_mm" name="page_height_mm" disabled="disabled"> <span>mm</span>
     </td>
   </tr>
 </table>
 
-<div id="hidden-checkers" style="display: none"></div>
+<div id="hidden-checkers"></div>
 
-<div style="text-align: center; margin: 30px 0; padding: 24px; border: 1px solid var(--color-border); border-radius: 6px;">
-  <div id="checkerboard" onclick="download_checkerboard()" style="cursor: pointer; display: inline-block; width: 200px; height: 141.417px; border: 1px solid #CCC; box-shadow: 2px 2px 6px rgba(0,0,0,0.15); background-color: #fff;">
-  </div>
-  <div id="generated_checkerboard" style="margin-top: 12px; line-height: 1.4;"></div>
-  <div style="margin-top: 4px; font-size: 0.85em; color: #666;">
+<div class="checker-preview">
+  <div id="checkerboard"></div>
+  <div id="generated_checkerboard"></div>
+  <div class="checker-hint">
     Click to open as SVG — then print (Ctrl+P) to save as PDF
   </div>
 </div>
@@ -195,10 +184,16 @@ function generate_checkerboard() {
   document.getElementById('checkerboard').style.height = preview_height + 'px';
 }
 
+document.getElementById('page_size').addEventListener('change', generate_checkerboard);
+document.getElementById('checker_size_mm').addEventListener('change', generate_checkerboard);
+document.getElementById('page_width_mm').addEventListener('change', generate_checkerboard);
+document.getElementById('page_height_mm').addEventListener('change', generate_checkerboard);
+document.getElementById('checkerboard').addEventListener('click', download_checkerboard);
 generate_checkerboard();
 </script>
 
-<hr style="border-color: var(--color-border); margin: 30px 0">
+<hr>
+</div>
 
 <h2>8x6 Checkerboards</h2>
 <div class="checkerboard-grid">
