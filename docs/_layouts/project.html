@@ -83,10 +83,10 @@ layout: default
           </p>
         {%- endif -%}
         {%- if page.image -%}
-          <img class="project-hero-image" alt="Project logo" src="{{ page.image}}"/>
+          <img class="project-hero-image" alt="{{ page.title | escape }}" src="{{ page.image}}"/>
         {%- endif -%}
         {%- if page.featureimage -%}
-          <img class="project-feature-image" alt="Project logo" src="/media{{ page.permalink }}/{{ page.featureimage }}"/>
+          <img class="project-feature-image" alt="{{ page.title | escape }}" src="/media{{ page.permalink }}/{{ page.featureimage }}"/>
         {%- endif -%}
     </header>
     <hr class="project-separator">
