@@ -74,7 +74,7 @@ layout: default
           {% endfor %}
         {%- endif -%}</p>
         {%- if page.modified_date -%}
-          <p class="post-meta" style="margin-top: 5px; font-style: italic;">
+          <p class="post-meta project-modified-date">
             Last updated:
             {%- assign mdate = page.modified_date | date_to_xmlschema -%}
             <time class="dt-modified" datetime="{{ mdate }}" itemprop="dateModified">
