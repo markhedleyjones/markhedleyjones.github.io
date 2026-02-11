@@ -130,6 +130,7 @@ permalink: /about/
 .publications-list {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .publications-list li {
@@ -457,7 +458,7 @@ function toggleMorePublications() {
 
   if (morePublications.style.display === 'none' || morePublications.style.display === '') {
     morePublications.style.display = 'block';
-    toggleBtn.style.display = 'none';
+    toggleBtn.parentElement.style.display = 'none';
   }
 }
 </script>
