@@ -246,6 +246,7 @@ img {
 // Footer social icon borders - override minima's hardcoded Sass variable
 .social-media-list li a {
   border-color: var(--color-border);
+  border-radius: 4px;
 
   &:hover {
     border-color: var(--color-text-muted);
