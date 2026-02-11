@@ -263,8 +263,10 @@ img {
 
 // GitHub project button
 .github-btn {
-  display: inline-block;
-  background-color: #489be0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #24292e;
   color: #fff;
   border: none;
   vertical-align: middle;
@@ -276,8 +278,14 @@ img {
   border-radius: 6px;
   transition: background-color 0.2s ease, box-shadow 0.2s ease;
 
+  svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+  }
+
   &:hover {
-    background-color: #3a89cc;
+    background-color: #238636;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     color: #fff;
     text-decoration: none;
