@@ -65,7 +65,9 @@ The burner itself was made from a combination of pneumatic tool fittings, a MIG 
 
 # Final Result
 
-<iframe width="100%" height="480px" src="https://www.youtube.com/embed/y7v98cf1fbg" style="border:0" allowfullscreen="true"></iframe>
+<div class="video-container">
+<iframe src="https://www.youtube-nocookie.com/embed/y7v98cf1fbg" title="Aluminium foundry melting and casting" style="border:0" allowfullscreen></iframe>
+</div>
 
 # Casting Trial
 

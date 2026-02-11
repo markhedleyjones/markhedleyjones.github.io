@@ -5,8 +5,9 @@ VIDEO_ID should be just the YouTube video ID (e.g., "Iov8SzQ97aU")
 
 <figure class="media-container">
   <div class="video-container">
-    <iframe src="https://www.youtube.com/embed/{{ include.url }}?controls=1" 
-            loading="lazy" 
+    <iframe src="https://www.youtube-nocookie.com/embed/{{ include.url }}?controls=1"
+            title="{{ include.caption | default: 'YouTube video' }}"
+            loading="lazy"
             allowfullscreen></iframe>
   </div>
   {% if include.caption %}
