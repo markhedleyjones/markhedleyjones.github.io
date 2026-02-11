@@ -2,3 +2,8 @@
 
 // Modern content width for better use of wide screens
 $content-width: 1000px;
+
+// Border radius scale
+$radius-sm: 4px;   // small UI: code blocks, buttons, social icons
+$radius-md: 8px;   // cards, media containers, toggles
+$radius-lg: 10px;  // hero images, embedded media in content
