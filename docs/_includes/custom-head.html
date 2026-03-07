@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (e.target.tagName === 'IMG' && !e.target.closest('a')) {
       fullImg.src = e.target.src;
       fullImg.alt = e.target.alt;
-      fullImg.className = e.target.className;
+      fullImg.className = e.target.classList.contains('line-drawing') ? 'line-drawing' : '';
       overlay.classList.add('active');
     }
   });
