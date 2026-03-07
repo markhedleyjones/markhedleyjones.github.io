@@ -10,7 +10,7 @@ thumb: thumb.webp
 description: An add-on that enables .PCD file import/export in Blender 2.8+
 keywords: Blender, point cloud, PCD files, 3D modelling, Point Cloud Library, robotics, computer vision, LiDAR data
 related_projects:
-  - /projects/autonomous-platform-kiwifruit-orchards
+  - /projects/autonomous-navigation-kiwifruit-orchards
   - /projects/calibration-checkerboard-collection
   - /projects/bamboo-lidar-mount
 excerpt_separator: "{% endhighlight %}"
