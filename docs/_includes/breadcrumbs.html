@@ -1,18 +1,23 @@
 {%- comment -%}
-  Breadcrumb trail derived from the page's layout and title.
-  Included from the project, note, and page layouts (not the home page).
+  Site-wide breadcrumb trail. Included once from the default layout, so it
+  applies to every page automatically. The trail is derived from the page's
+  URL and layout - no per-page configuration.
 {%- endcomment -%}
 <nav class="breadcrumbs" aria-label="Breadcrumb">
   <ol>
+    {%- if page.url == "/" -%}
+    <li aria-current="page">Home</li>
+    {%- else -%}
     <li><a href="/">Home</a></li>
-    {%- if page.layout == 'project' -%}
+    {%- if page.layout == "project" -%}
     <li><a href="/projects/">Projects</a></li>
     <li aria-current="page">{{ page.title | escape }}</li>
-    {%- elsif page.layout == 'note' -%}
+    {%- elsif page.layout == "note" -%}
     <li><a href="/notes/">Notes</a></li>
     <li aria-current="page">{{ page.title | escape }}</li>
-    {%- else -%}
+    {%- elsif page.title -%}
     <li aria-current="page">{{ page.title | escape }}</li>
+    {%- endif -%}
     {%- endif -%}
   </ol>
 </nav>
