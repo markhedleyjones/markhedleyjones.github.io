@@ -1,0 +1,15 @@
+---
+layout: page
+title: Publications
+permalink: /publications/
+description: Peer-reviewed publications and theses by Mark Hedley Jones in robotics, machine vision, sensor fusion, and electronics.
+---
+<p class="publications-intro">Peer-reviewed work spanning robotics and machine vision, agricultural automation, and earlier research in electronics and electrochemistry.</p>
+
+<ul class="publications-list">
+  {%- for pub in site.data.publications -%}
+  <li>
+    <a href="{{ pub.url }}">{{ pub.authors }} ({{ pub.year }}). <em>{{ pub.title }}.</em> {{ pub.venue }}</a>
+  </li>
+  {%- endfor -%}
+</ul>

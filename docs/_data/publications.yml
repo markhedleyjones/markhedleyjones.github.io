@@ -1,0 +1,90 @@
+# Publications by Mark Hedley Jones, newest first.
+# Single source for both /publications/ (full list) and the About page teaser.
+# authors: HTML is allowed; the author's own name is wrapped in <strong>.
+# featured: true -> also shown in the "Selected Publications" teaser on /about/.
+
+- year: 2019
+  featured: true
+  authors: "<strong>Mark Hedley Jones</strong>, Jamie Bell, Daniel Dredge, Matthew Seabright, Alistair Scarfe, Mike Duke,
+    Bruce MacDonald"
+  title: "Design and Testing of a Heavy-Duty Platform for Autonomous Navigation in Kiwifruit Orchards"
+  venue: "Biosystems Engineering"
+  url: "https://www.sciencedirect.com/science/article/pii/S1537511019308141"
+
+- year: 2019
+  authors: "Henry Williams, Mahla Nejati, Salome Hussein, Nicky Penhall, Jong Yoon Lim, <strong>Mark Hedley Jones</strong>,
+    Jamie Bell, Ho Seok Ahn, Stuart Bradley, Peter Schaare, Paul Martinsen, Mohammad Alomar, Purak Patel, Matthew Seabright,
+    Mike Duke, Alistair Scarfe, Bruce MacDonald"
+  title: "Autonomous pollination of individual kiwifruit flowers: Toward a robotic kiwifruit pollinator"
+  venue: "Journal of Field Robotics"
+  url: "https://onlinelibrary.wiley.com/doi/abs/10.1002/rob.21861"
+
+- year: 2019
+  featured: true
+  authors: "Henry Williams, Canaan Ting, Mahla Nejati, <strong>Mark Hedley Jones</strong>, Nicky Penhall, JongYoon Lim, Matthew
+    Seabright, Jamie Bell, Ho Seok Ahn, Alistair Scarfe, Mike Duke, and Bruce MacDonald"
+  title: "Improvements to and large-scale evaluation of a robotic kiwifruit harvester"
+  venue: "Journal of Field Robotics"
+  url: "https://onlinelibrary.wiley.com/doi/abs/10.1002/rob.21890"
+
+- year: 2019
+  authors: "Henry A.M. Williams, <strong>Mark H. Jones</strong>, Mahla Nejati, Matthew J. Seabright, Jamie Bell, Nicky D.
+    Penhall, Josh J. Barnett, Mike D. Duke, Alistair J. Scarfe, Ho Seok Ahn, JongYoon Lim, Bruce A. MacDonald"
+  title: "Robotic kiwifruit harvesting using machine vision, convolutional neural networks, and robotic arms"
+  venue: "Biosystems Engineering"
+  url: "https://www.sciencedirect.com/science/article/pii/S153751101830638X"
+
+- year: 2017
+  authors: "<strong>Jones, M H</strong>, Seabright, M, Barnett, J, Neshausen, G, Duke, M, &amp; Scarfe, A."
+  title: "An Electrically Driven, Computer Controlled Robotics Platform for Orchard Use"
+  venue: "Poster, International Tri-Conference for Precision Agriculture 2017, Hamilton, New Zealand"
+  url: "https://doi.org/10.5281/zenodo.1002306"
+
+- year: 2017
+  authors: "Seabright, M, <strong>Jones, M H</strong>, Williams, H, Nejati, M, Barnett, J, Duke, M, &hellip; MacDonald, B."
+  title: "Robotic harvesting of kiwifruit"
+  venue: "Poster, International Tri-Conference for Precision Agriculture 2017, Hamilton, New Zealand"
+  url: "https://doi.org/10.5281/zenodo.1002294"
+
+- year: 2016
+  authors: "<strong>Jones, M. H.</strong>"
+  title: "The Electrical Properties of Interfacial Double Layers (PhD thesis)"
+  venue: "University of Waikato, Hamilton, New Zealand"
+  url: "https://hdl.handle.net/10289/10617"
+
+- year: 2015
+  authors: "Hicks, B. J., <strong>Jones, M. H.</strong>, de Villiers, J. E., &amp; Ling, N."
+  title: "Use of Electrofishing for Capturing Invasive Fish"
+  venue: "In New Zealand Invasive Fish Management Handbook (pp. 72-79), LERNZ &amp; Department of Conservation"
+  url: "https://researchcommons.waikato.ac.nz/bitstream/handle/10289/11289/Use%20of%20Electrofishing.pdf"
+
+- year: 2014
+  featured: true
+  authors: "<strong>Jones, M. H.</strong>, &amp; Scott, J. B."
+  title: "Scaling of Electrode-Electrolyte Interface Model Parameters in Phosphate Buffered Saline"
+  venue: "IEEE Transactions on Biomedical Circuits and Systems, 9(3), 441-448"
+  url: "https://hdl.handle.net/10289/8878"
+
+- year: 2014
+  authors: "<strong>Jones, M. H.</strong>, &amp; Scott, J. B."
+  title: "Feasibility of Harvesting Power To Run A Domestic Water Meter Using Streaming Cell Technology"
+  venue: "21st Electronics New Zealand Conference (ENZCon), Hamilton, New Zealand"
+  url: "https://hdl.handle.net/10289/8882"
+
+- year: 2011
+  authors: "<strong>Jones, M.H.</strong> &amp; Scott, J.B."
+  title: "The energy efficiency of 8-bit low-power microcontrollers"
+  venue: "18th Electronics New Zealand Conference (ENZCon), Massey University, Palmerston North, pp. 87-90"
+  url: "https://hdl.handle.net/10289/8294"
+
+- year: 2011
+  authors: "<strong>Jones, M. H.</strong> &amp; Scott, J."
+  title: "Design study of a thermocouple power sensor as a monolithic fin-line"
+  venue: "77th ARFTG Microwave Measurement Conference, Baltimore, Maryland"
+  url: "https://hdl.handle.net/10289/5442"
+
+- year: 2010
+  authors: "<strong>Jones, M. H.</strong>"
+  title: "Millimetre Wave Power Measurement (ME thesis)"
+  venue: "University of Waikato, Hamilton, New Zealand"
+  url: "https://hdl.handle.net/10289/4302"
