@@ -29,6 +29,9 @@ author:
   name: Mark Hedley Jones
   email: markhedleyjones@gmail.com
 
+# Contact address surfaced as the footer email icon (plus-addressed for filtering)
+contact_email: markhedleyjones+website@gmail.com
+
 umami_analytics:
   url: https://umami-analytic.netlify.app
   id: 3507cba7-c2ee-4e92-8b4c-a07d4a8b3dc2
