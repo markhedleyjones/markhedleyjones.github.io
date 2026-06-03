@@ -6,3 +6,9 @@ umami_token.env
 .vscode
 .cm-cache/
 Justfile
+CLAUDE.md
+WEBSITE-*.md
+
+# Source/working media - site videos are YouTube-hosted, not committed to the repo
+*.mp4
+*.webm
