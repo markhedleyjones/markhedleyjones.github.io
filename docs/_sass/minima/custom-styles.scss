@@ -137,7 +137,7 @@ $grid-gap: 40px;
 
 .home {
   margin: 0 auto;
-  max-width: 1100px;
+  max-width: 1000px;
   padding: $grid-gap;
 }
 
@@ -221,12 +221,16 @@ $grid-gap: 40px;
 
 // Projects page
 .projects-page {
+  max-width: 1000px;
+  margin: 0 auto;
   padding: $grid-gap;
 }
 
 // Notes page
 .notes-page {
-  margin: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 $spacing-unit;
 }
 
 .notes-list {
@@ -369,10 +373,13 @@ $grid-gap: 40px;
 
 // Shared content wrapper for page, note, and project layouts
 .content-wrapper,
-.project-container {
+.project-container,
+.breadcrumbs-bar {
   width: 100%;
   max-width: 1000px;
   margin: 0 auto;
+  padding: 0 $spacing-unit;
+  box-sizing: border-box;
 }
 
 .content-article,
@@ -877,7 +884,7 @@ $grid-gap: 40px;
 
 // Breadcrumb navigation
 .breadcrumbs-bar {
-  margin-top: 20px;
+  margin-top: 24px;
 }
 
 .breadcrumbs {
