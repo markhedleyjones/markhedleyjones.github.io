@@ -43,6 +43,6 @@ My local development environment for [this website](https://github.com/MarkHedle
 ## Demonstration
 This clip is a little out-of-date, but it shows the general idea of the project.
 
-![](https://raw.githubusercontent.com/markhedleyjones/docker-bbq/master/media/demo.gif)
+![Terminal recording of Docker-BBQ building and entering a containerised development environment](https://raw.githubusercontent.com/markhedleyjones/docker-bbq/master/media/demo.gif)
 
 {% include github-btn.html url="https://github.com/MarkHedleyJones/docker-bbq" %}
