@@ -132,11 +132,22 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
+  // Sync the mobile nav toggle's aria-expanded with its checkbox state
+  function initNavAria() {
+    const navTrigger = document.getElementById('nav-trigger');
+    const navLabel = document.querySelector('label[for="nav-trigger"]');
+    if (!navTrigger || !navLabel) return;
+    navTrigger.addEventListener('change', function () {
+      navLabel.setAttribute('aria-expanded', navTrigger.checked ? 'true' : 'false');
+    });
+  }
+
   // Initialize when DOM is ready
+  function init() { initThemeToggle(); initNavAria(); }
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initThemeToggle);
+    document.addEventListener('DOMContentLoaded', init);
   } else {
-    initThemeToggle();
+    init();
   }
 })();
 </script>
