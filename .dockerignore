@@ -1,3 +1,11 @@
+# container-magic:begin (generated, do not edit)
+*
+!docs/
+!docs/**
+!.cm-cache/
+!.cm-cache/**
+# container-magic:end
+
 *.pyc
 .docker-bbq
 .git
