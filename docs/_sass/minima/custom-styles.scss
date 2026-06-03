@@ -138,7 +138,8 @@ $grid-gap: 40px;
 .home {
   margin: 0 auto;
   max-width: 1000px;
-  padding: $grid-gap;
+  padding: $spacing-unit;
+  box-sizing: border-box;
 }
 
 .grid-container {
@@ -223,7 +224,8 @@ $grid-gap: 40px;
 .projects-page {
   max-width: 1000px;
   margin: 0 auto;
-  padding: $grid-gap;
+  padding: $spacing-unit;
+  box-sizing: border-box;
 }
 
 // Notes page
@@ -384,7 +386,7 @@ $grid-gap: 40px;
 
 .content-article,
 .project-article {
-  margin: 20px;
+  margin: 20px 0;
 }
 
 .content-article {
@@ -430,7 +432,7 @@ $grid-gap: 40px;
 }
 
 .project-header {
-  text-align: center;
+  text-align: left;
 }
 
 
@@ -443,20 +445,19 @@ $grid-gap: 40px;
   }
 
   .profile-header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: -20px 0 0 0;
-    padding: 30px 40px;
-    background: var(--color-highlight-bg);
-    border-radius: $radius-md;
-    border: 1px solid var(--color-border);
+    margin: 4px 0 0 0;
+    padding: 0 0 44px 0;
+    border-bottom: 1px solid var(--color-border);
   }
 
   .profile-header-inner {
     display: flex;
     align-items: center;
-    gap: 25px;
+    gap: 40px;
+  }
+
+  .profile-header-inner > div {
+    flex: 1;
   }
 
   .profile-photo {
@@ -884,7 +885,8 @@ $grid-gap: 40px;
 
 // Breadcrumb navigation
 .breadcrumbs-bar {
-  margin-top: 24px;
+  margin-top: 36px;
+  margin-bottom: 4px;
 }
 
 .breadcrumbs {
