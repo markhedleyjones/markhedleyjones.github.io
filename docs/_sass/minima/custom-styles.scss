@@ -472,6 +472,13 @@ $grid-gap: 40px;
     font-size: 1.1em;
   }
 
+  .profile-lead {
+    margin: 0 0 12px 0;
+    color: var(--color-text);
+    max-width: 60ch;
+    line-height: 1.5;
+  }
+
   .profile-contact {
     margin: 0;
     color: var(--color-text);
