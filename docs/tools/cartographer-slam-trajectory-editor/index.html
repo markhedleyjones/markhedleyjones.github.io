@@ -1,0 +1,562 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Cartographer Trajectory Editor</title>
+<style>
+  html, body { margin: 0; height: 100%; overflow: hidden; background: #14181d; font-family: sans-serif; color: #cfd6dd; }
+  #c { display: block; cursor: grab; }
+  #c.pan { cursor: grabbing; }
+  #c.move { cursor: move; }
+  #c.box { cursor: crosshair; }
+  #hud { position: fixed; top: 8px; left: 10px; font-size: 12px; line-height: 1.5; text-shadow: 0 1px 2px #000; pointer-events: none; }
+  #hud b { color: #fff; }
+  #sel { color: #cfd6dd; }
+  kbd { background:#2a313a; border-radius:3px; padding:0 4px; }
+  #panel { position: fixed; top: 8px; right: 10px; width: 210px; font-size: 12px;
+           background: #1c2229f2; border: 1px solid #2a313a; border-radius: 8px; padding: 10px 12px; }
+  #panel h4 { margin: 14px 0 6px; font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; color: #6b7682; }
+  #panel h4:first-child { margin-top: 0; }
+  #panel button { display: inline-flex; align-items: center; justify-content: center; gap: 5px;
+                  background: #2a313a; color: #cfd6dd; border: 1px solid #3a434e; border-radius: 5px;
+                  cursor: pointer; font-size: 12px; padding: 5px 10px; }
+  #panel button:hover { border-color: #5a6573; }
+  #panel button svg { width: 13px; height: 13px; flex: 0 0 auto; opacity: 0.85; }
+  #panel button.primary { background: #3d4753; color: #f0f3f6; border-color: #4a5562; font-weight: 600; }
+  #panel button.primary:hover { background: #49545f; border-color: #5a6573; }
+  #panel .row { display: flex; gap: 6px; margin-top: 6px; }
+  #panel .row button { flex: 1; }
+  #panel .wide { width: 100%; margin-top: 6px; }
+  #panel .muted { color: #8b97a3; margin-top: 6px; }
+  #panel .tip { color: #8b97a3; font-size: 11px; line-height: 1.4; margin: 6px 0 0; }
+  #selBox { display: flex; align-items: center; gap: 6px; user-select: none; }
+  #selBox #selLabel { flex: 1; text-align: center; color: #e6ebf0; font-variant-numeric: tabular-nums; font-weight: 600; }
+  #selBox button { min-width: 26px; flex: 0 0 auto; }
+  #panel button.on { background: #4a5562; color: #fff; border-color: #5a6573; }
+  #fixRow { display: flex; align-items: center; gap: 6px; margin-top: 8px; cursor: pointer; user-select: none; }
+  #fixChk { accent-color: #9aa4ae; width: 14px; height: 14px; }
+  #fixRow.disabled { opacity: 0.4; cursor: default; }
+  #modal { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; background: #0009; z-index: 20; }
+  #modal .card { background: #1c2229; border: 1px solid #3a434e; border-radius: 10px; padding: 20px; max-width: 380px; box-shadow: 0 8px 30px #000a; }
+  #modal .card p { color: #b3bcc6; line-height: 1.5; margin: 10px 0 0; }
+  #modal .card .tip { color: #cfd6dd; font-size: 12px; }
+  #modal .actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: 18px; }
+  #modal .actions button { background: #2a313a; color: #cfd6dd; border: 1px solid #3a434e; border-radius: 5px; cursor: pointer; padding: 6px 14px; font-size: 12px; }
+  #modal .actions button.primary { background: #3d4753; color: #f0f3f6; border-color: #4a5562; font-weight: 600; }
+  #help { position: fixed; bottom: 8px; left: 10px; right: 240px; font-size: 12px; line-height: 1.7;
+          text-shadow: 0 1px 2px #000; pointer-events: none; color: #8b97a3; }
+  #help b { color: #cfd6dd; }
+  #drop { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center;
+          background: #14181dF2; z-index: 10; }
+  #drop .dz { text-align: center; border: 2px dashed #3a434e; border-radius: 12px; padding: 40px 60px; }
+  #drop h2 { margin: 0 0 12px; color: #fff; font-weight: 600; }
+  #drop p { margin: 8px 0; color: #8b97a3; }
+  #drop .hint { font-size: 12px; }
+  #drop code { background: #2a313a; padding: 1px 5px; border-radius: 3px; color: #cfd6dd; }
+  #drop.over .dz { border-color: #8b97a3; background: #ffffff14; color: #fff; }
+  #drop.over .dz p { color: #cfd6dd; }
+  #drop .loading { text-align: center; }
+  #drop .spinner { width: 44px; height: 44px; margin: 0 auto 16px; border: 4px solid #2a313a;
+                   border-top-color: #cfd6dd; border-radius: 50%; animation: spin 0.8s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  #drop .btn { display: inline-block; background: #3d4753; color: #f0f3f6; border: 1px solid #4a5562; border-radius: 6px;
+               padding: 8px 16px; cursor: pointer; font-weight: 600; margin: 6px 0; }
+  #drop .btn:hover { background: #49545f; }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div id="hud">
+  <div><b>Cartographer Trajectory Editor</b> &mdash; <span id="info">loading&hellip;</span></div>
+  <div id="sel"></div>
+</div>
+<div id="panel">
+  <h4>Selection</h4>
+  <div id="selBox" title="scroll, +/- keys, or the buttons to cycle submaps">
+    <button id="selPrev" title="previous submap (-)">&minus;</button>
+    <span id="selLabel">none</span>
+    <button id="selNext" title="next submap (+)">+</button>
+  </div>
+  <label id="fixRow" title="fixed submaps are held; the optimiser moves only floating ones (p)">
+    <input type="checkbox" id="fixChk"> <span>Fixed</span>
+  </label>
+  <button id="selAll" class="wide">Select all</button>
+  <h4>Show</h4>
+  <div class="row">
+    <button id="showFixedBtn" class="on" title="show fixed submaps">Fixed</button>
+    <button id="showFloatBtn" class="on" title="show floating submaps">Floating</button>
+  </div>
+  <h4>Optimise</h4>
+  <div id="pinInfo" class="muted">0 fixed, 0 floating</div>
+  <p class="tip">Fix the submaps you trust, then optimise &mdash; it shifts the floating ones to match.</p>
+  <button id="optBtn" class="primary wide" title="solve floating submaps against the pose graph">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4l1.7 5.3L19 11l-5.3 1.7L12 18l-1.7-5.3L5 11l5.3-1.7z"/></svg> Optimise</button>
+  <div class="row">
+    <button id="clearPins" title="unfix everything">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><path d="M6.5 6.5l11 11"/></svg> Clear</button>
+    <button id="resetBtn" title="restore the loaded poses">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 2.5-6.2"/><path d="M3 4v4h4"/></svg> Reset</button>
+  </div>
+  <div id="optInfo" class="muted"></div>
+  <button id="exportBtn" class="primary wide" style="margin-top:16px;" title="download a corrected .pbstream">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v11M8 11l4 4 4-4"/><path d="M5 20h14"/></svg> Export pbstream</button>
+  <div id="exportInfo" class="muted" style="word-break:break-all;"></div>
+</div>
+<div id="modal">
+  <div class="card">
+    <div class="body"></div>
+    <div class="actions"><button class="cancel">Cancel</button><button class="ok primary">OK</button></div>
+  </div>
+</div>
+<div id="help">
+  <div><b>drag</b> pans &middot; <b>wheel</b> zooms &middot; <b>click</b> selects one &middot; <b>shift</b>-drag boxes a group (shift-click toggles one) &middot; <b>a</b> select all &middot; <b>esc</b> clear</div>
+  <div><b>ctrl</b>-drag moves the selection &middot; <b>ctrl</b>-wheel rotates it (0.025&deg;, +<b>shift</b> 0.125&deg;) &middot; <b>&larr;&uarr;&darr;&rarr;</b> nudge 0.05m (<b>shift</b> 0.5m, <b>ctrl+shift</b> 2.5m) &middot; <b>[ ]</b> rotate 0.1&deg; (<b>shift</b> 1&deg;, <b>ctrl+shift</b> 5&deg;) &middot; <b>p</b> fix/float &middot; <b>i</b> isolate &middot; <b>+/-</b> (or scroll the selection box) cycle submaps &middot; <b>ctrl+z</b> undo &middot; <b>f</b> fit selection (or all) to view</div>
+</div>
+<div id="drop">
+  <div class="dz">
+    <h2>Cartographer Trajectory Editor</h2>
+    <p>Drop a Cartographer <code>.pbstream</code> here, or</p>
+    <label class="btn"><input id="fileInput" type="file" accept=".pbstream" hidden> choose a file</label>
+    <p class="hint">Everything runs in your browser &mdash; nothing is uploaded.</p>
+  </div>
+  <div class="loading" hidden>
+    <div class="spinner"></div>
+    <p id="loadStatus">Parsing&hellip;</p>
+  </div>
+</div>
+<script src="js/proto.js"></script>
+<script src="js/cartographer.js"></script>
+<script src="js/pbstream.js"></script>
+<script src="js/solve.js"></script>
+<script>
+const cv = document.getElementById('c'), ctx = cv.getContext('2d');
+const info = document.getElementById('info'), selHud = document.getElementById('sel');
+const PALETTE = [[31,119,180],[255,127,14],[44,160,44],[214,39,40],[148,103,189],[140,86,75],
+  [227,119,194],[127,127,127],[188,189,34],[23,190,207],[174,199,232],[255,187,120],
+  [152,223,138],[255,152,150],[197,176,213],[196,156,148],[247,182,210],[199,199,199],
+  [219,219,141],[158,218,229]];
+
+let submaps = [];            // {index,x,y,yaw,local:Float32Array,color}
+let view = { scale: 10, ox: 0, oy: 0 };
+let W = 0, H = 0;
+let selected = -1;           // primary (last-touched) submap, for the HUD/widget
+let selection = new Set();   // all selected submap indices (a group moves/rotates together)
+let hover = -1;              // submap under the cursor (highlighted), for grab/select feedback
+let isolate = false;
+let pinned = new Set();      // submap indices held fixed by the optimiser
+let undoStack = [], gestureSnap = false;   // pose-history for ctrl+z
+let showFixed = true, showFloating = true; // view filter by fix state
+let boxStart = null, boxEnd = null;        // shift-drag rubber-band selection (screen coords)
+let lastWheelRot = 0;        // for coalescing ctrl+wheel rotation into one undo step
+
+function resize() { W = cv.width = innerWidth; H = cv.height = innerHeight; draw(); }
+addEventListener('resize', resize);
+const s2w = (sx, sy) => [(sx - view.ox) / view.scale, (view.oy - sy) / view.scale];
+
+function bounds(list) {
+  let a = 1e9, b = 1e9, c = -1e9, d = -1e9;
+  for (const s of list) {
+    const co = Math.cos(s.yaw), sn = Math.sin(s.yaw), L = s.local;
+    for (let i = 0; i < L.length; i += 2) {
+      const wx = s.x + co * L[i] - sn * L[i + 1], wy = s.y + sn * L[i] + co * L[i + 1];
+      if (wx < a) a = wx; if (wx > c) c = wx; if (wy < b) b = wy; if (wy > d) d = wy;
+    }
+  }
+  return { a, b, c, d };
+}
+function fit(list) {                          // fit `list` (default: all submaps) to the view
+  const items = list && list.length ? list : submaps;
+  if (!items.length) return;
+  const bb = bounds(items), pad = 40;
+  view.scale = Math.min((W - 2 * pad) / Math.max(0.1, bb.c - bb.a), (H - 2 * pad) / Math.max(0.1, bb.d - bb.b));
+  view.ox = W / 2 - (bb.a + bb.c) / 2 * view.scale;
+  view.oy = H / 2 + (bb.b + bb.d) / 2 * view.scale;
+  draw();
+}
+
+let pending = false;
+function draw() { if (pending) return; pending = true; requestAnimationFrame(() => { pending = false; render(); }); }
+// metre grid spacing that lands near ~80px on screen (1/2/5 x 10^n)
+function gridStep(scale) {
+  const raw = 80 / scale;
+  const p = Math.pow(10, Math.floor(Math.log10(raw)));
+  const c = raw / p;
+  return (c < 1.5 ? 1 : c < 3 ? 2 : c < 7 ? 5 : 10) * p;
+}
+function render() {
+  const img = ctx.createImageData(W, H), d = img.data;
+  d.fill(20); for (let i = 3; i < d.length; i += 4) d[i] = 255;
+  const { scale, ox, oy } = view;
+  // metre grid drawn into the pixel buffer first, so cells sit on top of it
+  const step = gridStep(scale);
+  const setCol = (px, r, g, b) => { if (px < 0 || px >= W) return; for (let py = 0; py < H; py++) { const o = (py * W + px) * 4; d[o] = r; d[o + 1] = g; d[o + 2] = b; } };
+  const setRow = (py, r, g, b) => { if (py < 0 || py >= H) return; for (let px = 0; px < W; px++) { const o = (py * W + px) * 4; d[o] = r; d[o + 1] = g; d[o + 2] = b; } };
+  for (let k = Math.ceil(-ox / scale / step); k * step <= (W - ox) / scale; k++) {
+    const ax = k === 0; setCol(Math.round(ox + k * step * scale), ax ? 70 : 34, ax ? 80 : 40, ax ? 92 : 48);
+  }
+  for (let k = Math.ceil((oy - H) / scale / step); k * step <= oy / scale; k++) {
+    const ax = k === 0; setRow(Math.round(oy - k * step * scale), ax ? 70 : 34, ax ? 80 : 40, ax ? 92 : 48);
+  }
+  const anySel = selection.size > 0, single = selection.size === 1;
+  for (const s of submaps) {
+    const fixed = pinned.has(s.index);
+    if (isolate && anySel && !selection.has(s.index)) continue;
+    if ((fixed && !showFixed) || (!fixed && !showFloating)) continue;   // view filter by fix state
+    const sel = selection.has(s.index);
+    let r, g, bl;
+    if (sel && single) { r = g = bl = 255; }             // lone selection: white
+    else if (sel) { [r, g, bl] = s.color; }              // group member: its own colour
+    else if (anySel) { [r, g, bl] = s.color; r = r * 0.3 | 0; g = g * 0.3 | 0; bl = bl * 0.3 | 0; }
+    else { [r, g, bl] = s.color; }
+    if (fixed && !sel) {                                 // fixed: warm orange tint, so state is visible
+      r = (r * 0.35 + 245 * 0.65) | 0; g = (g * 0.35 + 150 * 0.65) | 0; bl = (bl * 0.35 + 30 * 0.65) | 0;
+    }
+    if (s.index === hover && !sel) {                     // hovered (and not selected): brighten
+      r = Math.min(255, r * 1.5 + 60) | 0; g = Math.min(255, g * 1.5 + 60) | 0; bl = Math.min(255, bl * 1.5 + 60) | 0;
+    }
+    const co = Math.cos(s.yaw), sn = Math.sin(s.yaw), L = s.local;
+    for (let i = 0; i < L.length; i += 2) {
+      const px = (ox + (s.x + co * L[i] - sn * L[i + 1]) * scale) | 0;
+      const py = (oy - (s.y + sn * L[i] + co * L[i + 1]) * scale) | 0;
+      if (px < 0 || py < 0 || px >= W || py >= H) continue;
+      const o = (py * W + px) * 4; d[o] = r; d[o + 1] = g; d[o + 2] = bl;
+    }
+  }
+  ctx.putImageData(img, 0, 0);
+  if (boxStart && boxEnd) {                  // shift-drag selection rectangle
+    ctx.strokeStyle = '#e6ebf0'; ctx.lineWidth = 1; ctx.setLineDash([5, 3]);
+    ctx.strokeRect(Math.min(boxStart[0], boxEnd[0]), Math.min(boxStart[1], boxEnd[1]),
+      Math.abs(boxEnd[0] - boxStart[0]), Math.abs(boxEnd[1] - boxStart[1]));
+    ctx.setLineDash([]);
+  }
+}
+function updatePinInfo() {
+  const fx = pinned.size;
+  document.getElementById('pinInfo').textContent = `${fx} fixed, ${submaps.length - fx} floating`;
+}
+function updateFixChk() {
+  const chk = document.getElementById('fixChk'), row = document.getElementById('fixRow');
+  if (!selection.size) { chk.checked = false; chk.indeterminate = false; chk.disabled = true; row.classList.add('disabled'); return; }
+  chk.disabled = false; row.classList.remove('disabled');
+  const arr = [...selection], allF = arr.every(i => pinned.has(i)), anyF = arr.some(i => pinned.has(i));
+  chk.checked = allF; chk.indeterminate = anyF && !allF;
+}
+function cycleSel(dir) {
+  if (!submaps.length) return;
+  const idxs = submaps.map(s => s.index).sort((a, b) => a - b);
+  let pos = idxs.indexOf(selected);
+  if (pos < 0) pos = dir > 0 ? -1 : 0;            // from none: + goes to first, - to last
+  selected = idxs[(pos + dir + idxs.length) % idxs.length];
+  selection.clear(); selection.add(selected);     // wheel/+- is single-select navigation
+  showSel(); draw();
+}
+function selectAll() {
+  selection = new Set(submaps.map(s => s.index));
+  selected = submaps.length ? submaps[0].index : -1;
+  showSel(); draw();
+}
+function centroidOf(set) {
+  let x = 0, y = 0, n = 0;
+  for (const i of set) { const s = byIndex(i); if (s) { x += s.x; y += s.y; n++; } }
+  return n ? [x / n, y / n] : [0, 0];
+}
+// rotate a group of submaps rigidly about (px,py): origins orbit the pivot, yaws turn with them.
+// Moving never changes fix state - that's an explicit choice (p / the fix button).
+function rotateGroup(set, theta, px, py) {
+  const c = Math.cos(theta), s = Math.sin(theta);
+  for (const i of set) {
+    const sm = byIndex(i); if (!sm) continue;
+    const dx = sm.x - px, dy = sm.y - py;
+    sm.x = px + c * dx - s * dy; sm.y = py + s * dx + c * dy; sm.yaw += theta;
+  }
+}
+function translateGroup(set, dx, dy) {
+  for (const i of set) { const sm = byIndex(i); if (sm) { sm.x += dx; sm.y += dy; } }
+}
+// pose history for undo (ctrl+z): snapshot before each mutating action
+function snapshot() {
+  undoStack.push({ poses: submaps.map(s => [s.x, s.y, s.yaw]), pinned: new Set(pinned) });
+  if (undoStack.length > 100) undoStack.shift();
+}
+function undo() {
+  const snap = undoStack.pop();
+  if (!snap) return;
+  snap.poses.forEach((p, idx) => { const s = submaps[idx]; s.x = p[0]; s.y = p[1]; s.yaw = p[2]; });
+  pinned = snap.pinned;
+  updatePinInfo(); showSel(); draw();
+}
+// add every submap with a cell inside the screen-space rectangle to the selection
+function selectInBox(x0, y0, x1, y1) {
+  const xa = Math.min(x0, x1), xb = Math.max(x0, x1), ya = Math.min(y0, y1), yb = Math.max(y0, y1);
+  const { scale, ox, oy } = view;
+  for (const s of submaps) {
+    const co = Math.cos(s.yaw), sn = Math.sin(s.yaw), L = s.local;
+    for (let k = 0; k < L.length; k += 2) {
+      const px = ox + (s.x + co * L[k] - sn * L[k + 1]) * scale;
+      const py = oy - (s.y + sn * L[k] + co * L[k + 1]) * scale;
+      if (px >= xa && px <= xb && py >= ya && py <= yb) { selection.add(s.index); selected = s.index; break; }
+    }
+  }
+}
+let MODEL = null, EDGES = null, ORIG = [], FILENAME = 'trajectory';
+function posesArray() {        // poses by submap index 0..N-1 (current edits, originals as fallback)
+  const poses = [];
+  for (let i = 0; i < ORIG.length; i++) { const s = byIndex(i); poses.push(s ? [s.x, s.y, s.yaw] : ORIG[i].slice()); }
+  return poses;
+}
+// a small confirm dialog; resolves true (ok) / false (cancel)
+function confirmModal(bodyHtml, okLabel = 'OK') {
+  const m = document.getElementById('modal');
+  m.querySelector('.body').innerHTML = bodyHtml;
+  m.querySelector('.ok').textContent = okLabel;
+  m.style.display = 'flex';
+  return new Promise(resolve => {
+    const close = v => { m.style.display = 'none'; m.querySelector('.ok').onclick = m.querySelector('.cancel').onclick = null; resolve(v); };
+    m.querySelector('.ok').onclick = () => close(true);
+    m.querySelector('.cancel').onclick = () => close(false);
+  });
+}
+function runOptimise() {
+  const free = ORIG.length - pinned.size;
+  snapshot();
+  document.getElementById('optInfo').textContent = 'solving…';
+  setTimeout(() => {                          // let the label paint before the solve blocks
+    const res = Solve.solve(posesArray(), EDGES, pinned);
+    res.poses.forEach((p, i) => { const s = byIndex(i); if (s) { s.x = p[0]; s.y = p[1]; s.yaw = p[2]; } });
+    document.getElementById('optInfo').textContent = `moved ${free} free, kept ${pinned.size} fixed · rms ${res.rmsBefore.toFixed(3)} → ${res.rmsAfter.toFixed(3)}`;
+    showSel(); draw();
+  }, 16);
+}
+document.getElementById('optBtn').onclick = async () => {
+  if (!MODEL) return;
+  if (ORIG.length - pinned.size <= 0) {
+    document.getElementById('optInfo').textContent = `all ${ORIG.length} fixed — clear or unfix some to give the optimiser room`;
+    return;
+  }
+  if (pinned.size === 0) {
+    const ok = await confirmModal(
+      '<b>No submaps are fixed.</b>' +
+      '<p>Optimise will reshape the whole map to best satisfy the pose-graph constraints, anchored only weakly to the current poses.</p>' +
+      '<p class="tip">Tip: fix the submaps you know are correctly placed first &mdash; the optimiser then shifts the remaining floating submaps to match them.</p>',
+      'Optimise anyway');
+    if (!ok) return;
+  }
+  runOptimise();
+};
+document.getElementById('exportBtn').onclick = async () => {
+  if (!MODEL) return;
+  document.getElementById('exportInfo').textContent = 'writing…';
+  const sp = {}; for (const s of submaps) sp[s.index] = [s.x, s.y, s.yaw];
+  const bytes = await Pbstream.write(MODEL.arrayBuffer, MODEL.pgIndex, sp);
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([bytes], { type: 'application/octet-stream' }));
+  a.download = FILENAME.replace(/\.pbstream$/, '') + '.straightened.pbstream';
+  a.click(); URL.revokeObjectURL(a.href);
+  document.getElementById('exportInfo').textContent = `downloaded ${a.download} (${(bytes.length / 1e6).toFixed(1)} MB)`;
+};
+document.getElementById('clearPins').onclick = () => { pinned.clear(); updatePinInfo(); showSel(); draw(); };
+document.getElementById('selPrev').onclick = () => cycleSel(-1);
+document.getElementById('selNext').onclick = () => cycleSel(1);
+function toggleFix(set) {
+  if (!set.size) return;
+  const allFixed = [...set].every(i => pinned.has(i));
+  for (const i of set) { if (allFixed) pinned.delete(i); else pinned.add(i); }
+  updatePinInfo(); showSel(); draw();
+}
+document.getElementById('fixChk').addEventListener('change', () => toggleFix(selection));
+document.getElementById('selAll').onclick = selectAll;
+document.getElementById('showFixedBtn').onclick = function () { showFixed = !showFixed; this.classList.toggle('on', showFixed); draw(); };
+document.getElementById('showFloatBtn').onclick = function () { showFloating = !showFloating; this.classList.toggle('on', showFloating); draw(); };
+document.getElementById('selBox').addEventListener('wheel', e => {
+  e.preventDefault(); e.stopPropagation(); cycleSel(e.deltaY < 0 ? 1 : -1);
+}, { passive: false });
+document.getElementById('resetBtn').onclick = () => {
+  if (!MODEL) return;
+  snapshot();
+  ORIG.forEach((p, i) => { const s = byIndex(i); if (s) { s.x = p[0]; s.y = p[1]; s.yaw = p[2]; } });
+  pinned.clear(); updatePinInfo(); document.getElementById('optInfo').textContent = ''; showSel(); draw();
+};
+
+// nearest submap to a world point; returns {index, dist2} of closest cell
+function hitTest(wx, wy) {
+  let best = -1, bd = Infinity;
+  for (const s of submaps) {
+    const co = Math.cos(s.yaw), sn = Math.sin(s.yaw), L = s.local;
+    for (let i = 0; i < L.length; i += 2) {
+      const cx = s.x + co * L[i] - sn * L[i + 1], cy = s.y + sn * L[i] + co * L[i + 1];
+      const dd = (cx - wx) * (cx - wx) + (cy - wy) * (cy - wy);
+      if (dd < bd) { bd = dd; best = s.index; }
+    }
+  }
+  return { index: best, dist: Math.sqrt(bd) };
+}
+const byIndex = i => submaps.find(s => s.index === i);
+function showSel() {
+  const lbl = document.getElementById('selLabel');
+  updateFixChk();
+  const n = selection.size;
+  if (n === 0) { selHud.textContent = ''; lbl.textContent = 'none'; return; }
+  if (n > 1) {
+    const nf = [...selection].filter(i => pinned.has(i)).length;
+    selHud.textContent = `${n} selected · ${nf} fixed, ${n - nf} floating` + (isolate ? '  [isolated]' : '');
+    lbl.textContent = n + ' sel';
+    return;
+  }
+  const only = selection.has(selected) ? selected : [...selection][0];
+  const s = byIndex(only);
+  selHud.textContent = `submap ${only}: x=${s.x.toFixed(2)} y=${s.y.toFixed(2)} yaw=${(s.yaw * 180 / Math.PI).toFixed(1)}° · ${pinned.has(only) ? 'fixed' : 'floating'}` + (isolate ? '  [isolated]' : '');
+  lbl.textContent = '#' + only;
+}
+
+// ---- pointer ----
+let mode = null, lastX = 0, lastY = 0, downX = 0, downY = 0, moved = false;
+cv.addEventListener('mousedown', e => {
+  downX = lastX = e.clientX; downY = lastY = e.clientY; moved = false;
+  if (e.button === 2 || e.button === 1) { mode = 'pan'; cv.classList.add('pan'); return; }  // right/middle = pan
+  gestureSnap = false;
+  if (e.ctrlKey || e.metaKey) { mode = selection.size ? 'move' : 'pan'; }       // ctrl+drag moves the selection
+  else if (e.shiftKey) { mode = 'box'; boxStart = [e.clientX, e.clientY]; boxEnd = boxStart.slice(); }
+  else { mode = 'pan'; }                                                          // plain drag pans
+  cv.classList.add(mode);
+});
+cv.addEventListener('contextmenu', e => e.preventDefault());
+let lastHX = -999, lastHY = -999;
+function updateHover(sx, sy) {
+  if (Math.abs(sx - lastHX) + Math.abs(sy - lastHY) < 3) return;   // throttle
+  lastHX = sx; lastHY = sy;
+  const [wx, wy] = s2w(sx, sy);
+  const hit = hitTest(wx, wy);
+  const h = (hit.dist * view.scale < 24) ? hit.index : -1;
+  if (h !== hover) {
+    hover = h;
+    cv.style.cursor = h < 0 ? '' : 'pointer';
+    draw();
+  }
+}
+addEventListener('mousemove', e => {
+  if (!mode) { updateHover(e.clientX, e.clientY); return; }
+  if (Math.abs(e.clientX - downX) + Math.abs(e.clientY - downY) > 3) moved = true;
+  if (mode === 'box') { boxEnd = [e.clientX, e.clientY]; draw(); return; }
+  if (mode === 'move') {
+    if (moved && !gestureSnap) { snapshot(); gestureSnap = true; }
+    const ddx = (e.clientX - lastX) / view.scale, ddy = -(e.clientY - lastY) / view.scale;
+    for (const i of selection) { const s = byIndex(i); if (s) { s.x += ddx; s.y += ddy; } }
+    showSel();
+  } else { view.ox += e.clientX - lastX; view.oy += e.clientY - lastY; }
+  lastX = e.clientX; lastY = e.clientY; draw();
+});
+addEventListener('mouseup', e => {
+  if (!mode) return;            // press didn't start on the canvas (e.g. a panel button) - ignore
+  cv.classList.remove('pan', 'move', 'box');
+  if (mode === 'box') {
+    if (moved) { selectInBox(boxStart[0], boxStart[1], boxEnd[0], boxEnd[1]); }
+    else {                                        // shift-click (no drag): toggle nearest
+      const hit = hitTest(...s2w(e.clientX, e.clientY));
+      const near = (hit.dist * view.scale < 22) ? hit.index : -1;
+      if (near >= 0) { if (selection.has(near)) selection.delete(near); else selection.add(near); selected = near; }
+    }
+    boxStart = boxEnd = null; showSel(); draw(); mode = null; return;
+  }
+  if (!moved) {                                   // plain/ctrl click: select nearest single
+    const hit = hitTest(...s2w(e.clientX, e.clientY));
+    const near = (hit.dist * view.scale < 22) ? hit.index : -1;
+    selection.clear();
+    if (near >= 0) { selection.add(near); selected = near; } else { selected = -1; isolate = false; }
+    showSel(); draw();
+  }
+  mode = null;
+});
+cv.addEventListener('wheel', e => {
+  e.preventDefault();
+  if ((e.ctrlKey || e.metaKey) && selection.size) {           // ctrl+wheel: fine-rotate the selection
+    const now = performance.now();
+    if (now - lastWheelRot > 400) snapshot();                 // one undo step per spin
+    lastWheelRot = now;
+    const th = (e.deltaY < 0 ? 1 : -1) * (e.shiftKey ? 0.125 : 0.025) * Math.PI / 180;   // shift = coarse
+    const [cx, cy] = centroidOf(selection);
+    rotateGroup(selection, th, cx, cy); showSel(); draw();
+    return;
+  }
+  const f = e.deltaY < 0 ? 1.1 : 1 / 1.1;
+  view.ox = e.clientX - (e.clientX - view.ox) * f;
+  view.oy = e.clientY - (e.clientY - view.oy) * f;
+  view.scale *= f; draw();
+}, { passive: false });
+const ARROWS = { ArrowLeft: [-1, 0], ArrowRight: [1, 0], ArrowUp: [0, 1], ArrowDown: [0, -1] };
+addEventListener('keydown', e => {
+  if ((e.ctrlKey || e.metaKey) && (e.key === 'z' || e.key === 'Z')) { e.preventDefault(); undo(); return; }
+  if (e.key === 'f') fit(selection.size ? submaps.filter(s => selection.has(s.index)) : null);
+  else if (e.key === 'a' || e.key === 'A') selectAll();
+  else if (e.key === '+' || e.key === '=') cycleSel(1);
+  else if (e.key === '-' || e.key === '_') cycleSel(-1);
+  else if (e.key === 'Escape') { document.activeElement && document.activeElement.blur(); selection.clear(); selected = -1; isolate = false; showSel(); draw(); }
+  else if (e.key === 'i' && selection.size) { isolate = !isolate; showSel(); draw(); }
+  else if ((e.key === '[' || e.key === ']') && selection.size) {
+    const deg = (e.ctrlKey || e.metaKey) && e.shiftKey ? 5 : e.shiftKey ? 1 : 0.1;   // fine / shift / ctrl+shift coarse
+    const th = (e.key === '[' ? 1 : -1) * deg * Math.PI / 180;
+    const [cx, cy] = centroidOf(selection);
+    snapshot(); rotateGroup(selection, th, cx, cy); showSel(); draw();
+  } else if (e.key === 'p' && selection.size) {
+    toggleFix(selection);
+  } else if (ARROWS[e.key] && selection.size) {
+    e.preventDefault();
+    const [dx, dy] = ARROWS[e.key], step = (e.ctrlKey || e.metaKey) && e.shiftKey ? 2.5 : e.shiftKey ? 0.5 : 0.05;
+    snapshot(); translateGroup(selection, dx * step, dy * step); showSel(); draw();
+  }
+});
+
+const drop = document.getElementById('drop'), dzView = drop.querySelector('.dz'), loadView = drop.querySelector('.loading'), loadStatus = document.getElementById('loadStatus');
+let loading = false;
+function setDrop(state) {                 // 'idle' | 'loading' | 'hidden'
+  drop.style.display = state === 'hidden' ? 'none' : 'flex';
+  dzView.hidden = state === 'loading';
+  loadView.hidden = state !== 'loading';
+  if (state !== 'loading') drop.classList.remove('over');
+}
+
+async function loadPbstream(arrayBuffer, name) {
+  FILENAME = name || 'trajectory';
+  MODEL = await Pbstream.load(arrayBuffer, msg => { loadStatus.textContent = msg; });
+  ORIG = []; for (const s of MODEL.poseGraph.submaps) ORIG[s.index] = [s.x, s.y, s.yaw];
+  EDGES = Solve.buildEdges(MODEL.poseGraph.constraints);
+  submaps = MODEL.submaps.map(s => ({ index: s.index, x: s.x, y: s.y, yaw: s.yaw, local: s.local, color: PALETTE[s.index % PALETTE.length] }));
+  pinned.clear(); selection.clear(); selected = -1; isolate = false; undoStack = [];
+  const total = submaps.reduce((a, s) => a + s.local.length / 2, 0);
+  info.textContent = `${FILENAME} — ${submaps.length} submaps, ${total.toLocaleString()} cells, ${EDGES.length} edges`;
+  updatePinInfo(); showSel(); resize(); fit();
+}
+async function handleFile(file) {
+  if (!file) { setDrop(MODEL ? 'hidden' : 'idle'); return; }
+  loading = true; setDrop('loading'); loadStatus.textContent = 'reading ' + file.name + ' …';
+  await new Promise(r => requestAnimationFrame(r));   // let the spinner paint before we block
+  try {
+    await loadPbstream(await file.arrayBuffer(), file.name);
+    setDrop('hidden');
+  } catch (e) {
+    loadStatus.textContent = '';
+    info.textContent = 'error: ' + e.message; console.error(e);
+    setDrop('idle');
+  }
+  loading = false;
+}
+document.getElementById('fileInput').addEventListener('change', e => handleFile(e.target.files[0]));
+
+// drag feedback: highlight the drop pad while a file is dragged over the window
+let dragDepth = 0;
+addEventListener('dragenter', e => {
+  e.preventDefault(); if (loading) return;
+  dragDepth++; if (MODEL) setDrop('idle'); drop.classList.add('over');
+});
+addEventListener('dragover', e => e.preventDefault());
+addEventListener('dragleave', e => {
+  e.preventDefault(); if (loading) return;
+  if (--dragDepth <= 0) { dragDepth = 0; drop.classList.remove('over'); if (MODEL) setDrop('hidden'); }
+});
+addEventListener('drop', e => {
+  e.preventDefault(); dragDepth = 0; drop.classList.remove('over');
+  handleFile(e.dataTransfer.files[0]);
+});
+info.textContent = 'drop a .pbstream to begin';
+</script>
+</body>
+</html>

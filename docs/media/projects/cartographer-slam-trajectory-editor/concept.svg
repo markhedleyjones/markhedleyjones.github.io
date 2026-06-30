@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+  <defs>
+    <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M50 0H0V50" fill="none" stroke="#7e8a97" stroke-opacity="0.10" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M1 1L9 5L1 9" fill="none" stroke="#d98a3d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <!-- semi-transparent panel: lets the page colour show through so it follows the theme -->
+  <rect width="1200" height="900" rx="2" fill="#14181d" fill-opacity="0.66"/>
+  <rect width="1200" height="900" fill="url(#grid)"/>
+
+  <!-- the trajectory: glow then line -->
+  <path d="M150 650 C 440 280, 780 300, 1050 560" fill="none" stroke="#aeb8c2" stroke-opacity="0.12" stroke-width="12" stroke-linecap="round"/>
+  <path d="M150 650 C 440 280, 780 300, 1050 560" fill="none" stroke="#c8d0d9" stroke-width="3.2" stroke-linecap="round"/>
+
+  <!-- submaps along the trajectory, with a gap where one is missing -->
+  <g fill="#aeb8c2" fill-opacity="0.14" stroke="#9aa4b0" stroke-width="1.7">
+    <rect x="133" y="633" width="34" height="34" rx="6"/>
+    <rect x="221" y="534" width="34" height="34" rx="6"/>
+    <rect x="358" y="426" width="34" height="34" rx="6"/>
+    <rect x="497" y="367" width="34" height="34" rx="6"/>
+    <rect x="683" y="356" width="34" height="34" rx="6"/>
+    <rect x="819" y="395" width="34" height="34" rx="6"/>
+    <rect x="950" y="472" width="34" height="34" rx="6"/>
+    <rect x="1033" y="543" width="34" height="34" rx="6"/>
+  </g>
+
+  <!-- the gap: where the displaced submap belongs -->
+  <rect x="590" y="352" width="34" height="34" rx="6" fill="none" stroke="#d98a3d" stroke-opacity="0.6" stroke-width="2" stroke-dasharray="5 5"/>
+
+  <!-- the displaced submap, held off the path, being dropped back into its slot -->
+  <path d="M548 256 C 575 300, 592 322, 602 350" fill="none" stroke="#d98a3d" stroke-width="2.6" stroke-linecap="round" marker-end="url(#arrow)"/>
+  <rect x="513" y="213" width="34" height="34" rx="6" fill="#d98a3d" fill-opacity="0.28" stroke="#e0954a" stroke-width="2.4"/>
+</svg>
