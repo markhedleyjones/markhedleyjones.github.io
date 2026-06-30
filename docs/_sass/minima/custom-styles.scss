@@ -390,6 +390,47 @@ $grid-gap: 40px;
   }
 }
 
+.launch-btn {
+  display: flex;
+  width: fit-content;
+  align-items: center;
+  gap: 9px;
+  background-color: #1c2229;
+  color: #e6ebf0;
+  border: 1px solid #2f3742;
+  line-height: 46px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  padding: 0 30px;
+  margin: 24px auto;
+  border-radius: $radius-md;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+
+  svg {
+    width: 19px;
+    height: 19px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    opacity: 0.85;
+  }
+
+  &:hover {
+    background-color: #242c35;
+    border-color: #45515f;
+    box-shadow: 0 3px 12px var(--color-shadow);
+    transform: translateY(-1px);
+    color: #fff;
+    text-decoration: none;
+  }
+
+  &:visited {
+    color: #e6ebf0;
+  }
+}
+
 // Shared content wrapper for page, note, and project layouts
 .skip-link {
   position: absolute;
@@ -711,6 +752,12 @@ $grid-gap: 40px;
   background-color: var(--color-image-bg);
 }
 
+// For semi-transparent feature images that should follow the page theme
+// (dark in dark mode, softened over the page colour in light mode).
+.project-feature-image--theme {
+  background-color: var(--color-bg);
+}
+
 // Related projects
 .related-projects {
   margin: 60px 0 40px;
@@ -1008,7 +1055,8 @@ $grid-gap: 40px;
     letter-spacing: -0.5px;
   }
 
-  .github-btn {
+  .github-btn,
+  .launch-btn {
     width: 100%;
     justify-content: center;
   }

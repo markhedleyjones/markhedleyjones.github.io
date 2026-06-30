@@ -85,7 +85,7 @@ layout: default
           <img class="project-hero-image" alt="{{ page.title | escape }}" src="{{ page.image}}"/>
         {%- endif -%}
         {%- if page.featureimage -%}
-          <img class="project-feature-image" alt="{{ page.title | escape }}" src="/media{{ page.permalink }}/{{ page.featureimage }}"/>
+          <img class="project-feature-image{% if page.feature_theme %} project-feature-image--theme{% endif %}" alt="{{ page.title | escape }}" src="/media{{ page.permalink }}/{{ page.featureimage }}"/>
         {%- endif -%}
     </header>
     <hr class="project-separator">
