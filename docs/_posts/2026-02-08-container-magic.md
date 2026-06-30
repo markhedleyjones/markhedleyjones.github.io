@@ -6,20 +6,22 @@ relevance: 6
 permalink: /projects/container-magic
 featureimage: logo.webp
 thumb: logo.webp
-description: A tool for rapidly creating containerised development environments from a single YAML configuration
-keywords: Docker, Podman, containers, development environment, YAML, DevOps, reproducible builds, GPU, multi-stage builds
+description: A tool that generates Docker and Podman container setups from a single YAML file - a Dockerfile plus standalone build and run scripts for development and production.
+keywords: Docker, Podman, Dockerfile generator, containers, dev containers, development environment, YAML, DevOps, reproducible builds, BuildKit, GPU, multi-stage builds, conda
 related_projects:
   - /projects/docker-bbq
 ---
 
-Container-magic is a successor to [Docker-BBQ](/projects/docker-bbq). It takes a single YAML configuration file and generates everything needed to build and run a containerised project: a Dockerfile and standalone build and run scripts. It works with any Docker Hub image as a starting point and supports both Docker and Podman.
+Container-magic takes a single YAML configuration file and generates everything needed to build and run a containerised project: a Dockerfile and standalone build and run scripts. It works with any Docker Hub image as a starting point and supports both Docker and Podman.
+
+Full documentation - the configuration reference, build steps, user handling, and more - is at [markhedleyjones.com/container-magic](/container-magic/).
 
 ## Getting Started
 
 ```bash
 pip install container-magic
 
-cm init python:3.11-slim my-project
+cm init python:3.11 my-project
 cd my-project
 ```
 
@@ -29,6 +31,12 @@ This creates a `cm.yaml`, generates a Dockerfile and standalone scripts, and set
 cm build                  # Build the development image
 cm run python --version   # Run a command inside the container
 cm run                     # Drop into an interactive shell
+```
+
+On Nix you can run it without installing anything, or add it as a flake input:
+
+```bash
+nix run github:markhedleyjones/container-magic -- init python:3.11 my-project
 ```
 
 Your code lives in the `workspace/` directory. During development it's mounted into the container, so any changes you make on the host are immediately available without rebuilding.
@@ -90,29 +98,32 @@ commands:
 
 ## Why Generate Dockerfiles?
 
-One benefit of generating Dockerfiles rather than writing them by hand is that container-magic enforces best practices automatically. Generated Dockerfiles always clean up package manager caches after installation (`rm -rf /var/lib/apt/lists/*` for APT, `--no-cache` for APK, `dnf clean all` for DNF), use `--no-install-recommends` to avoid pulling in unnecessary packages, and pass `--no-cache-dir` to pip. Related operations are combined into single `RUN` statements to minimise layers. These are things that are easy to forget or get wrong when writing Dockerfiles by hand.
+One benefit of generating Dockerfiles rather than writing them by hand is that container-magic enforces best practices automatically. Generated Dockerfiles always clean up package manager caches after installation (`rm -rf /var/lib/apt/lists/*` for APT, `--no-cache` for APK, `dnf clean all` for DNF), use `--no-install-recommends` to avoid pulling in unnecessary packages, pass `--no-cache-dir` to pip, and combine related operations into single `RUN` statements to minimise layers. These are easy to forget or get wrong when writing Dockerfiles by hand.
+
+It can also make builds more reproducible and faster: base images can be pinned to their content digest, BuildKit cache mounts let package managers reuse downloaded packages across rebuilds, and Python bytecode is precompiled after pip installs. Build-time secrets are passed via BuildKit secret mounts, so credentials never end up baked into an image layer.
 
 Container-magic is also a development-only tool. The generated Dockerfile, build script, and run script are standalone and only require Docker or Podman - there's no lock-in. Anyone can use your project without ever installing container-magic.
 
-## Use Cases
+## What I Use It For
 
-I use container-magic across a few projects:
-
-**This website** uses it to run Jekyll with live reload inside a container, keeping Ruby and its dependencies off the host machine.
-
-**SLAM and robotics** - a couple of ROS2 projects use container-magic for LiDAR SLAM processing. These pull in GPU support for CUDA-accelerated processing, mount serial devices for IMU and LiDAR hardware, and define commands for recording sensor data, running SLAM, and exporting maps.
-
-**GPU-accelerated text-to-speech** - a TTS service uses a PyTorch CUDA base image with audio support enabled, allowing the container to access PulseAudio on the host for playback.
+I reach for container-magic across a wide range of projects: local development environments, GPU-accelerated AI and machine-learning workloads, web scrapers, and services that run in production. The same single-file workflow scales from a quick throwaway environment to a reproducible production image, which is why it ends up in almost everything I build.
 
 ## Other Features
 
 * **Backend agnostic** - works with both Docker and Podman
 * **Automatic user handling** - your host user in development, a dedicated user in production, with no manual setup
-* **GPU, display, and audio support** - enabled via the runtime config
-* **Multi-stage builds** - separate base, development, and production stages
+* **Package managers** - apt, apk, dnf, pip, and conda/mamba/micromamba
+* **GPU, display, and audio support** - NVIDIA passthrough, X11/Wayland forwarding, and PulseAudio/PipeWire
+* **Multi-stage builds** - shared steps across separate base, development, and production stages
+* **Production entrypoint and command** - set a stage's `entrypoint` and `cmd`, emitted as a signal-safe exec form
+* **Dev Container support** - generate a `.devcontainer/devcontainer.json` to open the same image in VS Code or Codespaces
+* **Build secrets** - pass credentials at build time via BuildKit secret mounts, never baked into image layers
+* **Reproducible, cacheable builds** - opt-in base-image digest pinning and BuildKit cache mounts
 * **Data volumes** - shorthand for sibling folders that persist across runs without entering the image
 * **Asset caching** - download large files (ML models, datasets) once and reuse across builds
+* **AWS credential forwarding** - mount host AWS config into the container
 * **SELinux support**
-* **Jinja templating** - generated files use Jinja, making the system easier to maintain and extend
 
-{% include github-btn.html url="https://github.com/MarkHedleyJones/container-magic" %}
+Container-magic is the successor to my earlier [Docker-BBQ](/projects/docker-bbq) project, which solved the same problem with a more rigid, template-based approach.
+
+{% include github-btn.html url="https://github.com/markhedleyjones/container-magic" %}
