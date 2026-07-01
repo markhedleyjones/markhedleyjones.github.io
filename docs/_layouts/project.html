@@ -88,6 +88,9 @@ layout: default
           <img class="project-feature-image{% if page.feature_theme %} project-feature-image--theme{% endif %}" alt="{{ page.title | escape }}" src="/media{{ page.permalink }}/{{ page.featureimage }}"/>
         {%- endif -%}
     </header>
+
+    {%- include tags.html -%}
+
     <hr class="project-separator">
     <div class="post-content">
       {{ content }}
