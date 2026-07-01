@@ -1,4 +1,5 @@
 ---
+
 layout: project
 title:  "dmenu-extended"
 date:   2013-11-29 09:01:13 +0000
@@ -8,6 +9,7 @@ featureimage: logo.svg
 thumb: logo.svg
 description: A menu offering super fast access to your files, folders, and programs
 keywords: dmenu, Linux, application launcher, file search, desktop, productivity, open source
+tags: [tools, Linux]
 excerpt_separator: \{% endhighlight %\}
 ---
 

@@ -1,9 +1,11 @@
 ---
+
 layout: note
-title:  "Execute command on file update"
+title:  "Execute on Update"
 date:   2023-07-05
 permalink: /notes/execute-on-update
-description: "automatically re-run a script when you save it"
+description: "Run a command only when a file or directory is updated"
+tags: [Linux, bash]
 ---
 
 When developing scripts, the following can save a lot of time switching between terminal windows to re-run your script after making changes.

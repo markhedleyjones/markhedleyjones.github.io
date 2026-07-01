@@ -1,9 +1,11 @@
 ---
+
 layout: note
 title:  "GLIM T_lidar_imu for Ouster LiDARs"
 date:   2026-02-06
 permalink: /notes/glim-ouster-t-lidar-imu-transform
 description: "the documented transform is missing a 180° rotation"
+tags: [SLAM, LiDAR, calibration, ROS]
 ---
 
 [GLIM](https://github.com/koide3/glim)'s documented `T_lidar_imu` transform for Ouster LiDARs is wrong. Using it causes the trajectory to fly off within seconds of starting.
@@ -37,3 +39,5 @@ The correct transform needs that 180° Z-rotation (quaternion `[0, 0, 1, 0]`):
 This is computed from `T_lidar_imu = inverse(T_sensor_lidar) * T_sensor_imu`.
 
 GLIM [expects](https://github.com/koide3/glim/blob/c764baa/docs/parameters.md) the IMU Z-axis to point upward with gravity reading `[0, 0, +9.81]`. Without the rotation, the X/Y axes are flipped and IMU preintegration goes haywire.
+
+If you're working with SLAM trajectories, you might also be interested in my [Cartographer SLAM Trajectory Editor](/projects/cartographer-slam-trajectory-editor) — a browser tool for hand-fixing misaligned submaps and re-optimising pose graphs.

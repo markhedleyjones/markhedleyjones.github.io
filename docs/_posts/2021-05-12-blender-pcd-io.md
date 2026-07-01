@@ -1,4 +1,5 @@
 ---
+
 layout: project
 title:  "Import/Export Point Cloud Data in Blender"
 date:   2021-05-12 09:01:13 +0000
@@ -9,6 +10,7 @@ featureimage: feature.webp
 thumb: thumb.webp
 description: An add-on that enables .PCD file import/export in Blender 2.8+
 keywords: Blender, point cloud, PCD files, 3D modelling, Point Cloud Library, robotics, computer vision, LiDAR data
+tags: [point-cloud, tools]
 related_projects:
   - /projects/autonomous-navigation-kiwifruit-orchards
   - /projects/calibration-checkerboard-collection

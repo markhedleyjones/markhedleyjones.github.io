@@ -1,4 +1,5 @@
 ---
+
 layout: project
 title:  "Docker-BBQ"
 date:   2022-07-23 19:12:00 +0000
@@ -8,6 +9,7 @@ featureimage: logo.webp
 thumb: logo.webp
 description: A set of bash scripts for creating and running templated docker projects
 keywords: Docker, bash, development environment, containerisation, templates, DevOps
+tags: [containers]
 modified_date: 2026-02-08
 excerpt_separator: \{% endhighlight %\}
 ---

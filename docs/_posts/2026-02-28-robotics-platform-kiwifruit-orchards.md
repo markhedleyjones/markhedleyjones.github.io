@@ -1,4 +1,5 @@
 ---
+
 layout: project
 title: "Robotics Platform for Kiwifruit Orchards"
 date: 2026-02-28
@@ -8,6 +9,7 @@ featureimage: feature.webp
 thumb: thumb.webp
 description: Building a robotics platform to carry harvesting and pollination robots through kiwifruit orchards
 keywords: robotics, kiwifruit, autonomous vehicle, agricultural robotics, ROS, CAN bus, New Zealand, Robotics Plus
+tags: [robotics, agriculture, hardware]
 math: true
 modified_date: 2026-03-07
 related_projects:

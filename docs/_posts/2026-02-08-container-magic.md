@@ -1,4 +1,5 @@
 ---
+
 layout: project
 title: "Container Magic"
 date: 2026-02-08
@@ -8,6 +9,7 @@ featureimage: logo.webp
 thumb: logo.webp
 description: A tool that generates Docker and Podman container setups from a single YAML file - a Dockerfile plus standalone build and run scripts for development and production.
 keywords: Docker, Podman, Dockerfile generator, containers, dev containers, development environment, YAML, DevOps, reproducible builds, BuildKit, GPU, multi-stage builds, conda
+tags: [containers, tools]
 related_projects:
   - /projects/docker-bbq
 ---

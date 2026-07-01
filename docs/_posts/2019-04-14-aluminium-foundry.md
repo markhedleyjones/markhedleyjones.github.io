@@ -1,4 +1,5 @@
 ---
+
 layout: project
 title:  "Aluminium Foundry"
 date:   2019-04-14 09:01:13 +0000
@@ -9,6 +10,7 @@ featureimage: feature.webp
 thumb: thumb.webp
 description: Melt aluminium with a home-made aluminium foundry
 keywords: aluminium foundry, metal casting, propane furnace, maker project, metalworking
+tags: [hardware]
 excerpt_separator: \{% endhighlight %\}
 ---
 

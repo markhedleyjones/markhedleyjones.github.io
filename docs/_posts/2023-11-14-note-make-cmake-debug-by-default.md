@@ -1,9 +1,11 @@
 ---
+
 layout: note
-title:  "Make a CMake build debug by default"
+title:  "Make CMake Debug by Default"
 date:   2023-11-14
 permalink: /notes/make-cmake-debug-by-default
-description: "set debug as default build type instead of release"
+description: "Set CMAKE_BUILD_TYPE to Debug in CMake presets"
+tags: [CMake, cpp]
 ---
 
 Add this to your CMakeLists.txt:

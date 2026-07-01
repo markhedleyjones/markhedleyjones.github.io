@@ -1,4 +1,5 @@
 ---
+
 layout: project
 title:  "Python Tone Generator"
 date:   2014-06-29 09:01:13 +0000
@@ -8,6 +9,7 @@ featureimage: logo.svg
 thumb: logo.svg
 description: Generate tones or frequency sweeps on Linux in Python
 keywords: Python, audio, tone generator, frequency sweep, PyAudio, Linux, signal processing
+tags: [Python]
 excerpt_separator: \{% endhighlight %\}
 ---
 This script generates a frequency sweep from 50 Hz to 10 kHz and is easily adjustable. Make sure you've installed pyaudio to make this run.
