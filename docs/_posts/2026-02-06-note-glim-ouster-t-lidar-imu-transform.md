@@ -40,4 +40,4 @@ This is computed from `T_lidar_imu = inverse(T_sensor_lidar) * T_sensor_imu`.
 
 GLIM [expects](https://github.com/koide3/glim/blob/c764baa/docs/parameters.md) the IMU Z-axis to point upward with gravity reading `[0, 0, +9.81]`. Without the rotation, the X/Y axes are flipped and IMU preintegration goes haywire.
 
-If you're working with SLAM trajectories, you might also be interested in my [Cartographer SLAM Trajectory Editor](/projects/cartographer-slam-trajectory-editor) — a browser tool for hand-fixing misaligned submaps and re-optimising pose graphs.
+If you're working with SLAM trajectories, you might also be interested in my [Cartographer SLAM Trajectory Editor](/projects/cartographer-slam-trajectory-editor), a browser tool for hand-fixing misaligned submaps and re-optimising pose graphs.

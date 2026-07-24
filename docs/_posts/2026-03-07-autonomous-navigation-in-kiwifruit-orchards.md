@@ -18,7 +18,7 @@ related_projects:
 
 Between 2015 and 2018 a small team of engineers and myself worked on building a series-hybrid [multipurpose platform for use in kiwifruit orchards](/projects/robotics-platform-kiwifruit-orchards). This post describes my approach to writing the software to make it navigate those orchards autonomously - which are GNSS (Global Navigation Satellite Systems such as GPS, GLONASS, Galileo, and BeiDou) denied during non-winter months due to foliage cover.
 
-If you work with Cartographer pbstream files, check out my [Cartographer SLAM Trajectory Editor](/projects/cartographer-slam-trajectory-editor) — a browser tool for fixing misaligned submaps and re-optimising pose graphs.
+If you work with Cartographer pbstream files, check out my [Cartographer SLAM Trajectory Editor](/projects/cartographer-slam-trajectory-editor), a browser tool for fixing misaligned submaps and re-optimising pose graphs.
 
 ## Goal
 

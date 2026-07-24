@@ -30,6 +30,6 @@ This tool lets you go through the submaps and line them up by hand. It also incl
 1. Your `.pbstream` is parsed, edited, optimised, and re-written entirely client-side in JavaScript. Nothing is uploaded, so it is safe to use on private data.
 2. It's designed for 2D trajectories and hasn't been tested with 3D trajectories yet. Also, because everything runs in the browser, very large bags with a lot of data may become heavy to work with, depending on your machine's available resources.
 
-If you're working with GLIM and Ouster LiDARs, I also have a note on the [correct T_lidar_imu transform](/notes/glim-ouster-t-lidar-imu-transform) — the documented one is missing a 180-degree rotation.
+If you're working with GLIM and Ouster LiDARs, I also have a note on the [correct T_lidar_imu transform](/notes/glim-ouster-t-lidar-imu-transform): the documented one is missing a 180-degree rotation.
 
 {% include github-btn.html url="https://github.com/markhedleyjones/cartographer-slam-trajectory-editor" %}

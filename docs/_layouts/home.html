@@ -38,7 +38,7 @@ layout: default
           <a class="note-item" href="{{ note.permalink | relative_url }}">
             <span class="note-item-title">{{ note.title }}</span>
             {%- if note.description %}
-              <span class="note-item-desc">— {{ note.description }}</span>
+              <span class="note-item-desc">: {{ note.description }}</span>
             {%- endif %}
             <span class="note-item-date">{{ note.date | date: "%Y-%m-%d" }}</span>
           </a>

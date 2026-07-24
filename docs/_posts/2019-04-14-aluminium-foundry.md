@@ -18,9 +18,9 @@ After taking inspiration from a number of furnaces seen on YouTube, I decided to
 
 # Electric Foundry
 
-I settled on an electric furnace design as it seemed to be the easiest and safest method—cheaper than propane, simpler to control, and I was already familiar with electrical systems. I sourced high-temperature bricks and tiles from a refractory brick supplier (firebricks.co.nz), capable of withstanding temperatures of 1000°C (1832°F), and 2kW nichrome heating element wire from eBay. To hold the furnace together I used modular workshop shelving from a hardware store which bolted together like Meccano.
+I settled on an electric furnace design as it seemed to be the easiest and safest method: cheaper than propane, simpler to control, and I was already familiar with electrical systems. I sourced high-temperature bricks and tiles from a refractory brick supplier (firebricks.co.nz), capable of withstanding temperatures of 1000°C (1832°F), and 2kW nichrome heating element wire from eBay. To hold the furnace together I used modular workshop shelving from a hardware store which bolted together like Meccano.
 
-The electric version cost approximately 200 NZD (£100/$120) for materials and took a weekend to construct. The furnace ran on 230V AC mains power, drawing about 8.7 amps with simple on/off control—no temperature monitoring or control system.
+The electric version cost approximately 200 NZD (£100/$120) for materials and took a weekend to construct. The furnace ran on 230V AC mains power, drawing about 8.7 amps via simple on/off control, with no temperature monitoring or control system.
 
 The first image shows the initial frame assembly. The electric element wire was embedded in the fire-bricks as they were being cemented together. The completed unit is shown ready for initial testing. As a crucible, I cut and welded a section of 40mm (1.6") box-section mild steel to a steel plate. Two holes were drilled into the sides of the crucible, which allowed tongs to lock in for raising and lowering into the furnace, as well as pouring the molten aluminium out.
 
@@ -84,4 +84,4 @@ The idea was to pour aluminium in one of the holes in the top until the aluminiu
 
 The first problem was that as heat was lost to the mould, the aluminium would solidify inside the sprue and cause a blockage. To try and solve this, I heated the mould up to roughly the same temperature as the aluminium and tried again. This time the aluminium made it part-way into the cavity, but still didn't fill the hexagonal volume.
 
-In a third attempt, instead of trying to pour aluminium into the cavity I melted the aluminium while it was inside the mould's sprue. This approach still didn't fill the cavity with aluminium; in fact the aluminium just pooled inside the sprue. My theory is that the surface tension of the molten aluminium was too high, preventing it from running down into the narrow channels of the mould. I decided that in order to make this work, a forced injection method would be required—beyond the scope of my experiment.
+In a third attempt, instead of trying to pour aluminium into the cavity I melted the aluminium while it was inside the mould's sprue. This approach still didn't fill the cavity with aluminium; in fact the aluminium just pooled inside the sprue. My theory is that the surface tension of the molten aluminium was too high, preventing it from running down into the narrow channels of the mould. I decided that in order to make this work, a forced injection method would be required, which was beyond the scope of my experiment.
