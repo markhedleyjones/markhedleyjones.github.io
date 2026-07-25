@@ -5,7 +5,7 @@ title:  "Compile C++ With Warnings"
 date:   2023-12-10
 permalink: /notes/compile-cpp-with-warnings
 description: "How to set up strict compiler warnings in CMake as an error"
-tags: [cpp, CMake]
+tags: [cpp, cmake]
 ---
 
 For CMake projects, add the following to your CMakeLists.txt:

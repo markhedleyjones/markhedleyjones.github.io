@@ -10,7 +10,7 @@ thumb: concept.webp
 feature_theme: true
 description: A browser-based Cartographer SLAM trajectory editor and re-optimiser for hand-fixing trajectories.
 keywords: Cartographer, SLAM, pbstream, pose graph, trajectory, submaps, occupancy grid, mapping, robotics, browser tool
-tags: [SLAM, point-cloud, tools]
+tags: [slam, point-cloud, tools]
 related_projects:
   - /projects/robotics-platform-kiwifruit-orchards
   - /projects/autonomous-navigation-kiwifruit-orchards

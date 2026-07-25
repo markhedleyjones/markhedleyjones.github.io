@@ -1,0 +1,23 @@
+# Display labels for post tags. Tags are written in post front matter as
+# lowercase slugs so the /tags/ anchors stay stable; this maps each one to the
+# label shown to readers. A tag with no entry here falls back to its slug.
+
+agriculture: Agriculture
+bash: Bash
+calibration: Calibration
+cmake: CMake
+cnc: CNC
+computer-vision: Computer Vision
+containers: Containers
+cpp: C++
+electronics: Electronics
+hardware: Hardware
+lidar: LiDAR
+linux: Linux
+point-cloud: Point Cloud
+python: Python
+robotics: Robotics
+ros: ROS
+slam: SLAM
+tools: Tools
+web: Web

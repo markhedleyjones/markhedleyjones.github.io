@@ -9,7 +9,7 @@ featureimage: logo.svg
 thumb: logo.svg
 description: A menu offering super fast access to your files, folders, and programs
 keywords: dmenu, Linux, application launcher, file search, desktop, productivity, open source
-tags: [tools, Linux]
+tags: [tools, linux]
 excerpt_separator: \{% endhighlight %\}
 ---
 

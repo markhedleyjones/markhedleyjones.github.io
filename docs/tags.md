@@ -12,7 +12,7 @@ description: Browse technical notes and projects by topic.
   {%- assign tag_slug = tag[0] | slugify -%}
   {%- assign tag_count = tag[1] | size -%}
   <section class="tag-section">
-    <h2 id="{{ tag_slug }}">{{ tag[0] }} <span class="tag-count">({{ tag_count }})</span></h2>
+    <h2 id="{{ tag_slug }}">{{ site.data.tag_names[tag_slug] | default: tag[0] }} <span class="tag-count">({{ tag_count }})</span></h2>
     <ul class="tag-posts">
     {%- for post in tag[1] -%}
       {%- if post.layout == "note" -%}

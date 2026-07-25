@@ -9,7 +9,7 @@ featureimage: feature.webp
 thumb: thumb.webp
 description: Autonomously navigating a two-tonne robotics platform through kiwifruit orchards using lidar, SLAM, and a carrot
 keywords: robotics, autonomous navigation, SLAM, lidar, kiwifruit, ROS, Google Cartographer, orchard
-tags: [SLAM, agriculture, ROS]
+tags: [slam, agriculture, ros]
 related_projects:
   - /projects/robotics-platform-kiwifruit-orchards
   - /projects/bamboo-lidar-mount

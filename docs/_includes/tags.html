@@ -1,7 +1,8 @@
 {%- if page.tags -%}
 <div class="post-tags">
   {%- for tag in page.tags -%}
-    <a href="/tags/#{{ tag | slugify }}" class="post-tag">{{ tag }}</a>
+    {%- assign tag_slug = tag | slugify -%}
+    <a href="/tags/#{{ tag_slug }}" class="post-tag">{{ site.data.tag_names[tag_slug] | default: tag }}</a>
   {%- endfor -%}
 </div>
 {%- endif -%}
