@@ -40,47 +40,45 @@ The electric furnace was operated with RCD (residual current device) protection 
 
 Unfortunately, after running the furnace for about 30 minutes, the electric element wire burnt itself out. After replacing the element, the same problem occurred. Looking back, I believe this was due to several factors: firstly, I may not have uncoiled the nichrome wire sufficiently, potentially causing shorts where the wire touched itself. Secondly, embedding the wire directly into the insulating fire-bricks likely created hot-spots, particularly in the corners of the square chamber. A round chamber design might have provided better heat distribution. The wire was correctly sized for the 2kW power requirement, so the failures were likely due to poor installation technique rather than undersized components.
 
-![Burnt-out heating element](/media/projects/aluminium-foundry/IMG_20160911_104849.webp)
+{% include image.html src="/media/projects/aluminium-foundry/IMG_20160911_104849.webp" alt="Burnt-out heating element" %}
 
 In the end, I broke the bricks apart and added an entry hole for a propane torch.
 
-![Propane powered foundry](/media/projects/aluminium-foundry/IMG_20161106_152910.webp)
+{% include image.html src="/media/projects/aluminium-foundry/IMG_20161106_152910.webp" alt="Propane powered foundry" %}
 
 # Propane Foundry
 
 For the second version of the foundry I decided to have the propane torch come up from the underside of the furnace to keep the heat even. I reused the same frame, but instead of using fire-bricks, I used fire-tiles which were thinner. The propane setup cost approximately 300 NZD (£150/$180) including the bottle, adjustable regulator, fittings, and flashback arrestor for safety.
 
 <div class="image-pair">
-<img src="/media/projects/aluminium-foundry/IMG_20170122_174136.webp" alt="Propane foundry frame with fire-tiles">
-<img src="/media/projects/aluminium-foundry/IMG_20170305_104747.webp" alt="Fire-tile cutting for propane entry">
+{% include image.html half=true src="/media/projects/aluminium-foundry/IMG_20170122_174136.webp" alt="Propane foundry frame with fire-tiles" %}
+{% include image.html half=true src="/media/projects/aluminium-foundry/IMG_20170305_104747.webp" alt="Fire-tile cutting for propane entry" %}
 </div>
-![Adding new entry port](/media/projects/aluminium-foundry/IMG_20170305_104733.webp)
+{% include image.html src="/media/projects/aluminium-foundry/IMG_20170305_104733.webp" alt="Adding new entry port" %}
 
-![Burner positioning](/media/projects/aluminium-foundry/IMG_20170305_104802.webp)
+{% include image.html src="/media/projects/aluminium-foundry/IMG_20170305_104802.webp" alt="Burner positioning" %}
 
 A length of wood was bolted to the frame to keep the burner in position.
 
 The burner itself was made from a combination of pneumatic tool fittings, a MIG welding handpiece insert that I brazed to the inside of a hose connection fitting, and a long pipe with tap that I purchased from the BBQ section of a hardware store. The adjustable propane regulator was purchased from eBay.
 
-![Furnace assembly connected to propane tank](/media/projects/aluminium-foundry/IMG_20170305_104717.webp)
+{% include image.html src="/media/projects/aluminium-foundry/IMG_20170305_104717.webp" alt="Furnace assembly connected to propane tank" %}
 
-![Final furnace design](/media/projects/aluminium-foundry/IMG_20170305_104710.webp)
+{% include image.html src="/media/projects/aluminium-foundry/IMG_20170305_104710.webp" alt="Final furnace design" %}
 
 # Final Result
 
-<div class="video-container">
-<iframe src="https://www.youtube-nocookie.com/embed/y7v98cf1fbg" title="Aluminium foundry melting and casting" allowfullscreen></iframe>
-</div>
+{% include video-embed.html url="y7v98cf1fbg" title="Aluminium foundry melting and casting" %}
 
 # Casting Trial
 
 As a trial, I had made a stainless steel mould to see if I could cast a small hexagon. It was made from 8mm laser cut stainless steel plate that was stacked to make a hexagonal cavity. The animation below shows how it was constructed.
 
-![Stainless Steel Mould Construction](/media/projects/aluminium-foundry/DSC_6477-ANIMATION.webp)
+{% include image.html src="/media/projects/aluminium-foundry/DSC_6477-ANIMATION.webp" alt="Stainless Steel Mould Construction" %}
 
 The idea was to pour aluminium in one of the holes in the top until the aluminium became visible at the exit hole. The image below shows the mould bolted together.
 
-![Assembled aluminium mould](/media/projects/aluminium-foundry/IMG_20170305_120411.webp)
+{% include image.html src="/media/projects/aluminium-foundry/IMG_20170305_120411.webp" alt="Assembled aluminium mould" %}
 
 The first problem was that as heat was lost to the mould, the aluminium would solidify inside the sprue and cause a blockage. To try and solve this, I heated the mould up to roughly the same temperature as the aluminium and tried again. This time the aluminium made it part-way into the cavity, but still didn't fill the hexagonal volume.
 

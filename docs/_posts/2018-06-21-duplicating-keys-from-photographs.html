@@ -61,17 +61,15 @@ To duplicate the key, this guide will take you through each of the following ste
 <p>
 To hold the key down I cut the shape of the key out from a piece of MDF. A well was cut into the MDF underneath where the profile was to be cut. To keep the key from jumping out of its I screwed a piece of wood over the top while cutting. One mistake I made was assuming that the dimensions of the blank key would be the same as the target key - they wern't. This meant that the profile wasn't cut in the right spot.</p>
 <div class="image-pair">
-  <img loading="lazy" src="/media/projects/duplicating-keys-from-photographs/DSC_5101.webp" alt="Key in CNC jig">
-  <img loading="lazy" src="/media/projects/duplicating-keys-from-photographs/DSC_5100.webp" alt="CNC cutting the key profile">
+  {% include image.html half=true src="/media/projects/duplicating-keys-from-photographs/DSC_5101.webp" alt="Key in CNC jig" %}
+  {% include image.html half=true src="/media/projects/duplicating-keys-from-photographs/DSC_5100.webp" alt="CNC cutting the key profile" %}
 </div>
 <h2>Result</h2>
 <p>
 I'm really happy with the shape of the contour in the new key (front), it's smooth and follows the original contours very well. You can see the misalignment between the keys when looking at the fronf of the key (notice the front key sticks out a millimeter or so further). Luckily, the position error of the contour didn't affect the operation of the key, as the following video proves.</p>
 <p>
-<img loading="lazy" src="/media/projects/duplicating-keys-from-photographs/DSC_5115.webp" alt="Comparison of new key (dark blue) with original key (light blue)"></p>
-<div class="video-container">
-  <iframe src="https://www.youtube-nocookie.com/embed/-KiafLnPxmo?controls=1" title="Testing a key duplicated from a photograph" loading="lazy" allowfullscreen></iframe>
-</div>
+{% include image.html src="/media/projects/duplicating-keys-from-photographs/DSC_5115.webp" alt="Comparison of new key (dark blue) with original key (light blue)" %}</p>
+{% include video-embed.html url="-KiafLnPxmo" title="Testing a key duplicated from a photograph" %}
 <h2>Camera Calibration and Image Undistortion</h2>
 <p>
   The code used to calibrate the camera and undistort the photo of the key is given below. This code came straight from the OpenCV camera calibration tutorial so there is nothing special here. I have put it here purely for convenience.

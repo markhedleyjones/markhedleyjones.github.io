@@ -2,8 +2,8 @@
   Custom favicon, Open Graph images, and performance optimisations
 {% endcomment %}
 
-<!-- Preconnect for external embeds -->
-<link rel="preconnect" href="https://www.youtube-nocookie.com">
+<!-- Embedded videos are click-to-load, so resolve the host but do not open a
+     connection until the visitor shows intent (see the handler below) -->
 <link rel="dns-prefetch" href="https://www.youtube-nocookie.com">
 
 <!-- Favicons -->
@@ -40,6 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var overlay = document.createElement('div');
   overlay.className = 'lightbox-overlay';
   var fullImg = document.createElement('img');
+  fullImg.alt = '';
   overlay.appendChild(fullImg);
   document.body.appendChild(overlay);
 
@@ -55,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
   if (!content) return;
 
   content.addEventListener('click', function(e) {
-    if (e.target.tagName === 'IMG' && !e.target.closest('a')) {
+    if (e.target.tagName === 'IMG' && !e.target.closest('a') && !e.target.closest('.video-facade')) {
       fullImg.src = e.target.src;
       fullImg.alt = e.target.alt;
       fullImg.className = e.target.classList.contains('line-drawing') ? 'line-drawing' : '';
@@ -65,6 +66,41 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 {%- endif -%}
+
+<!-- Click-to-load YouTube embeds: swap the poster for the real player on demand -->
+<script>
+(function() {
+  var PLAYER_ORIGIN = 'https://www.youtube-nocookie.com';
+  var warmed = false;
+
+  // Open the connection when the pointer reaches a poster, so the player still
+  // starts promptly once the click lands.
+  function warmConnection() {
+    if (warmed) return;
+    warmed = true;
+    var link = document.createElement('link');
+    link.rel = 'preconnect';
+    link.href = PLAYER_ORIGIN;
+    document.head.appendChild(link);
+  }
+
+  document.addEventListener('pointerover', function(event) {
+    if (event.target.closest('.video-facade')) warmConnection();
+  }, { passive: true });
+
+  document.addEventListener('click', function(event) {
+    var facade = event.target.closest('.video-facade');
+    if (!facade) return;
+
+    var iframe = document.createElement('iframe');
+    iframe.src = PLAYER_ORIGIN + '/embed/' + facade.dataset.videoId + '?controls=1&autoplay=1';
+    iframe.title = facade.dataset.videoTitle || 'YouTube video';
+    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+    iframe.allowFullscreen = true;
+    facade.replaceWith(iframe);
+  });
+})();
+</script>
 
 {%- if page.math -%}
 <!-- KaTeX math rendering -->

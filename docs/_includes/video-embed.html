@@ -1,14 +1,33 @@
 {% comment %}
 Usage: {% include video-embed.html url="VIDEO_ID" caption="Caption text" %}
-VIDEO_ID should be just the YouTube video ID (e.g., "Iov8SzQ97aU")
+VIDEO_ID should be just the YouTube video ID (e.g., "Iov8SzQ97aU").
+
+Pass title="..." instead of caption="..." where the surrounding prose already
+introduces the video: it names the video for assistive technology without
+printing a caption underneath.
+
+Renders a poster image rather than the player. The iframe is swapped in on
+click by the handler in custom-head.html, so no request reaches YouTube until
+the visitor asks for the video. Posters live in /media/video-posters/ and are
+produced by tools/fetch-video-posters.sh.
 {% endcomment %}
 
+{%- assign video_title = include.title | default: include.caption | default: 'YouTube video' -%}
 <figure class="media-container">
   <div class="video-container">
-    <iframe src="https://www.youtube-nocookie.com/embed/{{ include.url }}?controls=1"
-            title="{{ include.caption | default: 'YouTube video' }}"
-            loading="lazy"
-            allowfullscreen></iframe>
+    <button type="button" class="video-facade"
+            data-video-id="{{ include.url }}"
+            data-video-title="{{ video_title | escape }}"
+            aria-label="Play video: {{ video_title | escape }}">
+      <img src="/media/video-posters/{{ include.url }}.webp" alt=""
+           width="1280" height="720" loading="lazy" decoding="async">
+      <span class="video-facade-play" aria-hidden="true">
+        <svg viewBox="0 0 68 48" focusable="false">
+          <path class="video-facade-play-bg" d="M66.5 7.7c-.8-2.9-2.5-5.4-5.4-6.2C55.8.1 34 0 34 0S12.2.1 6.9 1.5C4 2.3 2.3 4.8 1.5 7.7 0 13 0 24 0 24s0 11 1.5 16.3c.8 2.9 2.5 5.4 5.4 6.2C12.2 47.9 34 48 34 48s21.8-.1 27.1-1.5c2.9-.8 4.6-3.3 5.4-6.2C68 35 68 24 68 24s0-11-1.5-16.3z"/>
+          <path d="M45 24 27 14v20" fill="#fff"/>
+        </svg>
+      </span>
+    </button>
   </div>
   {% if include.caption %}
   <figcaption>{{ include.caption }}</figcaption>
