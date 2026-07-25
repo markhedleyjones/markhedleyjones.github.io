@@ -40,7 +40,7 @@ The chassis is assembled from laser-cut and folded 3 mm mild steel sections, wel
 
 At the back, the rear wheels are spaced wide enough to fit a standard kiwifruit bin between them, with a pneumatic bin lifter to pick up and set down full bins. The flat mounting area on top sits just 360 mm off the ground, low enough for harvesting arms to reach up into the canopy overhead.
 
-From the bin lifter, the chassis tapers inward toward the front. The triangular space between the rails houses all the electronics: battery packs, motor controllers, contactors, and DC-DC converters, tucked away beneath the module mounting area. The chassis narrows toward the front to give the steered wheels room to turn. Steering uses Ackermann geometry on the front two wheels, each driven by a brushless AC motor through a 64:1 planetary gearbox producing 470 Nm of output torque. The worst-case steering load is overcoming static friction on dry concrete with 500 kg per wheel, which works out to 388 Nm. The 470 Nm available gives a comfortable margin.
+From the bin lifter, the chassis tapers inwards towards the front. The triangular space between the rails houses all the electronics: battery packs, motor controllers, contactors, and DC-DC converters, tucked away beneath the module mounting area. The chassis narrows towards the front to give the steered wheels room to turn. Steering uses Ackermann geometry on the front two wheels, each driven by a brushless AC motor through a 64:1 planetary gearbox producing 470 Nm of output torque. The worst-case steering load is overcoming static friction on dry concrete with 500 kg per wheel, which works out to 388 Nm. The 470 Nm available gives a comfortable margin.
 
 <div class="image-pair">
 <figure class="media-container">
@@ -139,7 +139,7 @@ A cabinet section welded up with its lid and gasket channel visible, and after p
 
 ![Motor controller mounted on its heatsink plate inside the cabinet](/media/projects/robotics-platform-kiwifruit-orchards/motor-controller-heatsink.webp)
 
-One of six motor controllers (Sevcon Gen4) bolted to its heatsink plate inside the cabinet, with cooling fans behind, drawing air through ventilation slots toward the rear. Next to the controller sits an isolated bus bar and below that a 500 A DC contactor. The mounting plate was designed with provisions for additional heatsinking material underneath the controller, but in practice the thermal conduction into the plate alone was enough to keep them cool, so we never needed it.
+One of six motor controllers (Sevcon Gen4) bolted to its heatsink plate inside the cabinet, with cooling fans behind, drawing air through ventilation slots towards the rear. Next to the controller sits an isolated bus bar and below that a 500 A DC contactor. The mounting plate was designed with provisions for additional heatsinking material underneath the controller, but in practice the thermal conduction into the plate alone was enough to keep them cool, so we never needed it.
 
 <figure class="media-container">
 <img src="/media/projects/robotics-platform-kiwifruit-orchards/platform-electronics-installed.webp" alt="The platform in the workshop with the cabinet installed and power electronics mounted">
