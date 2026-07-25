@@ -17,7 +17,6 @@ from pathlib import Path
 from PIL import Image
 
 DOCS = Path(__file__).parent / "docs"
-MEDIA = DOCS / "media"
 SIZES_DATA = DOCS / "_data" / "image_sizes.yml"
 
 # Content sits in a 1000px column, so the widest an image is ever drawn is
