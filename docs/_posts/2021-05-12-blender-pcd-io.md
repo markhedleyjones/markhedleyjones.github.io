@@ -26,4 +26,4 @@ The add-on handles the most common PCD formats (ASCII, binary, and binary compre
 
 {% include github-btn.html url="https://github.com/MarkHedleyJones/blender-pcd-io" %}
 
-[![Importing a PCD file with blender](/media/projects/blender-pcd-io/screenshot.webp)](https://github.com/MarkHedleyJones/blender-pcd-io)
+[{% include image.html src="/media/projects/blender-pcd-io/screenshot.webp" alt="Importing a PCD file with blender" %}](https://github.com/MarkHedleyJones/blender-pcd-io)

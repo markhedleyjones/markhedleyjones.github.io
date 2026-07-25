@@ -32,7 +32,7 @@ Kiwifruit is New Zealand's largest horticultural export. What makes kiwifruit or
 The requirements were heavy: 1000 kg payload capacity, fit under that 1.4 m clearance, navigate autonomously without satellite positioning, supply 8 kW of electrical power to onboard modules, and provide a module mounting area low enough for the harvesting arms to reach up into the canopy. It also needed to make headland turns at row ends and lift fruit bins between its rear wheels. Nothing on the market (the ClearPath Warthog being the closest) could meet this combination, so it had to be designed from scratch.
 
 <figure class="media-container">
-<img class="line-drawing" src="/media/projects/robotics-platform-kiwifruit-orchards/chassis-drawing.webp" alt="Isometric view of the chassis structure" style="padding: 40px; box-shadow: none;">
+{% include image.html src="/media/projects/robotics-platform-kiwifruit-orchards/chassis-drawing.webp" alt="Isometric view of the chassis structure" class="line-drawing" style="padding: 40px; box-shadow: none;" %}
 <figcaption>The 3 mm mild steel chassis design as it existed when I joined the project</figcaption>
 </figure>
 
@@ -44,11 +44,11 @@ From the bin lifter, the chassis tapers inwards towards the front. The triangula
 
 <div class="image-pair">
 <figure class="media-container">
-<img src="/media/projects/robotics-platform-kiwifruit-orchards/kiwifruit-bin.webp" alt="A kiwifruit bin full of freshly harvested gold kiwifruit">
+{% include image.html half=true src="/media/projects/robotics-platform-kiwifruit-orchards/kiwifruit-bin.webp" alt="A kiwifruit bin full of freshly harvested gold kiwifruit" %}
 <figcaption>A standard kiwifruit bin</figcaption>
 </figure>
 <figure class="media-container">
-<img class="line-drawing" src="/media/projects/robotics-platform-kiwifruit-orchards/ackermann-steering.webp" alt="Top-down diagram of Ackermann steering geometry showing front wheel axle lines converging at the turning centre">
+{% include image.html half=true src="/media/projects/robotics-platform-kiwifruit-orchards/ackermann-steering.webp" alt="Top-down diagram of Ackermann steering geometry showing front wheel axle lines converging at the turning centre" class="line-drawing" %}
 <figcaption>Ackermann steering geometry for two turning radii</figcaption>
 </figure>
 </div>
@@ -83,17 +83,17 @@ In acceleration testing the platform only reached 9.0 km/h, likely due to a moto
 
 The chassis was designed in SolidWorks and sent to Stainless Design in Hamilton for laser cutting and folding. The parts came back as a flat-pack kit, along with a set of jigs also cut from steel that held everything in alignment during welding. A colleague did most of the MIG welding, with me helping where I could. Finite element analysis (FEA) flagged a stress concentration at the back of the triangle where the rear axle loads converge, so we welded reinforcement plates onto the top and bottom of that area for good measure.
 
-![The bare chassis outside the workshop after welding](/media/projects/robotics-platform-kiwifruit-orchards/bare-chassis-outside.webp)
+{% include image.html src="/media/projects/robotics-platform-kiwifruit-orchards/bare-chassis-outside.webp" alt="The bare chassis outside the workshop after welding" %}
 
 A test fit of the motors before preparing the frame for powder coating. The plate visible in the centre of the triangle was a welding jig, not part of the final platform.
 
 <div class="image-pair">
 <figure class="media-container">
-<img src="/media/projects/robotics-platform-kiwifruit-orchards/custom-wheel.webp" alt="Custom wheel rim with triangular lightening holes, powder-coated black">
+{% include image.html half=true src="/media/projects/robotics-platform-kiwifruit-orchards/custom-wheel.webp" alt="Custom wheel rim with triangular lightening holes, powder-coated black" %}
 <figcaption>Custom wheel rims with lightening holes</figcaption>
 </figure>
 <figure class="media-container">
-<img src="/media/projects/robotics-platform-kiwifruit-orchards/chassis-with-wheels.webp" alt="The chassis in the workshop with all four wheels mounted, before cabinetry">
+{% include image.html half=true src="/media/projects/robotics-platform-kiwifruit-orchards/chassis-with-wheels.webp" alt="The chassis in the workshop with all four wheels mounted, before cabinetry" %}
 <figcaption>Chassis with wheels and motors fitted</figcaption>
 </figure>
 </div>
@@ -103,7 +103,7 @@ The wheel rims were custom designed so we could control the hub offset precisely
 ## Power system
 
 <figure class="media-container">
-<img src="/media/projects/robotics-platform-kiwifruit-orchards/power-distribution.webp" alt="Power distribution diagram showing the 96V system bus, battery packs, power generation module, contactors, DC-DC converters, and auxiliary 24V bus" style="box-shadow: none;">
+{% include image.html src="/media/projects/robotics-platform-kiwifruit-orchards/power-distribution.webp" alt="Power distribution diagram showing the 96V system bus, battery packs, power generation module, contactors, DC-DC converters, and auxiliary 24V bus" style="box-shadow: none;" %}
 <figcaption>Power distribution for the platform</figcaption>
 </figure>
 
@@ -126,23 +126,23 @@ Because the whole electrical system was isolated from earth ground, there could 
 ### Electrical assembly
 
 Orchards are wet and dusty. Pollination involves spraying water into the canopy, driving over gravel stirs up dust, and in the mornings there's fog and dew on the tall grass. The platform gets left out in the rain and loaded on and off trailers. All the power electronics - motor controllers, contactors, DC-DC converters, and bus bars - needed to survive that, while still getting enough airflow to cool the motor controllers.
-![Laser-cut and folded cabinet parts fresh from the fabricator](/media/projects/robotics-platform-kiwifruit-orchards/cabinet-parts-laser-cut.webp)
+{% include image.html src="/media/projects/robotics-platform-kiwifruit-orchards/cabinet-parts-laser-cut.webp" alt="Laser-cut and folded cabinet parts fresh from the fabricator" %}
 
 The cabinet was assembled from laser-cut and folded mild steel, welded together. Mounting holes, ventilation slots, and cable routing were all cut in at this stage. The lid sealed against a laser-cut rubber gasket, and the cabinet sections were joined with external flanges so that even if water found its way through a bolt hole it was still on the outside. Cables entered through glands, and the connectors on top each had their own weatherproof gaskets.
 
 <div class="image-pair">
-<img src="/media/projects/robotics-platform-kiwifruit-orchards/cabinet-welded.webp" alt="Cabinet welded up on a workbench with lid fitted, before powder coating">
-<img src="/media/projects/robotics-platform-kiwifruit-orchards/cabinet-powder-coated.webp" alt="Powder-coated cabinet sections on a bench in the workshop">
+{% include image.html half=true src="/media/projects/robotics-platform-kiwifruit-orchards/cabinet-welded.webp" alt="Cabinet welded up on a workbench with lid fitted, before powder coating" %}
+{% include image.html half=true src="/media/projects/robotics-platform-kiwifruit-orchards/cabinet-powder-coated.webp" alt="Powder-coated cabinet sections on a bench in the workshop" %}
 </div>
 
 A cabinet section welded up with its lid and gasket channel visible, and after powder coating. The ventilation slots and external flange bolt holes are visible on both.
 
-![Motor controller mounted on its heatsink plate inside the cabinet](/media/projects/robotics-platform-kiwifruit-orchards/motor-controller-heatsink.webp)
+{% include image.html src="/media/projects/robotics-platform-kiwifruit-orchards/motor-controller-heatsink.webp" alt="Motor controller mounted on its heatsink plate inside the cabinet" %}
 
 One of six motor controllers (Sevcon Gen4) bolted to its heatsink plate inside the cabinet, with cooling fans behind, drawing air through ventilation slots towards the rear. Next to the controller sits an isolated bus bar and below that a 500 A DC contactor. The mounting plate was designed with provisions for additional heatsinking material underneath the controller, but in practice the thermal conduction into the plate alone was enough to keep them cool, so we never needed it.
 
 <figure class="media-container">
-<img src="/media/projects/robotics-platform-kiwifruit-orchards/platform-electronics-installed.webp" alt="The platform in the workshop with the cabinet installed and power electronics mounted">
+{% include image.html src="/media/projects/robotics-platform-kiwifruit-orchards/platform-electronics-installed.webp" alt="The platform in the workshop with the cabinet installed and power electronics mounted" %}
 <figcaption>The cabinet installed in the chassis with power electronics mounted, ready to be wired up</figcaption>
 </figure>
 
@@ -152,10 +152,10 @@ We tested the generator output and peak battery output by wiring fifteen electri
 
 <figure class="media-container">
 <div class="image-grid">
-<img src="/media/projects/robotics-platform-kiwifruit-orchards/motor-rewiring.webp" alt="Hub motor on the workbench during rewiring">
-<img src="/media/projects/robotics-platform-kiwifruit-orchards/wiring-in-progress.webp" alt="Top-down view inside the chassis during wiring, with LiFePO4 battery packs and controllers">
-<img src="/media/projects/robotics-platform-kiwifruit-orchards/jug-load-bank.webp" alt="The platform with fifteen electric jugs wired in parallel as an improvised load bank">
-<img src="/media/projects/robotics-platform-kiwifruit-orchards/control-panel.webp" alt="The platform's control panel with labelled switches for power subsystems">
+{% include image.html half=true src="/media/projects/robotics-platform-kiwifruit-orchards/motor-rewiring.webp" alt="Hub motor on the workbench during rewiring" %}
+{% include image.html half=true src="/media/projects/robotics-platform-kiwifruit-orchards/wiring-in-progress.webp" alt="Top-down view inside the chassis during wiring, with LiFePO4 battery packs and controllers" %}
+{% include image.html half=true src="/media/projects/robotics-platform-kiwifruit-orchards/jug-load-bank.webp" alt="The platform with fifteen electric jugs wired in parallel as an improvised load bank" %}
+{% include image.html half=true src="/media/projects/robotics-platform-kiwifruit-orchards/control-panel.webp" alt="The platform's control panel with labelled switches for power subsystems" %}
 </div>
 <figcaption>Clockwise from top left: rewiring a hub motor on the workbench; wiring mid-way through, with LiFePO4 cell packs, motor controllers, and orange 96V cabling running out to the wheel motors; version two of the operator's control panel, showing system status on an LCD screen and featuring the master breaker; and the electric jug load bank being used to test battery output.</figcaption>
 </figure>
@@ -165,7 +165,7 @@ We tested the generator output and peak battery output by wiring fifteen electri
 The platform's internal computer was an Intel NUC running Ubuntu Server and ROS Kinetic. It communicated directly with the drive and steering motors over CAN bus, ran an Ackermann kinematics node that translated a single steering vector into individual wheel velocity and angle commands for each of the six motors, and controlled the park brakes on the two front steering motors. The brakes used a dog clutch that required power to release, so they would engage automatically if power was lost.
 
 <figure class="media-container">
-<img src="/media/projects/robotics-platform-kiwifruit-orchards/system-diagram.webp" alt="Communications architecture showing the Platform PC, CAN bus, motor controllers, and sensor connections" style="box-shadow: none;">
+{% include image.html src="/media/projects/robotics-platform-kiwifruit-orchards/system-diagram.webp" alt="Communications architecture showing the Platform PC, CAN bus, motor controllers, and sensor connections" style="box-shadow: none;" %}
 <figcaption>Communications architecture for the platform</figcaption>
 </figure>
 
@@ -191,11 +191,11 @@ For a long time I assumed the cause was electrical. There's a lot of high-power 
 
 <div class="image-pair">
 <figure class="media-container">
-<img src="/media/projects/robotics-platform-kiwifruit-orchards/gearbox-scraping.webp" alt="Steering motor gearbox opened up showing planetary gears and the cover plate">
+{% include image.html half=true src="/media/projects/robotics-platform-kiwifruit-orchards/gearbox-scraping.webp" alt="Steering motor gearbox opened up showing planetary gears and the cover plate" %}
 <figcaption>Inside the steering motor gearbox with the cover plate lifted</figcaption>
 </figure>
 <figure class="media-container">
-<img src="/media/projects/robotics-platform-kiwifruit-orchards/gearbox-plate.webp" alt="Gearbox cover plate showing concentric scrape marks from the planetary gears">
+{% include image.html half=true src="/media/projects/robotics-platform-kiwifruit-orchards/gearbox-plate.webp" alt="Gearbox cover plate showing concentric scrape marks from the planetary gears" %}
 <figcaption>The underside of the cover plate, with concentric scrape marks</figcaption>
 </figure>
 </div>
@@ -214,11 +214,11 @@ The platform formed the basis of three seasons of field trials in orchards acros
 
 <div class="image-pair">
 <figure class="media-container">
-<img src="/media/projects/robotics-platform-kiwifruit-orchards/platform-in-orchard.webp" alt="The platform in a kiwifruit orchard with a pollination module mounted">
+{% include image.html half=true src="/media/projects/robotics-platform-kiwifruit-orchards/platform-in-orchard.webp" alt="The platform in a kiwifruit orchard with a pollination module mounted" %}
 <figcaption>In the orchard with pollination module mounted</figcaption>
 </figure>
 <figure class="media-container">
-<img src="/media/projects/robotics-platform-kiwifruit-orchards/platform-harvesting.webp" alt="The platform at Tech Week with harvesting arms mounted">
+{% include image.html half=true src="/media/projects/robotics-platform-kiwifruit-orchards/platform-harvesting.webp" alt="The platform at Tech Week with harvesting arms mounted" %}
 <figcaption>On display at Tech Week with harvesting module mounted</figcaption>
 </figure>
 </div>

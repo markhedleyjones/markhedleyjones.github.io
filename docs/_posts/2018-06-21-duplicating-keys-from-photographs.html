@@ -38,7 +38,7 @@ To duplicate the key, this guide will take you through each of the following ste
 </p>
 <h2>Photographing the key</h2>
 <p>
-  <img loading="lazy" src="/media/projects/duplicating-keys-from-photographs/photo-of-key.webp" alt="Photo of key" width="320" height="240">
+  {% include image.html src="/media/projects/duplicating-keys-from-photographs/photo-of-key.webp" alt="Photo of key" %}
 </p>
 <p>
   Using the highest focal length I had access to (85mm) I took a photo of the target key with the smallest aperture setting on the camera. A high focal length was used to help minimise any lens distortion resulting from a wide field of view. The small aperture was used because it puts everything in focus and increases the exposure time. With a long exposure time I could move a light source around to reduce shadowing. An exposure time of about three seconds was used with the camera mounted on a tripod. The result is shown above.
@@ -48,11 +48,11 @@ To duplicate the key, this guide will take you through each of the following ste
   The undistorted photo was imported into Inkscape and rescaled to match the dimensions of the actual key. In a way this was cheating as I measured the length of the target key using vernier callipers. If you don't have access to the physical key you could measure the blank key, or place a fiducial marker (such as a ruler) in the image at time of capture. The traced vector path was then exported from Inkscape as a DXF file for importing into SolidWorks.
 </p>
 <p>
-  <img loading="lazy" src="/media/projects/duplicating-keys-from-photographs/screenshot.webp" alt="Inkscape Screenshot">
+  {% include image.html src="/media/projects/duplicating-keys-from-photographs/screenshot.webp" alt="Inkscape Screenshot" %}
 </p>
 <h2>Determine Cutting Profile</h2>
 <p>
-  <img loading="lazy" src="/media/projects/duplicating-keys-from-photographs/key_template.svg" alt="Key template" width="300" height="200">
+  {% include image.html src="/media/projects/duplicating-keys-from-photographs/key_template.svg" alt="Key template" %}
 </p>
 <p>
   This could be done either in the CAD package or Inkscape. For illustration purposes I've shown the cutting profile as created in Inkscape, but for creating the cutting profile this was done in SolidWorks. HSMWorks (a CAM package that runs inside SolidWorks) was used to generate the machining toolpaths. The first pass was a rough clearing operation to remove most of the material. The second pass was a contoured profile cut that left the desired contour.

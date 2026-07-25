@@ -24,13 +24,13 @@ The electric version cost approximately 200 NZD (£100/$120) for materials and t
 
 The first image shows the initial frame assembly. The electric element wire was embedded in the fire-bricks as they were being cemented together. The completed unit is shown ready for initial testing. As a crucible, I cut and welded a section of 40mm (1.6") box-section mild steel to a steel plate. Two holes were drilled into the sides of the crucible, which allowed tongs to lock in for raising and lowering into the furnace, as well as pouring the molten aluminium out.
 
-![Frame assembly with heating element wire](/media/projects/aluminium-foundry/IMG_20160828_095713.webp)
+{% include image.html src="/media/projects/aluminium-foundry/IMG_20160828_095713.webp" alt="Frame assembly with heating element wire" %}
 
 <div class="image-pair">
-<img src="/media/projects/aluminium-foundry/IMG_20160828_104715.webp" alt="Nichrome element wire embedded in fire-bricks">
-<img src="/media/projects/aluminium-foundry/IMG_20160828_103840.webp" alt="Heating element wire detail">
+{% include image.html half=true src="/media/projects/aluminium-foundry/IMG_20160828_104715.webp" alt="Nichrome element wire embedded in fire-bricks" %}
+{% include image.html half=true src="/media/projects/aluminium-foundry/IMG_20160828_103840.webp" alt="Heating element wire detail" %}
 </div>
-![Completed electric foundry ready for testing](/media/projects/aluminium-foundry/IMG_20160828_125740.webp)
+{% include image.html src="/media/projects/aluminium-foundry/IMG_20160828_125740.webp" alt="Completed electric foundry ready for testing" %}
 
 ## Safety Considerations
 

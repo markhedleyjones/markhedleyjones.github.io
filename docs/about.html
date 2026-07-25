@@ -6,9 +6,7 @@ permalink: /about/
 
 <div class="profile-header">
     <div class="profile-header-inner">
-      <img loading="lazy" src="/media/about/profile-photo.webp"
-           width="460" height="460"
-           class="profile-photo" alt="Mark Hedley Jones" />
+      {% include image.html src="/media/about/profile-photo.webp" alt="Mark Hedley Jones" class="profile-photo" eager=true %}
       <div>
         <h1 class="profile-name">Hi, I'm Mark</h1>
         <p class="profile-role">Robotics perception engineer &bull; SLAM, 3D mapping, and sensor fusion</p>
@@ -28,7 +26,7 @@ permalink: /about/
         </p>
 
         <figure class="media-container">
-          <img loading="lazy" alt="SQ-2 at Narita Airport" src="/media/about/1499339.webp" width="858" height="605">
+          {% include image.html src="/media/about/1499339.webp" alt="SQ-2 at Narita Airport" %}
           <figcaption>SQ-2 performing a patrol at Narita Airport (Tokyo)</figcaption>
         </figure>
 
@@ -68,13 +66,7 @@ permalink: /about/
         </p>
 
         <figure class="media-container">
-          <img loading="lazy" alt="Multi-purpose platform in kiwifruit orchard"
-               src="/media/about/robotics-orchard-800px.webp"
-               srcset="/media/about/responsive/robotics-orchard-400w.webp 400w,
-                       /media/about/responsive/robotics-orchard-600w.webp 600w,
-                       /media/about/robotics-orchard-800px.webp 800w"
-               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
-               width="800" height="501">
+          {% include image.html src="/media/about/robotics-orchard-800px.webp" alt="Multi-purpose platform in kiwifruit orchard" %}
           <figcaption>The multi-purpose platform in a kiwifruit orchard</figcaption>
         </figure>
 
@@ -122,7 +114,7 @@ permalink: /about/
               </p>
             </div>
             <figure class="media-container">
-              <img loading="lazy" alt="Pollination" src="/media/about/pollinator.webp">
+              {% include image.html src="/media/about/pollinator.webp" alt="Pollination" %}
               <figcaption>Targeted pollination of kiwifruit flower clusters</figcaption>
             </figure>
           </div>
@@ -169,6 +161,6 @@ permalink: /about/
   <div class="cv-section">
     <h2 class="section-title">Curriculum Vitae</h2>
     <a href="/media/about/MarkHedleyJones-CV.pdf" class="cv-link" target="_blank" rel="noopener" aria-label="View Mark Hedley Jones' CV (PDF, opens in a new tab)">
-      <img loading="lazy" alt="CV" src="/media/about/cv-thumb.webp">
+      {% include image.html src="/media/about/cv-thumb.webp" alt="CV" %}
     </a>
   </div>

@@ -76,7 +76,7 @@ This creates a binary called `Tracy-release` in the build directory. Launch it w
 ```
 
 The Tracy viewer interface will appear:
-![profile_viewer](/media/2023-12-05-note-using-tracy-profiler/profile_viewer.webp)
+{% include image.html src="/media/2023-12-05-note-using-tracy-profiler/profile_viewer.webp" alt="profile_viewer" %}
 
 
 ### Running Your Application
@@ -89,4 +89,4 @@ sudo ./<your_project_executable>
 
 Once your application starts, Tracy will display real-time profiling data:
 
-![profile_viewer](/media/2023-12-05-note-using-tracy-profiler/captured_profile.webp)
+{% include image.html src="/media/2023-12-05-note-using-tracy-profiler/captured_profile.webp" alt="profile_viewer" %}

@@ -1,0 +1,35 @@
+{% comment %}
+Usage: {% include image.html src="/media/..." alt="Description" %}
+
+Optional:
+  caption="..."  wraps the image in a figure with a visible caption
+  class="..."    extra classes on the img (e.g. "line-drawing")
+  style="..."    inline overrides for a one-off presentation tweak
+  half=true      the image sits in an .image-pair or .image-grid, so it is drawn
+                 at roughly half the content width - without this the browser
+                 assumes full width and fetches a larger file than it needs
+  sizes="..."    override the layout hint entirely
+  eager=true     skip lazy-loading, for an image above the fold
+
+Intrinsic dimensions and the narrow variant come from _data/image_sizes.yml,
+which generate_responsive_images.py writes. Declaring them lets the browser
+reserve the right space before the image arrives, so nothing jumps on load.
+{% endcomment %}
+
+{%- assign meta = site.data.image_sizes[include.src] -%}
+{%- if include.half -%}
+  {%- assign default_sizes = "(max-width: 768px) 100vw, (max-width: 1000px) 50vw, 470px" -%}
+{%- else -%}
+  {%- assign default_sizes = "(max-width: 1000px) 100vw, 940px" -%}
+{%- endif -%}
+{%- assign img_sizes = include.sizes | default: default_sizes -%}
+{%- capture attributes -%}
+  {%- if include.class %} class="{{ include.class }}"{% endif -%}
+  {%- if include.style %} style="{{ include.style }}"{% endif -%}
+  {%- if meta %} width="{{ meta.width }}" height="{{ meta.height }}"{% endif -%}
+  {%- if meta.srcset %} srcset="{{ meta.srcset }}" sizes="{{ img_sizes }}"{% endif -%}
+  {%- unless include.eager %} loading="lazy" decoding="async"{% endunless -%}
+{%- endcapture -%}
+{%- if include.caption %}<figure class="media-container">{% endif -%}
+<img src="{{ include.src }}" alt="{{ include.alt | default: '' | escape }}"{{ attributes }}>
+{%- if include.caption %}<figcaption>{{ include.caption }}</figcaption></figure>{% endif -%}

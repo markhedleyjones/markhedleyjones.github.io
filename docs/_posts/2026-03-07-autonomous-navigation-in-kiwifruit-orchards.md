@@ -23,7 +23,7 @@ If you work with Cartographer pbstream files, check out my [Cartographer SLAM Tr
 ## Goal
 
 <figure class="media-container" style="float: right; width: 50%; margin: -5px 0 1em 1.5em;">
-<img src="/media/projects/autonomous-navigation-kiwifruit-orchards/kiwifruit-orchard.webp" alt="Aerial view of a kiwifruit orchard showing the block structure, rows, headlands, and shelter belts">
+{% include image.html src="/media/projects/autonomous-navigation-kiwifruit-orchards/kiwifruit-orchard.webp" alt="Aerial view of a kiwifruit orchard showing the block structure, rows, headlands, and shelter belts" %}
 <figcaption>Aerial view of a kiwifruit orchard</figcaption>
 </figure>
 
@@ -41,7 +41,7 @@ Inter-block navigation would be handled mostly by GNSS-based navigation paths (b
 ## Sensing
 
 <figure class="media-container" style="float: right; width: 30%; margin: -5px 0 1em 1.5em;">
-<a href="/projects/bamboo-lidar-mount"><img src="/media/projects/bamboo-lidar-mount/thumb.webp" alt="Velodyne VLP-16 lidar and LP-Research IMU on a custom bamboo mount"></a>
+<a href="/projects/bamboo-lidar-mount">{% include image.html src="/media/projects/bamboo-lidar-mount/thumb.webp" alt="Velodyne VLP-16 lidar and LP-Research IMU on a custom bamboo mount" %}</a>
 <figcaption>Bamboo lidar and IMU mount</figcaption>
 </figure>
 
