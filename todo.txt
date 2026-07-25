@@ -1,9 +1,12 @@
-* Resize images for thumbnail display and target size
-* Make whole project card clickable
-* Add some visual feedback when curser over project card
-* Make background off-white
 * Adjust spacing in about
-* Add profile picture in about
 * Change thumb for Gamebike
-* Make text justified by default (use tags when wanting centered)
-* Standardise image path in posts
+* Decide on justified body text (needs hyphenation to avoid rivers - probably not worth it)
+
+Done:
+* Resize images for thumbnail display and target size - responsive variants via
+  generate_responsive_images.py
+* Make whole project card clickable - the card is a single <a>
+* Add some visual feedback when cursor over project card - lift + shadow on hover
+* Make background off-white - --color-bg is #fdfdfd
+* Add profile picture in about
+* Standardise image path in posts - all images go through _includes/image.html

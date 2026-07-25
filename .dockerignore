@@ -12,3 +12,9 @@
 .gitignore
 __pycache__
 Makefile
+
+# Host-side Ruby state. Baking a local .bundle/config into the image makes
+# bundler look for gems in vendor/bundle, which does not exist in the image.
+docs/.bundle
+docs/vendor
+docs/_site
