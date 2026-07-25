@@ -11,9 +11,10 @@ Optional:
   sizes="..."    override the layout hint entirely
   eager=true     skip lazy-loading, for an image above the fold
 
-Intrinsic dimensions and the narrow variant come from _data/image_sizes.yml,
-which generate_responsive_images.py writes. Declaring them lets the browser
-reserve the right space before the image arrives, so nothing jumps on load.
+Intrinsic dimensions and the list of narrower variants come from
+_data/image_sizes.yml, which generate_responsive_images.py writes. Declaring
+the dimensions lets the browser reserve the right space before the image
+arrives, so nothing jumps on load.
 {% endcomment %}
 
 {%- assign meta = site.data.image_sizes[include.src] -%}
@@ -23,11 +24,18 @@ reserve the right space before the image arrives, so nothing jumps on load.
   {%- assign default_sizes = "(max-width: 1000px) 100vw, 940px" -%}
 {%- endif -%}
 {%- assign img_sizes = include.sizes | default: default_sizes -%}
+{%- if meta.variants -%}
+  {%- assign base = include.src | split: ".webp" | first -%}
+  {%- capture srcset -%}
+    {%- for variant in meta.variants -%}{{ base }}-{{ variant }}w.webp {{ variant }}w, {% endfor -%}
+    {{ include.src }} {{ meta.width }}w
+  {%- endcapture -%}
+{%- endif -%}
 {%- capture attributes -%}
   {%- if include.class %} class="{{ include.class }}"{% endif -%}
   {%- if include.style %} style="{{ include.style }}"{% endif -%}
   {%- if meta %} width="{{ meta.width }}" height="{{ meta.height }}"{% endif -%}
-  {%- if meta.srcset %} srcset="{{ meta.srcset }}" sizes="{{ img_sizes }}"{% endif -%}
+  {%- if srcset %} srcset="{{ srcset }}" sizes="{{ img_sizes }}"{% endif -%}
   {%- unless include.eager %} loading="lazy" decoding="async"{% endunless -%}
 {%- endcapture -%}
 {%- if include.caption %}<figure class="media-container">{% endif -%}
