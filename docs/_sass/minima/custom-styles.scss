@@ -260,7 +260,6 @@ $grid-gap: 40px;
 .note-item {
   display: flex;
   align-items: baseline;
-  gap: 8px;
   padding: 10px 0;
   text-decoration: none;
   color: inherit;
@@ -290,6 +289,13 @@ $grid-gap: 40px;
 .note-item-desc {
   color: var(--color-text-muted);
   flex: 1;
+
+  // The separator belongs to the single-line layout, where it sits against the
+  // title. In the stacked layout below it would open a line with a colon.
+  &::before {
+    content: ":";
+    margin-right: 0.35em;
+  }
 }
 
 .note-item-date {
@@ -297,6 +303,7 @@ $grid-gap: 40px;
   font-size: 0.85em;
   white-space: nowrap;
   margin-left: auto;
+  padding-left: 12px;
 }
 
 @media (max-width: 600px) {
@@ -305,8 +312,13 @@ $grid-gap: 40px;
     gap: 2px;
   }
 
+  .note-item-desc::before {
+    content: none;
+  }
+
   .note-item-date {
     margin-left: 0;
+    padding-left: 0;
     font-size: 0.8em;
   }
 }
