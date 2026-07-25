@@ -1,0 +1,66 @@
+name: Build
+
+# GitHub Pages builds and publishes this site itself, but reports failures only
+# by email after the fact. This runs the same build on every push so a broken
+# template or a missing image is caught before it reaches the live site.
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+          bundler-cache: true
+          working-directory: docs
+
+      - name: Build site
+        run: bundle exec jekyll build --strict_front_matter
+        working-directory: docs
+        env:
+          JEKYLL_ENV: production
+
+      - name: Check for broken internal links
+        run: |
+          python3 - <<'PY'
+          import re, sys
+          from pathlib import Path
+
+          site = Path("docs/_site")
+          pages = sorted(site.rglob("*.html"))
+          # Anything the build emitted is fetchable, plus directory indexes.
+          available = {f"/{p.relative_to(site).as_posix()}" for p in site.rglob("*") if p.is_file()}
+          available |= {f"/{p.parent.relative_to(site).as_posix()}/".replace("//", "/")
+                        for p in site.rglob("index.html")}
+
+          # Sibling project repos publish their own Pages sites under this
+          # domain, so their paths are live but absent from this build.
+          external_prefixes = (
+              "/container-magic/",
+              "/cartographer-slam-trajectory-editor/",
+          )
+
+          href = re.compile(r'(?:href|src)="(/[^"#?]*)')
+          broken = []
+          for page in pages:
+              for target in set(href.findall(page.read_text(encoding="utf-8", errors="replace"))):
+                  if target.startswith(external_prefixes):
+                      continue
+                  candidates = {target, target.rstrip("/") + "/", target + ".html",
+                                target.rstrip("/") + "/index.html"}
+                  if not candidates & available:
+                      broken.append((page.relative_to(site).as_posix(), target))
+
+          for page, target in sorted(set(broken)):
+              print(f"{page}: {target}")
+          print(f"\n{len(pages)} pages checked, {len(set(broken))} broken internal links")
+          sys.exit(1 if broken else 0)
+          PY
