@@ -1083,26 +1083,48 @@ $grid-gap: 40px;
 // ---------------------------------------------------------------------------
 // Post tags
 .post-tags {
-  margin: 40px 0 20px;
+  margin: 28px 0 4px;
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 8px;
 }
 
+// Tags are metadata rather than controls, so they sit on the page background
+// behind a hairline, the way the cards and rules elsewhere do. The fill and the
+// link colour arrive on hover, where they read as feedback instead of weight.
 .post-tag {
   display: inline-block;
-  padding: 4px 12px;
-  font-size: 0.8em;
-  color: var(--color-link);
-  background: var(--color-button-hover, rgba(128, 128, 128, 0.1));
+  padding: 3px 11px 4px;
+  font-size: 0.78em;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+  background: transparent;
+  // Derived from the text colour rather than --color-border so the outline
+  // keeps the same optical weight in both themes. The plain border comes first
+  // so a browser without color-mix() drops only the override, not the outline.
   border: 1px solid var(--color-border);
-  border-radius: $radius-sm;
+  border-color: color-mix(in srgb, var(--color-text-muted) 30%, transparent);
+  border-radius: 999px;
   text-decoration: none;
-  transition: background 0.2s ease;
+  white-space: nowrap;
+  transition:
+    color 0.15s ease,
+    border-color 0.15s ease,
+    background 0.15s ease;
 
-  &:hover {
-    background: var(--color-link);
-    color: var(--color-bg);
+  &::before {
+    content: "#";
+    opacity: 0.5;
+  }
+
+  &:hover,
+  &:focus-visible {
+    color: var(--color-link);
+    border-color: var(--color-link);
+    border-color: color-mix(in srgb, var(--color-link) 45%, transparent);
+    background: var(--color-button-bg);
+    background: color-mix(in srgb, var(--color-link) 8%, transparent);
     text-decoration: none;
   }
 }
@@ -1160,34 +1182,40 @@ $grid-gap: 40px;
   color: var(--color-text-muted);
 }
 
+// Type badges follow the same outlined treatment as .post-tag: the accent
+// carries the meaning, so a filled block only adds weight the listing does not
+// need. The colour lives in --badge-accent so the shape is declared once.
 .tag-post-type {
   display: inline-block;
-  padding: 1px 6px;
-  font-size: 0.8em;
-  border-radius: 3px;
+  padding: 0 7px 1px;
+  font-size: 0.7em;
+  line-height: 1.7;
+  border-radius: 999px;
   text-transform: uppercase;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.05em;
+  color: var(--badge-accent);
+  border: 1px solid var(--badge-accent);
+  border-color: color-mix(in srgb, var(--badge-accent) 40%, transparent);
+  background: color-mix(in srgb, var(--badge-accent) 8%, transparent);
 
   &.project {
-    background: #e8f0fe;
-    color: #1967d2;
+    --badge-accent: #1967d2;
   }
 
   &.note {
-    background: #fef7e0;
-    color: #b8860b;
+    // Darker than it looks like it needs to be: at 0.7em this is small text,
+    // so it wants 4.5:1 against the page, which a brighter amber misses.
+    --badge-accent: #8a6208;
   }
 }
 
 [data-theme="dark"] .tag-post-type {
   &.project {
-    background: #1a3a5c;
-    color: #8ab4f8;
+    --badge-accent: #8ab4f8;
   }
 
   &.note {
-    background: #3a2e00;
-    color: #fdd663;
+    --badge-accent: #fdd663;
   }
 }
 
