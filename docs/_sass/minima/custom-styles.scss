@@ -1090,41 +1090,32 @@ $grid-gap: 40px;
   gap: 8px;
 }
 
-// Tags are metadata rather than controls, so they sit on the page background
-// behind a hairline, the way the cards and rules elsewhere do. The fill and the
-// link colour arrive on hover, where they read as feedback instead of weight.
+// Tag chips carry the accent rather than a grey fill, so they read as links at
+// a glance without the weight of a solid block. The tint is faint enough to sit
+// behind the body copy and deepens on hover.
 .post-tag {
   display: inline-block;
-  padding: 3px 11px 4px;
-  font-size: 0.78em;
+  padding: 4px 12px 5px;
+  font-size: 0.8em;
   line-height: 1.5;
-  color: var(--color-text-muted);
-  background: transparent;
-  // Derived from the text colour rather than --color-border so the outline
-  // keeps the same optical weight in both themes. The plain border comes first
-  // so a browser without color-mix() drops only the override, not the outline.
-  border: 1px solid var(--color-border);
-  border-color: color-mix(in srgb, var(--color-text-muted) 30%, transparent);
+  color: var(--color-tag-accent);
+  // The flat fallback comes first so a browser without color-mix() still gets
+  // a chip rather than bare text.
+  background: var(--color-button-bg);
+  background: color-mix(in srgb, var(--color-tag-accent) 12%, transparent);
+  border: 0;
   border-radius: 999px;
   text-decoration: none;
   white-space: nowrap;
-  transition:
-    color 0.15s ease,
-    border-color 0.15s ease,
-    background 0.15s ease;
-
-  &::before {
-    content: "#";
-    opacity: 0.5;
-  }
+  transition: background 0.15s ease;
 
   &:hover,
   &:focus-visible {
-    color: var(--color-link);
-    border-color: var(--color-link);
-    border-color: color-mix(in srgb, var(--color-link) 45%, transparent);
-    background: var(--color-button-bg);
-    background: color-mix(in srgb, var(--color-link) 8%, transparent);
+    // Held against minima's global a:hover, which would swap this for
+    // --color-link-hover: white on dark, near-black on light.
+    color: var(--color-tag-accent);
+    background: var(--color-button-hover);
+    background: color-mix(in srgb, var(--color-tag-accent) 20%, transparent);
     text-decoration: none;
   }
 }
@@ -1182,41 +1173,34 @@ $grid-gap: 40px;
   color: var(--color-text-muted);
 }
 
-// Type badges follow the same outlined treatment as .post-tag: the accent
-// carries the meaning, so a filled block only adds weight the listing does not
-// need. The colour lives in --badge-accent so the shape is declared once.
+// Type badges use the same tinted-pill treatment as .post-tag, with the accent
+// swapped per type. Both accents are dark enough to clear 4.5:1 against their
+// own tint, which at 0.7em they need.
 .tag-post-type {
   display: inline-block;
-  padding: 0 7px 1px;
+  padding: 0 8px 1px;
   font-size: 0.7em;
-  line-height: 1.7;
+  line-height: 1.75;
   border-radius: 999px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--badge-accent);
-  border: 1px solid var(--badge-accent);
-  border-color: color-mix(in srgb, var(--badge-accent) 40%, transparent);
-  background: color-mix(in srgb, var(--badge-accent) 8%, transparent);
+  background: var(--color-button-bg);
+  background: color-mix(in srgb, var(--badge-accent) 12%, transparent);
 
   &.project {
-    --badge-accent: #1967d2;
+    --badge-accent: var(--color-tag-accent);
   }
 
   &.note {
-    // Darker than it looks like it needs to be: at 0.7em this is small text,
-    // so it wants 4.5:1 against the page, which a brighter amber misses.
     --badge-accent: #8a6208;
   }
 }
 
-[data-theme="dark"] .tag-post-type {
-  &.project {
-    --badge-accent: #8ab4f8;
-  }
-
-  &.note {
-    --badge-accent: #fdd663;
-  }
+// Project picks up --color-tag-accent, which the theme already swaps; only the
+// amber needs lifting out of its light-mode value against the dark page.
+[data-theme="dark"] .tag-post-type.note {
+  --badge-accent: #fdd663;
 }
 
 // Responsive refinements

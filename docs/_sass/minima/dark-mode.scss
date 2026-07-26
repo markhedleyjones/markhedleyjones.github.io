@@ -21,6 +21,10 @@
   --color-button-hover: #e9ecef;
   --color-shadow: rgba(0, 0, 0, 0.1);
 
+  // Tag chips and type badges tint their background with this, so it has to
+  // stay legible against that tint - a step darker than --color-link.
+  --color-tag-accent: #1756a9;
+
   // Project-specific colors
   --color-project-card-bg: #fff;
   --color-project-card-border: #e9ecef;
@@ -47,6 +51,7 @@
   --color-button-bg: #353535;
   --color-button-hover: #454545;
   --color-shadow: rgba(0, 0, 0, 0.4);
+  --color-tag-accent: #79b8ff;
 
   // Project-specific colors with better contrast
   --color-project-card-bg: #353535;
