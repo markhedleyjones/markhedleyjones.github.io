@@ -90,6 +90,10 @@
   }
 }
 
+:root:not(.js) .theme-toggle {
+  display: none;
+}
+
 .theme-icon {
   transition: opacity 0.2s ease, transform 0.2s ease;
   position: absolute;
@@ -138,7 +142,6 @@
       margin-right: 0;
       box-shadow: 0 4px 8px var(--color-shadow);
       text-align: left;
-      display: flex;
       flex-direction: column;
     }
 

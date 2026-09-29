@@ -1,6 +1,7 @@
 {% comment %}
   Custom favicon, Open Graph images, and performance optimisations
 {% endcomment %}
+<script>document.documentElement.classList.add('js');</script>
 
 <!-- Embedded videos are click-to-load, so resolve the host but do not open a
      connection until the visitor shows intent (see the handler below) -->
@@ -37,30 +38,60 @@
 <!-- Lightbox for project images -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  var overlay = document.createElement('div');
-  overlay.className = 'lightbox-overlay';
-  var fullImg = document.createElement('img');
-  fullImg.alt = '';
-  overlay.appendChild(fullImg);
-  document.body.appendChild(overlay);
-
-  overlay.addEventListener('click', function() {
-    overlay.classList.remove('active');
-  });
-
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') overlay.classList.remove('active');
-  });
-
   var content = document.querySelector('.post-content');
   if (!content) return;
 
+  var overlay = document.createElement('dialog');
+  overlay.className = 'lightbox-overlay';
+  overlay.setAttribute('aria-label', 'Expanded project image');
+  var closeButton = document.createElement('button');
+  closeButton.type = 'button';
+  closeButton.className = 'lightbox-close';
+  closeButton.setAttribute('aria-label', 'Close image');
+  closeButton.textContent = '\u00d7';
+  var fullImg = document.createElement('img');
+  fullImg.alt = '';
+  overlay.appendChild(closeButton);
+  overlay.appendChild(fullImg);
+  document.body.appendChild(overlay);
+  var opener = null;
+
+  function openImage(image) {
+    opener = image;
+    fullImg.src = image.src;
+    fullImg.alt = image.alt;
+    fullImg.className = image.classList.contains('line-drawing') ? 'line-drawing' : '';
+    overlay.showModal();
+    closeButton.focus();
+  }
+
+  closeButton.addEventListener('click', function() {
+    overlay.close();
+  });
+
+  overlay.addEventListener('click', function(event) {
+    if (event.target === overlay) overlay.close();
+  });
+
+  overlay.addEventListener('close', function() {
+    if (opener) opener.focus();
+  });
+
+  content.querySelectorAll('img').forEach(function(image) {
+    if (image.closest('a, .video-facade')) return;
+    image.tabIndex = 0;
+    image.setAttribute('role', 'button');
+    image.setAttribute('aria-label', 'Enlarge image: ' + (image.alt || 'project image'));
+  });
+
   content.addEventListener('click', function(e) {
-    if (e.target.tagName === 'IMG' && !e.target.closest('a') && !e.target.closest('.video-facade')) {
-      fullImg.src = e.target.src;
-      fullImg.alt = e.target.alt;
-      fullImg.className = e.target.classList.contains('line-drawing') ? 'line-drawing' : '';
-      overlay.classList.add('active');
+    if (e.target.matches('img[role="button"]')) openImage(e.target);
+  });
+
+  content.addEventListener('keydown', function(e) {
+    if (e.target.matches('img[role="button"]') && (e.key === 'Enter' || e.key === ' ')) {
+      e.preventDefault();
+      openImage(e.target);
     }
   });
 });
@@ -172,18 +203,32 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // Sync the mobile nav toggle's aria-expanded with its checkbox state
-  function initNavAria() {
-    const navTrigger = document.getElementById('nav-trigger');
-    const navLabel = document.querySelector('label[for="nav-trigger"]');
-    if (!navTrigger || !navLabel) return;
-    navTrigger.addEventListener('change', function () {
-      navLabel.setAttribute('aria-expanded', navTrigger.checked ? 'true' : 'false');
+  // Keep the menu button before its links in the keyboard order.
+  function initNav() {
+    const nav = document.querySelector('.site-nav');
+    const toggle = nav && nav.querySelector('.nav-toggle');
+    if (!toggle) return;
+
+    function setOpen(open) {
+      nav.classList.toggle('is-open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+    }
+
+    toggle.addEventListener('click', function() {
+      setOpen(!nav.classList.contains('is-open'));
+    });
+
+    nav.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape' && nav.classList.contains('is-open')) {
+        setOpen(false);
+        toggle.focus();
+      }
     });
   }
 
   // Initialise when DOM is ready
-  function init() { initThemeToggle(); initNavAria(); }
+  function init() { initThemeToggle(); initNav(); }
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {

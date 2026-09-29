@@ -52,39 +52,48 @@
   border-radius: $radius-sm;
   text-align: right;
 
-  .nav-trigger {
+  .nav-toggle {
     display: none;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+
+    &:focus-visible {
+      outline: 2px solid var(--color-link);
+      outline-offset: 2px;
+    }
   }
 
   .menu-icon {
-    float: right;
-    width: 36px;
-    height: 26px;
+    width: 18px;
+    height: 15px;
     line-height: 0;
-    padding-top: 10px;
-    text-align: center;
 
     > svg path {
       fill: var(--color-text-muted);
     }
   }
 
-  label[for="nav-trigger"] {
-    display: block;
-    float: right;
-    width: 36px;
-    height: 36px;
-    z-index: 2;
-    cursor: pointer;
+  .trigger {
+    display: flex;
+    flex-direction: column;
   }
 
-  input ~ .trigger {
-    clear: both;
+  .js & .nav-toggle {
+    display: flex;
+  }
+
+  .js & .trigger {
     display: none;
   }
 
-  input:checked ~ .trigger {
-    display: block;
+  .js &.is-open .trigger {
+    display: flex;
     padding-bottom: 5px;
   }
 
@@ -113,7 +122,11 @@
     border: none;
     background-color: inherit;
 
-    label[for="nav-trigger"] {
+    .nav-toggle {
+      display: none;
+    }
+
+    .js & .nav-toggle {
       display: none;
     }
 
@@ -121,8 +134,13 @@
       display: none;
     }
 
-    input ~ .trigger {
-      display: block;
+    .trigger {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .js & .trigger {
+      display: flex;
     }
 
     .page-link {
