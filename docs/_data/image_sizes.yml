@@ -106,18 +106,45 @@
   variants:
     - 400
     - 800
+"/media/projects/aluminium-foundry/feature.webp":
+  width: 760
+  height: 570
+"/media/projects/autonomous-navigation-kiwifruit-orchards/feature.webp":
+  width: 1600
+  height: 1060
+  variants:
+    - 400
+    - 800
 "/media/projects/autonomous-navigation-kiwifruit-orchards/kiwifruit-orchard.webp":
   width: 1158
   height: 652
   variants:
     - 400
     - 800
+"/media/projects/bamboo-lidar-mount/feature.webp":
+  width: 760
+  height: 570
 "/media/projects/bamboo-lidar-mount/thumb.webp":
   width: 320
   height: 240
+"/media/projects/barcode-scanner-shopping-list/feature.webp":
+  width: 760
+  height: 570
+"/media/projects/blender-pcd-io/feature.webp":
+  width: 760
+  height: 570
 "/media/projects/blender-pcd-io/screenshot.webp":
   width: 642
   height: 602
+"/media/projects/bosch-indradrive-cs-ros-node/feature.webp":
+  width: 760
+  height: 570
+"/media/projects/cartographer-slam-trajectory-editor/concept.webp":
+  width: 1200
+  height: 900
+  variants:
+    - 400
+    - 800
 "/media/projects/cider-gift-pack/DSC_4891.webp":
   width: 1200
   height: 795
@@ -136,6 +163,9 @@
   variants:
     - 400
     - 800
+"/media/projects/cider-gift-pack/feature.webp":
+  width: 760
+  height: 570
 "/media/projects/cnc-machined-stereo-camera-mount/DSC_4865_small.webp":
   width: 1200
   height: 795
@@ -160,6 +190,21 @@
   variants:
     - 400
     - 800
+"/media/projects/cnc-machined-stereo-camera-mount/feature.webp":
+  width: 760
+  height: 504
+"/media/projects/container-magic/logo.webp":
+  width: 1024
+  height: 768
+  variants:
+    - 400
+    - 800
+"/media/projects/docker-bbq/logo.webp":
+  width: 1024
+  height: 768
+  variants:
+    - 400
+    - 800
 "/media/projects/duplicating-keys-from-photographs/DSC_5100.webp":
   width: 1200
   height: 795
@@ -178,6 +223,9 @@
   variants:
     - 400
     - 800
+"/media/projects/duplicating-keys-from-photographs/feature.webp":
+  width: 760
+  height: 570
 "/media/projects/duplicating-keys-from-photographs/photo-of-key.webp":
   width: 1200
   height: 900
@@ -202,6 +250,9 @@
   variants:
     - 400
     - 800
+"/media/projects/electronics-tutorial-website/feature.webp":
+  width: 760
+  height: 570
 "/media/projects/electronics-tutorial-website/project_etutorials_courseeditor.webp":
   width: 1200
   height: 911
@@ -265,6 +316,9 @@
   variants:
     - 400
     - 800
+"/media/projects/gamebike/feature.webp":
+  width: 760
+  height: 570
 "/media/projects/gamebike/front-view.webp":
   width: 350
   height: 622
@@ -310,12 +364,21 @@
   variants:
     - 400
     - 800
+"/media/projects/houser/feature.webp":
+  width: 760
+  height: 570
 "/media/projects/houser/flyers.webp":
   width: 1200
   height: 900
   variants:
     - 400
     - 800
+"/media/projects/omiocnc-epl-post-processor/feature.webp":
+  width: 760
+  height: 570
+"/media/projects/php-htmlifier/thumb.webp":
+  width: 320
+  height: 240
 "/media/projects/robotics-platform-kiwifruit-orchards/ackermann-steering.webp":
   width: 800
   height: 533
@@ -364,6 +427,12 @@
 "/media/projects/robotics-platform-kiwifruit-orchards/custom-wheel.webp":
   width: 1600
   height: 1200
+  variants:
+    - 400
+    - 800
+"/media/projects/robotics-platform-kiwifruit-orchards/feature.webp":
+  width: 1600
+  height: 1067
   variants:
     - 400
     - 800

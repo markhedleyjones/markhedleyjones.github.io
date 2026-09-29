@@ -24,6 +24,7 @@ arrives, so nothing jumps on load.
   {%- assign default_sizes = "(max-width: 1000px) 100vw, 940px" -%}
 {%- endif -%}
 {%- assign img_sizes = include.sizes | default: default_sizes -%}
+{%- assign srcset = nil -%}
 {%- if meta.variants -%}
   {%- assign base = include.src | split: ".webp" | first -%}
   {%- capture srcset -%}

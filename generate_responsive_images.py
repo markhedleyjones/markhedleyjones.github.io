@@ -33,6 +33,9 @@ SOURCE_GLOBS = ("_posts/*", "*.html", "*.md")
 IMG_TAG_SRC = re.compile(r'<img[^>]*\ssrc="(/media/[^"]+)"')
 MARKDOWN_IMG = re.compile(r"!\[[^\]]*\]\((/media/[^)\s]+)\)")
 INCLUDE_IMG = re.compile(r'{%-?\s*include\s+image\.html[^%]*\ssrc="(/media/[^"]+)"')
+FRONT_MATTER_FIELD = re.compile(
+    r"^(permalink|featureimage|image):\s*['\"]?([^\s'\"#]+)", re.MULTILINE
+)
 
 
 def referenced_images():
@@ -45,6 +48,15 @@ def referenced_images():
             text = path.read_text(encoding="utf-8", errors="replace")
             for regex in (IMG_TAG_SRC, MARKDOWN_IMG, INCLUDE_IMG):
                 found.update(regex.findall(text))
+            if path.parent.name == "_posts" and text.startswith("---"):
+                front_matter = text.split("---", 2)[1]
+                fields = dict(FRONT_MATTER_FIELD.findall(front_matter))
+                if fields.get("image", "").startswith("/media/"):
+                    found.add(fields["image"])
+                if fields.get("permalink") and fields.get("featureimage"):
+                    found.add(
+                        f"/media{fields['permalink'].rstrip('/')}/{fields['featureimage']}"
+                    )
     return sorted(found)
 
 
@@ -86,7 +98,11 @@ def main():
             ):
                 for target_width in VARIANT_WIDTHS:
                     target = variant_path(path, target_width)
-                    if not target.exists():
+                    # A replaced source must refresh its narrower variants too.
+                    if (
+                        not target.exists()
+                        or target.stat().st_mtime_ns < path.stat().st_mtime_ns
+                    ):
                         scaled = image.copy()
                         scaled.thumbnail((target_width, 10**6), Image.LANCZOS)
                         scaled.save(target, "WEBP", quality=WEBP_QUALITY, method=6)

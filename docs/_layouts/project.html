@@ -82,10 +82,15 @@ layout: default
         {%- endif -%}
       </p>
         {%- if page.image -%}
-          <img class="project-hero-image" alt="{{ page.title | escape }}" src="{{ page.image}}"/>
+          {% include image.html src=page.image alt=page.title class="project-hero-image" eager=true %}
         {%- endif -%}
         {%- if page.featureimage -%}
-          <img class="project-feature-image{% if page.feature_theme %} project-feature-image--theme{% endif %}" alt="{{ page.title | escape }}" src="/media{{ page.permalink }}/{{ page.featureimage }}"/>
+          {%- assign feature_src = '/media' | append: page.permalink | append: '/' | append: page.featureimage -%}
+          {%- assign feature_class = 'project-feature-image' -%}
+          {%- if page.feature_theme -%}
+            {%- assign feature_class = 'project-feature-image project-feature-image--theme' -%}
+          {%- endif -%}
+          {% include image.html src=feature_src alt=page.title class=feature_class eager=true %}
         {%- endif -%}
     </header>
 
