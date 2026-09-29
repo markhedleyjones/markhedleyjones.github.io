@@ -24,25 +24,27 @@ description: >-  # this means to ignore newlines until "baseurl:"
 baseurl: ""  # the subpath of your site, e.g. /blog
 url: "https://markhedleyjones.com"
 lang: en-NZ
-
 author:
   name: Mark Hedley Jones
   email: markhedleyjones@gmail.com
-
 # Contact address surfaced as the footer email icon (plus-addressed for filtering)
 contact_email: markhedleyjones+website@gmail.com
-
 umami_analytics:
   url: https://umami-analytic.netlify.app
   id: 3507cba7-c2ee-4e92-8b4c-a07d4a8b3dc2
-
 # Build settings
 show_excerpts: true
 theme: minima
 plugins:
   - jekyll-feed
   - jekyll-sitemap
-
+# PDF downloads remain linked from their project pages; do not give them a fresh
+# sitemap modification date on every build when the files have not changed.
+defaults:
+  - scope:
+      path: "media/**/*.pdf"
+    values:
+      sitemap: false
 minima:
   date_format: "%Y-%m-%d"
   social_links:

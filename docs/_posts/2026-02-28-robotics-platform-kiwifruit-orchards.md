@@ -11,7 +11,7 @@ description: Building a robotics platform to carry harvesting and pollination ro
 keywords: robotics, kiwifruit, autonomous vehicle, agricultural robotics, ROS, CAN bus, New Zealand, Robotics Plus
 tags: [robotics, agriculture, hardware]
 math: true
-modified_date: 2026-03-07
+last_modified_at: 2026-03-07
 related_projects:
   - /projects/autonomous-navigation-kiwifruit-orchards
   - /projects/bosch-indradrive-cs-ros-node

@@ -4,7 +4,7 @@ layout: project
 title:  "Aluminium Foundry"
 date:   2019-04-14 09:01:13 +0000
 relevance: 4
-modified_date: 2025-08-13 06:30:00 +0000
+last_modified_at: 2026-09-29
 permalink: /projects/aluminium-foundry
 featureimage: feature.webp
 thumb: thumb.webp
@@ -16,7 +16,7 @@ excerpt_separator: \{% endhighlight %\}
 
 After taking inspiration from a number of furnaces seen on YouTube, I decided to build a furnace, or home foundry, for melting aluminium. I didn't have anything in particular that I wanted to cast, but was just generally interested in creating a foundry hot enough to melt metal.
 
-# Electric Foundry
+## Electric Foundry
 
 I settled on an electric furnace design as it seemed to be the easiest and safest method: cheaper than propane, simpler to control, and I was already familiar with electrical systems. I sourced high-temperature bricks and tiles from a refractory brick supplier (firebricks.co.nz), capable of withstanding temperatures of 1000°C (1832°F), and 2kW nichrome heating element wire from eBay. To hold the furnace together I used modular workshop shelving from a hardware store which bolted together like Meccano.
 
@@ -32,11 +32,11 @@ The first image shows the initial frame assembly. The electric element wire was 
 </div>
 {% include image.html src="/media/projects/aluminium-foundry/IMG_20160828_125740.webp" alt="Completed electric foundry ready for testing" %}
 
-## Safety Considerations
+### Safety Considerations
 
 The electric furnace was operated with RCD (residual current device) protection in the garage, with the garage door always open for ventilation. Protective goggles and a filtered face mask were used when cutting fire-tiles to prevent inhalation of dust particles.
 
-## Electric System Failure
+### Electric System Failure
 
 Unfortunately, after running the furnace for about 30 minutes, the electric element wire burnt itself out. After replacing the element, the same problem occurred. Looking back, I believe this was due to several factors: firstly, I may not have uncoiled the nichrome wire sufficiently, potentially causing shorts where the wire touched itself. Secondly, embedding the wire directly into the insulating fire-bricks likely created hot-spots, particularly in the corners of the square chamber. A round chamber design might have provided better heat distribution. The wire was correctly sized for the 2kW power requirement, so the failures were likely due to poor installation technique rather than undersized components.
 
@@ -46,7 +46,7 @@ In the end, I broke the bricks apart and added an entry hole for a propane torch
 
 {% include image.html src="/media/projects/aluminium-foundry/IMG_20161106_152910.webp" alt="Propane powered foundry" %}
 
-# Propane Foundry
+## Propane Foundry
 
 For the second version of the foundry I decided to have the propane torch come up from the underside of the furnace to keep the heat even. I reused the same frame, but instead of using fire-bricks, I used fire-tiles which were thinner. The propane setup cost approximately 300 NZD (£150/$180) including the bottle, adjustable regulator, fittings, and flashback arrestor for safety.
 
@@ -66,11 +66,11 @@ The burner itself was made from a combination of pneumatic tool fittings, a MIG 
 
 {% include image.html src="/media/projects/aluminium-foundry/IMG_20170305_104710.webp" alt="Final furnace design" %}
 
-# Final Result
+## Final Result
 
 {% include video-embed.html url="y7v98cf1fbg" title="Aluminium foundry melting and casting" %}
 
-# Casting Trial
+## Casting Trial
 
 As a trial, I had made a stainless steel mould to see if I could cast a small hexagon. It was made from 8mm laser cut stainless steel plate that was stacked to make a hexagonal cavity. The animation below shows how it was constructed.
 

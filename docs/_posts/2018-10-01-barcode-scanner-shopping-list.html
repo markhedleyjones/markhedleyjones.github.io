@@ -3,6 +3,7 @@
 layout: project
 title:  "Automatic Shopping List"
 date:   2018-10-01 09:01:13 +0000
+last_modified_at: 2026-09-29
 relevance: 3
 permalink: /projects/barcode-scanner-shopping-list
 featureimage: feature.webp
@@ -26,7 +27,7 @@ excerpt_separator: \{% endhighlight %\}
 </p>
 <ul>
   <li>Timer to turn off the screen and barcode scanner at night and when nobody was home</li>
-  <li>Live weather (four day forecast) with expected precepitation graph</li>
+  <li>Live weather (four-day forecast) with expected precipitation graph</li>
   <li>Countdown timer (top left under date) to a goal</li>
   <li>Shared calendars (via Google Calendar)</li>
   <li>Todo list (via Trello)</li>
@@ -36,9 +37,9 @@ excerpt_separator: \{% endhighlight %\}
 
 <h2>Details Summary</h2>
 <ul>
-<li>The PC maintained a database of products and their barcode numbers. When an unknown item was scanned, it appeard as "Unknown Item (08 5321...)" Whrere the numbers in brackets are the start of the item's barcode number. Then, on Trello, you could it to matche the name of the item (e.g. "Baking Soda"). The PC would see this change and record the item description and barcode number into a separate <a href="https://github.com/MarkHedleyJones/Household-Barcode-Database">GitHub repository</a>. This made adding new products quick and simple.</li>
+<li>The PC maintained a database of products and their barcode numbers. When an unknown item was scanned, it appeared as "Unknown Item (08 5321...)" where the numbers in brackets were the start of the item's barcode number. You could then edit the item in Trello to match its name (e.g. "Baking Soda"). The PC would see this change and record the item description and barcode number into a separate <a href="https://github.com/MarkHedleyJones/Household-Barcode-Database">GitHub repository</a>. This made adding new products quick and simple.</li>
 <li>The barcode scanner appears as a keyboard input device. Scanning an item causes the virtual keyboard to enter the barcode number followed by enter.</li>
-<li>Google chrome was automatically launched in `kiosk` mode at boot-up. This removes the titlebar and keeps it in full-screen mode.</li>
+<li>Google Chrome was automatically launched in <code>kiosk</code> mode at boot-up. This removed the title bar and kept it in full-screen mode.</li>
 <li>The webserver was created using Flask in Python.</li>
 <li>The material design lite CSS kit was used to style the page.</li>
 </ul>

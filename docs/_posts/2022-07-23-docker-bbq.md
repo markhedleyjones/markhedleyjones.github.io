@@ -10,7 +10,7 @@ thumb: logo.webp
 description: A set of bash scripts for creating and running templated docker projects
 keywords: Docker, bash, development environment, containerisation, templates, DevOps
 tags: [containers]
-modified_date: 2026-02-08
+last_modified_at: 2026-02-08
 excerpt_separator: \{% endhighlight %\}
 ---
 

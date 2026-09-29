@@ -3,7 +3,7 @@
 layout: note
 title:  "Using Tracy Profiler"
 date:   2023-12-05
-modified_date: 2025-08-16
+last_modified_at: 2025-08-16
 permalink: /notes/using-tracy-profiler
 description: "a comprehensive guide to profiling C++ applications with Tracy"
 tags: [cpp]

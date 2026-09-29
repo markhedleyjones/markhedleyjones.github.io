@@ -3,6 +3,7 @@
 layout: project
 title: "Autonomous Navigation in Kiwifruit Orchards"
 date: 2026-03-07
+last_modified_at: 2026-09-29
 relevance: 10
 permalink: /projects/autonomous-navigation-kiwifruit-orchards
 featureimage: feature.webp
@@ -80,6 +81,8 @@ The following video shows the full system running in real-time in an orchard, wi
 {% include video-embed.html url="Z7U6tahQR1U" caption="The row-following system running autonomously in a kiwifruit orchard" %}
 
 ## Headland turns
+
+Before I took over navigation, another researcher had demonstrated basic row-end turns on the full-size platform, using turn segments manually tuned for the orchard. My goal was to replace those preset turns with a planner that used the current SLAM map. The planner described below is that later system, not the one used in the earlier block traversals.
 
 With row following able to reliably get the platform to the end of a row, it was time to get the vehicle into the next row. The headland space (area between the rows and the block boundary) is cluttered with posts, trunks, and canopy supports, and the platform's turning circle is about 3.2 m, which doesn't leave much room.
 

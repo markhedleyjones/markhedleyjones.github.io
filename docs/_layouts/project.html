@@ -19,8 +19,8 @@ layout: default
     "name": "{{ site.author.name | default: site.title }}"
   },
   "datePublished": "{{ page.date | date_to_xmlschema }}",
-  {%- if page.modified_date -%}
-  "dateModified": "{{ page.modified_date | date_to_xmlschema }}",
+  {%- if page.last_modified_at -%}
+  "dateModified": "{{ page.last_modified_at | date_to_xmlschema }}",
   {%- endif -%}
   {%- if page.image -%}
   "image": "{{ site.url }}{{ page.image }}",
@@ -67,8 +67,8 @@ layout: default
             {{ page.date_end | date: date_format }}
           </time>
         {%- endif -%}
-        {%- if page.modified_date -%}
-          {%- assign mdate = page.modified_date | date_to_xmlschema -%}
+        {%- if page.last_modified_at -%}
+          {%- assign mdate = page.last_modified_at | date_to_xmlschema -%}
           · Last updated:
           <time datetime="{{ mdate }}">
             {{ mdate | date: date_format }}
