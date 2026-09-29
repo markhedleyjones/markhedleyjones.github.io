@@ -2,8 +2,9 @@ This repository contains the source code for my personal website.
 The site is hosted on GitHub Pages and can be accessed from
 [markhedleyjones.com](https://markhedleyjones.com).
 
-The Jekyll source lives in `docs/`. GitHub Pages builds and publishes it from
-the `master` branch, so only plugins on the
+The Jekyll source lives in `docs/`. A GitHub Actions workflow builds it from
+`master` in safe mode, checks internal links, and deploys the resulting site to
+GitHub Pages. Only plugins on the
 [GitHub Pages allow-list](https://pages.github.com/versions/) take effect.
 
 # Development
