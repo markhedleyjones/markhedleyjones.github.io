@@ -7,6 +7,7 @@ umami_token.env
 .cm-cache/
 Justfile
 CLAUDE.md
+AGENTS.md
 WEBSITE-*.md
 
 # Source/working media - site videos are YouTube-hosted, not committed to the repo
