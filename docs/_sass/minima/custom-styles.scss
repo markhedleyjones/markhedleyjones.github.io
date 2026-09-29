@@ -503,6 +503,13 @@ $grid-gap: 40px;
   margin: 20px 0;
 }
 
+// Keep long equations within the article while allowing them to be read in full.
+.post-content .katex-display {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
 // Show more projects toggle
 .show-more-projects,
 .show-more-notes {
