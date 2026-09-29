@@ -135,12 +135,16 @@
     }
 
     .trigger {
-      display: flex;
-      flex-direction: row;
+      display: block;
     }
 
     .js & .trigger {
-      display: flex;
+      display: block;
+    }
+
+    .js &.is-open .trigger {
+      display: block;
+      padding-bottom: 0;
     }
 
     .page-link {

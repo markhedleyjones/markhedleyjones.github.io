@@ -201,11 +201,6 @@
 
 // Better alignment for desktop navigation
 @media screen and (min-width: 600px) {
-  .site-nav .trigger {
-    display: flex;
-    align-items: center;
-  }
-
   .theme-toggle {
     margin-left: 20px;
     align-self: center;
