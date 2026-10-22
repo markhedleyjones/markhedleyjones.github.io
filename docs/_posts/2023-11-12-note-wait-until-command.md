@@ -3,13 +3,14 @@
 layout: note
 title:  "Execute a bash command at a specific time"
 date:   2023-11-12
+last_modified_at: 2026-10-22
 permalink: /notes/execute-bash-command-at-specific-time
 description: "schedule your bash command with this trick"
 tags: [bash]
 ---
 
 The following bash function, when entered into your ~/.bashrc file, will allow you to execute a command at a specific time.
-The command itself simply blocks until the specified time, so it can be used conjunction with `&&` to execute a command after the sleep.
+The function blocks until the specified time, so it can be used in conjunction with `&&` to run a command afterwards. It uses GNU `date` syntax.
 It prints timing information to stderr, so it can be used in scripts without interfering with stdout.
 
 ```bash
@@ -34,11 +35,11 @@ function sleep_until {
 Usage example `sleep_until <time> && <command>`
 Output example:
 ```
-$ sleep_until 11:00 && echo "It's 11:00"
+$ sleep_until 23:00 && echo "It's 23:00"
 Sleep starting: Sun Nov 12 22:59:59 JST 2023
 Sleeping until: Sun Nov 12 23:00:00 JST 2023 (1 seconds) ...
 Sleep finished: Sun Nov 12 23:00:00 JST 2023
-It's 11:00
+It's 23:00
 ```
 
 Times can be specified in many ways, including:

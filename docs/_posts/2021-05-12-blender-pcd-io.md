@@ -4,11 +4,11 @@ layout: project
 title:  "Import/Export Point Cloud Data in Blender"
 date:   2021-05-12 09:01:13 +0000
 relevance: 8
-last_modified_at: 2025-08-16
+last_modified_at: 2026-10-22
 permalink: /projects/blender-pcd-io
 featureimage: feature.webp
 thumb: thumb.webp
-description: An add-on that enables .PCD file import/export in Blender 2.8+
+description: Import, edit and export 3D point clouds in Blender without converting them to another file format.
 keywords: Blender, point cloud, PCD files, 3D modelling, Point Cloud Library, robotics, computer vision, LiDAR data
 tags: [point-cloud, tools]
 related_projects:
@@ -18,11 +18,11 @@ related_projects:
 excerpt_separator: "{% endhighlight %}"
 ---
 
-Working with point cloud data from [PCL](https://pointclouds.org/) (Point Cloud Library) in robotics projects, I found myself constantly switching between different tools to visualise and edit .pcd files. While [Blender](https://www.blender.org/) is fantastic for mesh editing, it didn't support PCD files natively - you'd have to convert to PLY format first, which was tedious when working primarily with point clouds.
+Laser scanners produce point clouds: collections of 3D points describing the surfaces around them. I often needed to clean up these measurements in [Blender](https://www.blender.org/), but first had to convert files from the PCD format used by the [Point Cloud Library](https://pointclouds.org/) to PLY.
 
-This frustration led me to create a Blender add-on that brings PCD import/export directly into Blender 2.8+. Now I can load point clouds straight from my robotics workflows, use Blender's powerful editing tools to clean up noisy data, and export back to PCD format without any intermediate conversions.
+I wrote this add-on to import and export PCD files directly. It lets me use Blender's editing tools to remove unwanted points, then save the result for use in the robotics software.
 
-The add-on handles the most common PCD formats (ASCII, binary, and binary compressed) and integrates seamlessly with Blender's existing import/export system. While it doesn't support coloured point clouds yet (due to how Blender handles mesh vertices), it's been incredibly useful for preprocessing LiDAR data and cleaning up point clouds before feeding them into computer vision pipelines.
+The add-on imports ASCII, binary and binary-compressed PCD files, and exports binary PCD files. It represents points as mesh vertices and does not preserve point colours or labels. See the repository for installation instructions and supported Blender versions.
 
 {% include github-btn.html url="https://github.com/MarkHedleyJones/blender-pcd-io" %}
 

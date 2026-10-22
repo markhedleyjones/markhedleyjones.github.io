@@ -4,7 +4,7 @@ layout: note
 title:  "GLIM T_lidar_imu for Ouster LiDARs"
 date:   2026-02-06
 permalink: /notes/glim-ouster-t-lidar-imu-transform
-description: "the documented transform is missing a 180° rotation"
+description: "Correcting a missing 180° rotation"
 tags: [slam, lidar, calibration, ros]
 ---
 

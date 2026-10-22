@@ -5,8 +5,8 @@ layout: default
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
-  "name": "{{ page.title | escape }}",
-  "description": "{{ page.description | default: page.excerpt | strip_html | strip | escape }}",
+  "name": {{ page.title | jsonify }},
+  "description": {{ page.description | default: page.excerpt | strip_html | strip | jsonify }},
   "url": "{{ site.url }}{{ page.url }}",
   "author": {
     "@type": "Person",

@@ -3,12 +3,13 @@
 layout: project
 title: "Cartographer SLAM Trajectory Editor"
 date: 2026-06-30
+last_modified_at: 2026-10-22
 relevance: 11
 permalink: /projects/cartographer-slam-trajectory-editor
 featureimage: concept.webp
 thumb: concept.webp
 feature_theme: true
-description: A browser-based Cartographer SLAM trajectory editor and re-optimiser for hand-fixing trajectories.
+description: Correct distorted robot maps by moving sections into alignment and recalculating the path, entirely in your browser.
 keywords: Cartographer, SLAM, pbstream, pose graph, trajectory, submaps, occupancy grid, mapping, robotics, browser tool
 tags: [slam, point-cloud, tools]
 related_projects:
@@ -17,18 +18,20 @@ related_projects:
   - /projects/bamboo-lidar-mount
 ---
 
-Cartographer is a SLAM system (which is fairly old now) that takes a recorded bag file (ROS terminology for a capture of a robot's sensor data) and a robot description, and it pieces together the trajectory the robot travelled by transforming and trying to align the sensor data into a coherent model of the robot's actual trajectory. From that output trajectory and the input bag file you can then dump your lidar points into a final point-cloud.
+Robot maps sometimes come out bent, with duplicated walls or sections that don't line up. I built this editor to correct those problems without having to collect all the sensor data again.
 
-A trajectory is built from a collection of small regions (submaps) assembled into a global map. If some of those submaps aren't lined up right, the whole map can become distorted. For example, sometimes your maps are bent or contain misaligned regions. This can be due to poor sensor data (sensor glitches), sub-optimal SLAM configuration, the geometry of the environment being mapped (e.g. long featureless hallways, mirrors, poor visibility), or due to the operator (moving too fast, or sub-optimal mapping path).
+[Cartographer](https://github.com/cartographer-project/cartographer) estimates a robot's path while building a map from its sensor measurements. This is called simultaneous localisation and mapping, or SLAM. It joins small local maps, called submaps, into a larger map. Poor measurements, unsuitable settings or difficult surroundings, such as long featureless corridors, can leave those submaps misaligned.
 
-This tool lets you go through the submaps and line them up by hand. It also includes a re-optimiser so you don't have to manually adjust all submaps. Instead, you can fix the alignment of some key submaps, change them from "floating" to "fixed", and let the optimiser move all the others to try and make everything consistent again. Once your map looks the way it should, you can export the corrected trajectory and run it back through your Cartographer mapping pipeline (just the assets writer and any post-processing).
+The editor lets you move and rotate submaps by hand. You can fix a few key sections in place and let the optimiser adjust the others, rather than correcting every section individually. The optimiser uses Levenberg-Marquardt least-squares optimisation, implemented in JavaScript, to reduce disagreement between the connected parts of the map.
+
+Once the alignment looks right, export the corrected `.pbstream` file and run Cartographer's assets writer with your original sensor recording to rebuild the point cloud - the collection of measured 3D points.
 
 <a class="launch-btn" href="/cartographer-slam-trajectory-editor/" target="_blank" rel="noopener" style="margin-top: 40px"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6"></path><path d="M20 4l-9 9"></path><path d="M19 13v6a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h6"></path></svg> Launch Cartographer SLAM Trajectory Editor</a>
 
 ## Things to know
 
-1. Your `.pbstream` is parsed, edited, optimised, and re-written entirely client-side in JavaScript. Nothing is uploaded, so it is safe to use on private data.
-2. It's designed for 2D trajectories and hasn't been tested with 3D trajectories yet. Also, because everything runs in the browser, very large bags with a lot of data may become heavy to work with, depending on your machine's available resources.
+1. Your `.pbstream` is parsed, edited, optimised and rewritten in your browser. The file is not uploaded to a server.
+2. The editor is designed for 2D trajectories; I haven't tested it with 3D trajectories. Large `.pbstream` files can be slow to work with or exceed the browser's available memory.
 
 If you're working with GLIM and Ouster LiDARs, I also have a note on the [correct T_lidar_imu transform](/notes/glim-ouster-t-lidar-imu-transform): the documented one is missing a 180-degree rotation.
 

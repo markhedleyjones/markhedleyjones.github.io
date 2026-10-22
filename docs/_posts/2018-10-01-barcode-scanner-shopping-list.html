@@ -3,7 +3,7 @@
 layout: project
 title:  "Automatic Shopping List"
 date:   2018-10-01 09:01:13 +0000
-last_modified_at: 2026-09-29
+last_modified_at: 2026-10-22
 relevance: 3
 permalink: /projects/barcode-scanner-shopping-list
 featureimage: feature.webp
@@ -20,10 +20,10 @@ excerpt_separator: \{% endhighlight %\}
   Source code for this project is available on <a href="https://github.com/MarkHedleyJones/homeDisplay">GitHub</a>.
 </p>
 <p>
-  Making shopping lists can be frustrating. Forgetting to take your shopping list to the supermarket, even more-so. This project combines a Raspberry Pi 3 with a barcode scanner in order to keep a Trello based shopping list up-to-date. This way your list is always accessible (via your mobile) and is up-to-date.
+  I wanted to add items to a shopping list as I used them up, then read the same list on my phone at the supermarket. A Raspberry Pi 3 and a barcode scanner let me scan an empty packet before throwing it away and add the product to a Trello list.
 </p>
 <p>
-  The idea is simple – track what goes into your rubbish bin so you can buy replacements when you're next at the supermarket. To make that possible, a Raspberry Pi 3 running a webserver, Google Chrome web-browser and a barcode scanner was sufficient. By connecting the Raspberry Pi to the internet via WiFi, the shopping list could be stored in the cloud (using the Trello API). That was most of the functionality I wanted and it worked really well. Over time, more features were added, such as:
+  The Pi ran a web server and displayed the list in Chrome, with updates sent to Trello over Wi-Fi. Over time, the display also gained:
 </p>
 <ul>
   <li>Timer to turn off the screen and barcode scanner at night and when nobody was home</li>

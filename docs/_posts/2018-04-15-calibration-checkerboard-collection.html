@@ -4,7 +4,7 @@ layout: project
 title:  "Calibration Checkerboard Collection"
 date:   2018-04-15 09:01:13 +0000
 relevance: 9
-last_modified_at: 2026-02-08
+last_modified_at: 2026-10-22
 permalink: /projects/calibration-checkerboard-collection
 image: /media/projects/calibration-checkerboard-collection/calibration-checkerboard-collection.svg
 description: Free camera calibration checkerboards for computer vision. Multiple formats, custom generator, no watermarks.
@@ -16,8 +16,8 @@ related_projects:
   - /projects/bamboo-lidar-mount
 ---
 <p>
-  Free camera calibration checkerboards for computer vision research and robotics applications. Compatible with <a href="https://opencv.org/">OpenCV</a>, <a href="https://wiki.ros.org/camera_calibration">ROS camera_calibration</a>, and other computer vision libraries.
-  Download high-quality PDF checkerboards in A4, A3, A2, and A1 formats with no watermarks or advertising.
+  Camera calibration uses photographs of a known pattern to estimate lens distortion and the camera's geometry. These printable checkerboards work with <a href="https://opencv.org/">OpenCV</a>, <a href="https://wiki.ros.org/camera_calibration">ROS camera_calibration</a> and other computer vision libraries.
+  Download a PDF in A4, A3, A2 or A1, or generate a custom pattern below. The files have no watermarks or advertising.
 </p>
 <p>
   Disable any page scaling or automatic page fitting when printing, otherwise the checker dimensions will be incorrect.
@@ -67,7 +67,7 @@ related_projects:
 <div id="hidden-checkers"></div>
 
 <div class="checker-preview">
-  <div id="checkerboard"></div>
+  <button type="button" id="checkerboard" aria-label="Open generated checkerboard as SVG"></button>
   <div id="generated_checkerboard"></div>
   <div class="checker-hint">
     Click to open as SVG, then print (Ctrl+P) to save as PDF
@@ -309,4 +309,3 @@ generate_checkerboard();
 <a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-185mm-3x2.pdf"><img loading="lazy" alt="" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-185mm-3x2.svg">A1 - 185mm squares - 3x2 vertices, 4x3 squares</a>
 <a href="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-190mm-3x2.pdf"><img loading="lazy" alt="" src="/media/projects/calibration-checkerboard-collection/Checkerboard-A1-190mm-3x2.svg">A1 - 190mm squares - 3x2 vertices, 4x3 squares</a>
 </div>
-

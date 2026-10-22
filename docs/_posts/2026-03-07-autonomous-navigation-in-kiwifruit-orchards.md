@@ -3,12 +3,12 @@
 layout: project
 title: "Autonomous Navigation in Kiwifruit Orchards"
 date: 2026-03-07
-last_modified_at: 2026-09-29
+last_modified_at: 2026-10-22
 relevance: 10
 permalink: /projects/autonomous-navigation-kiwifruit-orchards
 featureimage: feature.webp
 thumb: thumb.webp
-description: Autonomously navigating a two-tonne robotics platform through kiwifruit orchards using lidar, SLAM, and a carrot
+description: Using laser measurements to find orchard rows, steer a research vehicle and plan turns beneath a kiwifruit canopy.
 keywords: robotics, autonomous navigation, SLAM, lidar, kiwifruit, ROS, Google Cartographer, orchard
 tags: [slam, agriculture, ros]
 related_projects:
@@ -17,13 +17,13 @@ related_projects:
   - /projects/blender-pcd-io
 ---
 
-Between 2015 and 2018 a small team of engineers and myself worked on building a series-hybrid [multipurpose platform for use in kiwifruit orchards](/projects/robotics-platform-kiwifruit-orchards). This post describes my approach to writing the software to make it navigate those orchards autonomously - which are GNSS (Global Navigation Satellite Systems such as GPS, GLONASS, Galileo, and BeiDou) denied during non-winter months due to foliage cover.
+In 2018, I developed navigation software for a [research vehicle built to carry harvesting and pollination equipment through kiwifruit orchards](/projects/robotics-platform-kiwifruit-orchards). The dense canopy made satellite positioning unreliable. Instead, the software used laser measurements to find the rows of posts and steer between them.
 
 If you work with Cartographer pbstream files, check out my [Cartographer SLAM Trajectory Editor](/projects/cartographer-slam-trajectory-editor), a browser tool for fixing misaligned submaps and re-optimising pose graphs.
 
 ## Goal
 
-<figure class="media-container" style="float: right; width: 50%; margin: -5px 0 1em 1.5em;">
+<figure class="media-container project-aside">
 {% include image.html src="/media/projects/autonomous-navigation-kiwifruit-orchards/kiwifruit-orchard.webp" alt="Aerial view of a kiwifruit orchard showing the block structure, rows, headlands, and shelter belts" %}
 <figcaption>Aerial view of a kiwifruit orchard</figcaption>
 </figure>
@@ -37,24 +37,26 @@ Breaking this down, the navigation tasks to be done are:
 1. Row-end turns
 1. Inter-block navigation (moving between blocks)
 
-Inter-block navigation would be handled mostly by GNSS-based navigation paths (basically just following preset waypoints) linking each block and wouldn't be developed until the intra-block navigation (navigation inside a block) was completed. The immediate goal therefore was to implement row-following and then add the ability to make row-end turns. In practice I got solid row following and a working headland turn planner; integrated a RTK GNSS system and ran some basic tests; and created a simple web-based interface to visualise where the platform was in the orchard. So I can't say I ended up with a fully working system, but I got reasonably close considering the short timeframe (about 6 months).
+The first priority was row-following, followed by turns at the end of each row. Travel between blocks would later use preset waypoints from a global navigation satellite system (GNSS).
+
+Over about six months, I tested row-following in orchards, developed a turn planner using recorded sensor data, and built a web interface showing the vehicle's position. I also integrated a real-time kinematic (RTK) satellite-positioning system and ran basic tests. Navigation across an entire orchard remained unfinished, and the new turn planner was not tested on the vehicle.
 
 ## Sensing
 
-<figure class="media-container" style="float: right; width: 30%; margin: -5px 0 1em 1.5em;">
+<figure class="media-container project-aside project-aside--small">
 <a href="/projects/bamboo-lidar-mount">{% include image.html src="/media/projects/bamboo-lidar-mount/thumb.webp" alt="Velodyne VLP-16 lidar and LP-Research IMU on a custom bamboo mount" %}</a>
 <figcaption>Bamboo lidar and IMU mount</figcaption>
 </figure>
 
-The system was based around a single Velodyne VLP-16 - a multi-layer lidar with 16 scan lines spread over 15 degrees of vertical angle. I mounted it at the front of the platform on a [custom bamboo mount](/projects/bamboo-lidar-mount) alongside an LP-Research IMU, tilted forward so the scan lines fanned out across the ground ahead.
+The system was based around a single Velodyne VLP-16 - a laser scanner with 16 scan lines spanning 30 degrees vertically, from -15 to +15 degrees. I mounted it at the front of the platform on a [custom bamboo mount](/projects/bamboo-lidar-mount) alongside an LP-Research inertial measurement unit (IMU), tilted forward so the scan lines fanned out across the ground ahead.
 
 Since the platform is all-wheel-drive, getting reliable odometry information is tricky. As the vehicle drives over various terrain, powered wheels slip. The amount and type of slip can vary dramatically between say concrete or tar-seal and mud or wet grass. The tyre diameter also changes with air pressure, which varies with temperature.
 
-Because of the unpredictability of the wheel odometry, I used Google Cartographer's built-in odometry output mode, sourced from scan-matching between lidar scans while SLAM is running. This meant that the odometry is calculated directly from the lidar and therefore will be accurate even if the platform is sliding down a hill. Cartographer also builds an occupancy map incrementally as it runs, which was useful for planning headland turns.
+Instead of relying on wheel rotations to estimate motion, I used Google Cartographer to match successive lidar scans. This estimates movement from the surroundings, so wheel slip does not directly corrupt the estimate. Cartographer performs simultaneous localisation and mapping (SLAM), building a map while estimating the vehicle's position. Its occupancy map records which areas contain obstacles and was useful for planning turns at row ends.
 
 Kiwifruit orchards are well suited for scan matching - the regular grid of posts and trunks provides consistent structure for the algorithm to lock onto. But the rows create a lot of linear structure, making translation along the row direction ambiguous. To compensate, I weighted rotation matching 6x higher than translation in the Cartographer configuration, which kept the heading estimate stable. Getting the parameters right took some experimentation. I wrote a script that would systematically sweep through different Cartographer settings, replay the same recorded bag file through each configuration, screenshot the resulting map in RViz, and save the annotated images for comparison. It was a brute-force approach but it worked.
 
-The 360 degree visibility, 200 m range, and 16 vertical scan channels of the VLP-16 were important for enabling the odometry and occupancy map generation. A single channel (2D lidar) would effectively go blind as the ground in front of it curves upward (e.g. at the bottom of a hill).
+The scanner's 360-degree view and multiple vertical scan lines helped it observe orchard structure over uneven ground. A single scan plane can hit only the ground ahead at the bottom of a hill, leaving little useful information about the posts and trunks.
 
 ## Row following
 
@@ -74,7 +76,7 @@ The more robust approach works by detecting the geometric structure of the orcha
 
 The steering target - the "carrot" - is placed at the midpoint of the furthest detected bay in the best chain. As the platform moves forward, new bays come into view and the carrot advances. The vehicle steers towards it with a simple proportional controller: steering angle equals the angle to the carrot plus a lateral offset correction, plus a small mechanical compensation for the platform not tracking perfectly straight. Speed ramps down as the carrot gets closer, and if it drops below 5 m away the platform stops - that's the end-of-row detection.
 
-I tested the row follower over multiple days in different orchards and conditions and it worked every time. The bay-detection approach was reliable enough that I never saw it lose the row or steer into a post. I didn't run formal repeatability trials - but in practical terms it just worked.
+During tests over multiple days in different orchards and conditions, I did not see the bay-detection row follower lose the row or steer into a post. These were practical field tests rather than formal repeatability trials.
 
 The following video shows the full system running in real-time in an orchard, with a camera view alongside the RViz visualisation of the lidar processing and row detection.
 

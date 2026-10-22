@@ -6,8 +6,8 @@ layout: default
 {
   "@context": "https://schema.org",
   "@type": "CreativeWork",
-  "name": "{{ page.title | escape }}",
-  "description": "{{ page.description | default: page.excerpt | strip_html | strip | escape }}",
+  "name": {{ page.title | jsonify }},
+  "description": {{ page.description | default: page.excerpt | strip_html | strip | jsonify }},
   "url": "{{ site.url }}{{ page.url }}",
   "author": {
     "@type": "Person",
@@ -29,7 +29,7 @@ layout: default
   {%- endif -%}
   "inLanguage": "en-NZ",
   "isAccessibleForFree": true,
-  "keywords": "{{ page.keywords | default: 'engineering, robotics, projects' | escape }}",
+  "keywords": {{ page.keywords | default: 'engineering, robotics, projects' | jsonify }},
   {%- if page.related_projects -%}
   "relatedLink": [
     {%- for related in page.related_projects -%}
@@ -39,8 +39,8 @@ layout: default
   {%- endif -%}
   "mainEntity": {
     "@type": "Thing",
-    "name": "{{ page.title | escape }}",
-    "description": "{{ page.description | default: page.excerpt | strip_html | strip | escape }}"
+    "name": {{ page.title | jsonify }},
+    "description": {{ page.description | default: page.excerpt | strip_html | strip | jsonify }}
   },
   "publisher": {
     "@type": "Person",

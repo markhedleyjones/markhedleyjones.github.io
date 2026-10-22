@@ -10,16 +10,13 @@ thumb: logo.webp
 description: A set of bash scripts for creating and running templated docker projects
 keywords: Docker, bash, development environment, containerisation, templates, DevOps
 tags: [containers]
-last_modified_at: 2026-02-08
+last_modified_at: 2026-10-22
 excerpt_separator: \{% endhighlight %\}
 ---
 
 **Note:** Docker-BBQ has been deprecated in favour of [Container Magic](/projects/container-magic).
 
-Creating flexible [docker](https://www.docker.com/) images with the ability quickly and efficiently develop and execute code can be time consuming.
-There are generally two competing goals, keeping images small for deployment, while making them usable during development.
-On top of that, there are a number of special flags and features of docker that can be forgotten when starting a new project.
-This project aims to codify a standard approach to creating and running docker based projects.
+Docker-BBQ was my earlier approach to sharing container setups between projects. It provided templates and scripts for two different needs: an environment for editing and testing code, and a smaller image for deployment.
 
 The user can select between a number of bundled templates, which at the time of writing are limited to:
 * Ubuntu
@@ -27,7 +24,7 @@ The user can select between a number of bundled templates, which at the time of 
 * ROS
 * Alpine
 
-Using docker-bbq, the user can simply execute `bbq-create Alpine my-test-project` to get generate a new project.
+Using docker-bbq, the user can execute `bbq-create Alpine my-test-project` to generate a new project.
 That project comes with a *Makefile* that takes care of building the images.
 There are two different build types: *development*, which is the default, and *production*, which is used for deployment.
 
@@ -40,7 +37,7 @@ The production image on the other hand is compiled with the workspace inside the
 It is not designed to be used during development, which means the `run` command is not available for this image.
 The user needs to execute the image using plain Docker commands, which is how it would be used in production.
 
-My local development environment for [this website](https://github.com/MarkHedleyJones/markhedleyjones.github.io) is a bbq-docker project.
+I originally used Docker-BBQ to build this website. The site now uses [Container Magic](/projects/container-magic).
 
 ## Demonstration
 This clip is a little out-of-date, but it shows the general idea of the project.

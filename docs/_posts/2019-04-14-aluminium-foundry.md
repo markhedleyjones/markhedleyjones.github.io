@@ -4,7 +4,7 @@ layout: project
 title:  "Aluminium Foundry"
 date:   2019-04-14 09:01:13 +0000
 relevance: 4
-last_modified_at: 2026-09-29
+last_modified_at: 2026-10-22
 permalink: /projects/aluminium-foundry
 featureimage: feature.webp
 thumb: thumb.webp
@@ -14,11 +14,11 @@ tags: [hardware]
 excerpt_separator: \{% endhighlight %\}
 ---
 
-After taking inspiration from a number of furnaces seen on YouTube, I decided to build a furnace, or home foundry, for melting aluminium. I didn't have anything in particular that I wanted to cast, but was just generally interested in creating a foundry hot enough to melt metal.
+I built two small furnaces to try melting and casting aluminium: first an electric version, then a propane version after the heating elements failed. I didn't have a particular object in mind; I wanted to see whether I could make the process work at home.
 
 ## Electric Foundry
 
-I settled on an electric furnace design as it seemed to be the easiest and safest method: cheaper than propane, simpler to control, and I was already familiar with electrical systems. I sourced high-temperature bricks and tiles from a refractory brick supplier (firebricks.co.nz), capable of withstanding temperatures of 1000°C (1832°F), and 2kW nichrome heating element wire from eBay. To hold the furnace together I used modular workshop shelving from a hardware store which bolted together like Meccano.
+I started with electric heating because I was familiar with electrical systems and expected it to be easier to control. I sourced bricks and tiles rated for 1000°C from a refractory supplier, and 2 kW nichrome heating wire from eBay. Modular workshop shelving held the furnace together, bolted up like Meccano.
 
 The electric version cost approximately 200 NZD (£100/$120) for materials and took a weekend to construct. The furnace ran on 230V AC mains power, drawing about 8.7 amps via simple on/off control, with no temperature monitoring or control system.
 

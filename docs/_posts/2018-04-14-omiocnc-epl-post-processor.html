@@ -3,11 +3,12 @@
 layout: project
 title:  "OmioCNC EPL Post-Processor"
 date:   2018-04-14 09:01:13 +0000
+last_modified_at: 2026-10-22
 relevance: 4
 permalink: /projects/omiocnc-epl-post-processor
 featureimage: feature.webp
 thumb: thumb.webp
-description: An HSM-works / Fusion360 post-processor for OmioCNC-EPL
+description: Translating machining toolpaths into commands the OmioCNC controller can follow correctly.
 keywords: CNC, post-processor, Fusion360, HSMWorks, OmioCNC, CAM, G-code
 tags: [cnc]
 related_projects:
@@ -21,7 +22,7 @@ excerpt_separator: \{% endhighlight %\}
   <a href="https://www.omiocnc.com/products/x8-2200epl.html">
     X8-2200EPL
   </a>
-  from Omio CNC I quickly found incompatabilities between the "orange box" that drives with the machine and Autocad CAM software such as HSM Express, HSM Works and Fusion 360.
+  from OmioCNC, I found incompatibilities between its "orange box" controller and the machining commands produced by Autodesk software such as HSM Express, HSMWorks and Fusion 360.
   The built-in GRBL postprocessor could be used with the machine but the controller misinterpreted the commands for curves/arcs.
 </p>
 <p>
@@ -29,7 +30,7 @@ excerpt_separator: \{% endhighlight %\}
   I noticed that the default GRBL postprocessor omits X, Y, and Z coordinates between commands if those coordinates don't change between commands.
   The orange box doesn't like this.
   Instead of assuming those coordinates remain the same and continuing on, it would use different values (I didn't spend the time to figure out where those values came from).
-  To prevent this happening I created a custom postprocessor for the OmioCNC Orange Box that solves this and modifies the numerical precision to match the controllers internal precision.
+  I wrote a custom post-processor - the step that translates toolpaths into machine commands - to include those coordinates explicitly and match the controller's numerical precision.
   Using this custom post-processor the OmioCNC Orange Box runs smoothly.
 </p>
 {% include github-btn.html url="https://github.com/MarkHedleyJones/OmioCNC-Postprocessor" %}

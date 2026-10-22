@@ -3,15 +3,15 @@
 layout: note
 title:  "Using Tracy Profiler"
 date:   2023-12-05
-last_modified_at: 2025-08-16
+last_modified_at: 2026-10-22
 permalink: /notes/using-tracy-profiler
-description: "a comprehensive guide to profiling C++ applications with Tracy"
+description: "C++ profiling with Tracy and CMake"
 tags: [cpp]
 ---
 
-[Tracy Profiler](https://github.com/wolfpld/tracy) is a real-time profiler for C++ applications that I've been using in my recent projects. Unlike traditional sampling profilers, Tracy provides exact timing data with minimal overhead.
+[Tracy Profiler](https://github.com/wolfpld/tracy) lets you mark sections of C++ code and inspect their timing in a separate viewer.
 
-This guide shows how to integrate Tracy with an existing CMake project and capture your first profile. The instructions assume Ubuntu 22.04, though the process is similar on other platforms.
+These notes cover a CMake integration and the older Makefile-based viewer build on Ubuntu 22.04. The clone command pins Tracy to v0.10 so the paths below match. For newer releases, follow the build instructions in the [Tracy repository](https://github.com/wolfpld/tracy).
 
 Tracy consists of two components: client-side macros that you embed in your code, and a viewer application that receives and displays the profiling data in real-time.
 
@@ -19,36 +19,24 @@ Tracy consists of two components: client-side macros that you embed in your code
 
 First, clone the Tracy repository into your project directory:
 ```bash
-git clone https://github.com/wolfpld/tracy
+git clone --branch v0.10 --depth 1 https://github.com/wolfpld/tracy
 ```
 
 Next, update your project's CMakeLists.txt to include Tracy:
 ```cmake
-include_directories(
-  include
-  tracy/public
-  ...
-)
-
-option( TRACY_ENABLE "" ON)
+option(TRACY_ENABLE "Enable profiling" ON)
 add_subdirectory(tracy)
 
-add_executable(<your_project>
-  tracy/public/TracyClient.cpp
-  ...
-)
-
-target_link_libraries(<your_project>
-  Tracy::TracyClient
-  ...
-)
+# After your existing add_executable(...) call:
+target_link_libraries(your_project PRIVATE Tracy::TracyClient)
 ```
 
-Now compile your project in debug mode:
+Replace `your_project` with your target's name. Linking `Tracy::TracyClient` supplies the client implementation and include path; don't also add `TracyClient.cpp` to your executable.
+
+Include `tracy/Tracy.hpp` in a source file and add `ZoneScoped;` inside a function or scope you want to measure. Build with optimisation and debug information so the timings reflect an optimised program while retaining useful symbols:
 ```bash
-mkdir build && cd build
-cmake -DCMAKE_BUILD_TYPE=DEBUG ..
-make
+cmake -S . -B build -DCMAKE_BUILD_TYPE=RelWithDebInfo
+cmake --build build
 ```
 
 ### Building the Tracy Viewer
@@ -80,11 +68,11 @@ The Tracy viewer interface will appear:
 
 
 ### Running Your Application
-With the Tracy viewer running, you can now profile your application. Running with sudo allows Tracy to access system performance counters for more detailed profiling:
+With the viewer running, start your application normally to capture the instrumented zones:
 
 ```bash
 cd build
-sudo ./<your_project_executable>
+./your_project_executable
 ```
 
 Once your application starts, Tracy will display real-time profiling data:

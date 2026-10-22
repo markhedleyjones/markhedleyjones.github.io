@@ -3,6 +3,7 @@
 layout: project
 title:  "PHP HTMLifier"
 date:   2013-10-30 09:01:13 +0000
+last_modified_at: 2026-10-22
 relevance: 1
 permalink: /projects/php-htmlifier
 featureimage: thumb.webp
@@ -16,10 +17,7 @@ related_projects:
 excerpt_separator: \{% endhighlight %\}
 ---
 <p>
-  PHP-HTMLifier generates HTML code using PHP.
-  This means no more <code>echo</code> statements or entering and exiting the PHP environment inside an HTML document.
-  And the best part is - you can't forget to close a div because the library takes care of element generation for you.
-  Your PHP code will be more manageable, reusable and error free.
+  PHP-HTMLifier is a library I wrote to construct HTML pages from PHP objects. It handles opening and closing tags, so page-building code doesn't need to mix HTML with repeated <code>echo</code> statements. I used it in the <a href="/projects/electronics-tutorial-website">electronics tutorial website</a>.
 </p>
 <p>
   Consider the following example PHP file (from the PHP website):
@@ -46,5 +44,5 @@ $page->p('Hello World');
   That's all there is to it.
 </p>
 <p>
-  If you've spent much time with PHP you know how quickly things can get out of hand. That's where this PHP-HTMLifier excels - you don't have to keep track of opening and closing divs and other tags.
+  The library was useful for building repeated page elements and keeping their structure in one place.
 </p>

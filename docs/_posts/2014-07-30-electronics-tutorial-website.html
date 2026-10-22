@@ -3,11 +3,12 @@
 layout: project
 title:  "Electronics Tutorial Website"
 date:   2014-07-30 09:01:13 +0000
+last_modified_at: 2026-10-22
 relevance: 2
 permalink: /projects/electronics-tutorial-website
 featureimage: feature.webp
 thumb: thumb.webp
-description: A tutorial website for Electronic Engineering students
+description: Rebuilding an electronics tutorial site for first-year students, with question-editing tools for lecturers.
 keywords: electronics, tutorial, education, web development, engineering, university
 tags: [electronics, web]
 related_projects:
@@ -16,19 +17,18 @@ related_projects:
 excerpt_separator: \{% endhighlight %\}
 ---
 <p>
-  During my studies I helped to build an online tutorial website for first year students at The University of Waikato.
-  My job was to revamp an existing site and turn it into something more professional.
-  A large part of the code-base was rewritten, utilising libraries for page generation (PHP HTMLifier), restructured MySQL database, and creating a fresh looking front-end.
+  During my studies at the University of Waikato, I rebuilt an online electronics tutorial site for first-year students. It let students practise answering questions and gave lecturers tools to write and organise the course material.
+  I rewrote much of the PHP code, restructured the MySQL database and redesigned the interface.
 </p>
 <div class="image-pair">
-  <div>
-    <p>Before:</p>
+  <figure>
     {% include image.html half=true src="/media/projects/electronics-tutorial-website/etutorials_original.webp" alt="Etutorials original" %}
-  </div>
-  <div>
-    <p>After:</p>
+    <figcaption>Before</figcaption>
+  </figure>
+  <figure>
     {% include image.html half=true src="/media/projects/electronics-tutorial-website/etutorials_revision.webp" alt="Etutorials revision" %}
-  </div>
+    <figcaption>After</figcaption>
+  </figure>
 </div>
 <p>
   The site was retired by the university and the domain no longer resolves.
@@ -59,7 +59,7 @@ excerpt_separator: \{% endhighlight %\}
     Python
   </a>
   classes.
-  This makes things much simpler for the programmer because they don't have write a query to get a row from the database.
+  This lets the programmer work with a row as an object rather than writing a query for each operation.
   Imitating this, I implemented wrappers around database tables that handled rows the same way.
   This made dealing with the database much cleaner and simpler.
 </p>
@@ -99,14 +99,14 @@ $page->append(View::pose_question($question, True));
 {% endhighlight %}
 <h2>Course editor:</h2>
 <p>
-  The site had to make it easy for lectures to add new content.
+  The site had to make it easy for lecturers to add new content.
 </p>
 <p>
   Usability improvements made here were
 </p>
 <ul>
   <li>
-    Ability to navigate through all questions while in the editor (no need hit the back button).
+    Navigation between questions within the editor, without using the back button.
   </li>
   <li>
     Asynchronous saving and image uploading to prevent interruptions while adding content.

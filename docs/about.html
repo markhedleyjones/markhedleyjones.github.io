@@ -2,170 +2,135 @@
 layout: about
 title: About
 permalink: /about/
-last_modified_at: 2026-09-29
-description: About Mark Hedley Jones, a robotics perception engineer working on SLAM, 3D mapping and autonomous systems in New Zealand and Japan.
+last_modified_at: 2026-10-22
+description: Mark Hedley Jones, a New Zealand engineer living in Japan. Software, electronics research, robotics and things built in the workshop.
 ---
 
 <div class="profile-header">
-    <div class="profile-header-inner">
-      {% include image.html src="/media/about/profile-photo.webp" alt="Mark Hedley Jones" class="profile-photo" eager=true %}
+  <div class="profile-header-inner">
+    {% include image.html src="/media/about/profile-photo.webp" alt="Mark Hedley Jones" class="profile-photo" eager=true %}
+    <div>
+      <h1 class="profile-name">Hi, I'm Mark</h1>
+      <p class="profile-role">Engineer working across software, electronics and robotics</p>
+      <p class="profile-lead">I'm from New Zealand and live in Osaka, Japan. I've worked on electrical measurements in the lab, robots in kiwifruit orchards, and mapping software for robots in buildings. Along the way I've made open-source tools and built things in the workshop.</p>
+      <p class="profile-lead">I'm a New Zealand and British citizen and a permanent resident of Japan. I speak conversational Japanese.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h2 class="section-title">Robotics in Japan</h2>
+  <div class="work-content">
+    <p>Since 2018, I've worked as a software engineer at <a href="https://www.seqsense.com/">SEQSENSE</a>, a robotics company in Tokyo. My work supports autonomous security and delivery robots, including SQ-2 and FORRO.</p>
+    <p>I develop software that turns sensor measurements into maps the robots can use. This involves simultaneous localisation and mapping (SLAM): building a map while estimating the robot's position. The tools run on desktops, in the cloud and on the robots themselves.</p>
+
+    <figure class="media-container">
+      {% include image.html src="/media/about/1499339.webp" alt="SQ-2 security robot at Narita Airport" %}
+      <figcaption>SQ-2 on patrol at Narita Airport</figcaption>
+    </figure>
+
+    <p>I also work on detecting and tracking people and other robots using laser scanners (lidar) and cameras, training detection models in PyTorch and deploying them with OpenVINO. For testing, I've built robot simulations in Gazebo from the mechanical designs.</p>
+    <div class="two-column-layout">
       <div>
-        <h1 class="profile-name">Hi, I'm Mark</h1>
-        <p class="profile-role">Robotics perception engineer &bull; SLAM, 3D mapping, and sensor fusion</p>
-        <p class="profile-lead">I've spent the last decade or so building autonomous robots, from research platforms in New Zealand to systems now deployed commercially in Japan, where I'm a permanent resident and speak conversational Japanese. My work runs from perception software through to mechanical design and embedded hardware.</p>
+        <p>This prototype mapping interface shows a map taking shape, with scan quality in green. I built it using ROS and C++ for a phone or tablet mounted on a PlayStation controller.</p>
       </div>
+      {% include video-embed.html url="j8WnByetOsw" caption="A prototype interface for building robot maps" %}
     </div>
   </div>
+</div>
 
-  <div class="section">
-    <h2 class="section-title">Current Work</h2>
-    <div class="subsection">
-      <h3 class="subsection-title">Robotics Software Engineer</h3>
+<div class="section">
+  <h2 class="section-title">Robots for kiwifruit orchards</h2>
+  <div class="work-content">
+    <p>From 2015 to 2018, I worked on a research project developing robots for kiwifruit harvesting and pollination in New Zealand. The team brought together the universities of Waikato and Auckland, Plant and Food Research, and Robotics Plus.</p>
+    <p>At Waikato, I developed the vehicle that carried the harvesting and pollination equipment, working from an early chassis design through electrical assembly, control software and field trials. Colleagues handled specialist fabrication and led the harvesting and pollination systems; I helped integrate and test them on the vehicle.</p>
 
-      <div class="work-content">
-        <p>
-          Since 2018, I've developed perception and mapping software at <a href="https://www.seqsense.com/">SEQSENSE</a> in Tokyo for autonomous robots: SQ-2, a security robot deployed as a fleet across airports, offices, and public buildings in Japan, and FORRO, a delivery robot co-developed with Kawasaki Heavy Industries.
-        </p>
+    <figure class="media-container">
+      {% include image.html src="/media/about/robotics-orchard-800px.webp" alt="The research vehicle beneath a kiwifruit canopy" %}
+      <figcaption>The platform in a kiwifruit orchard</figcaption>
+    </figure>
 
-        <figure class="media-container">
-          {% include image.html src="/media/about/1499339.webp" alt="SQ-2 at Narita Airport" %}
-          <figcaption>SQ-2 performing a patrol at Narita Airport (Tokyo)</figcaption>
-        </figure>
-
-        <p>
-          Both robots use a rotating turntable with three 2D LiDARs for navigation and wide-angle cameras for 360-degree vision.
-          They transmit real-time data to a web platform for monitoring and can autonomously dock for charging and operate elevators for multi-floor operations.
-        </p>
-
-        <div class="two-column-layout">
-          <div>
-            <p>
-              My work spans online lidar-based 3D mapping that runs in real time on desktop, in the cloud, and on the robot itself; 3D object detection and tracking from lidar and camera, with detection models for people and other robots trained in PyTorch and OpenVINO; and Gazebo simulation that mirrors robot behaviour, with robot models built from CAD.
-              The video shows a prototype interface I developed for real-time SLAM mapping using ROS and C++.
-              Users could view maps as they were built, with scan quality indicated in green.
-              The interface was designed for tablet/smartphone display mounted to a PlayStation controller.
-            </p>
-          </div>
-          {% include video-embed.html url="j8WnByetOsw" caption="Web-based interface for SLAM mapping" %}
-        </div>
+    <div class="two-column-layout">
+      <div>
+        <p>The vehicle had a 1000 kg payload capacity and supplied electrical power to the equipment it carried. It formed the basis of three seasons of orchard trials.</p>
+        <p>In 2018, as a Research Fellow at Auckland, I moved on to navigation software. The canopy made satellite positioning unreliable, so I used lidar measurements to detect the ground, find rows of posts and steer between them.</p>
+        <p>I field-tested row-following and developed a row-end turn planner using recorded sensor data.</p>
+        <ul>
+          <li><a href="/projects/robotics-platform-kiwifruit-orchards">Building the orchard vehicle</a></li>
+          <li><a href="/projects/autonomous-navigation-kiwifruit-orchards">Developing the navigation software</a></li>
+        </ul>
       </div>
+      {% include video-embed.html url="hUT4qLRqMBE" caption="Driving the platform through an orchard" %}
     </div>
-  </div>
 
-  <hr class="divider">
-
-  <div class="section">
-    <h2 class="section-title">Agricultural Robotics R&amp;D</h2>
-    <div class="subsection">
-      <h3 class="subsection-title">Kiwifruit Automation Project</h3>
-
-      <div class="work-content">
-        <p>
-          From 2015 to 2018, as a post-doctoral researcher with the <a href="https://www.waikato.ac.nz/">University of Waikato</a> and later the <a href="https://www.auckland.ac.nz/">University of Auckland</a>, I worked on robotic systems for kiwifruit operations.
-          At Waikato I designed and built the orchard platform, from selecting and purchasing parts to fabrication, electrical assembly, and ROS control software. Colleagues helped with specialist work, including the engine coupling and welding, while I supported the harvesting and pollination teams with module integration and testing.
-        </p>
-        <p>
-          At Auckland I built the real-time navigation software, fusing lidar, cameras, IMU, and GNSS, and was personally accountable for the safety of people and infrastructure around the autonomous vehicle.
-          The project involved collaboration between universities, Plant and Food Research, and Robotics Plus Ltd, funded by the Ministry of Business, Innovation and Employment.
-          The research team developed autonomous systems for pollination, harvesting, and platform mobility, though the technology ultimately proved economically challenging for commercial deployment.
-        </p>
-
-        <figure class="media-container">
-          {% include image.html src="/media/about/robotics-orchard-800px.webp" alt="Multi-purpose platform in kiwifruit orchard" %}
-          <figcaption>The multi-purpose platform in a kiwifruit orchard</figcaption>
-        </figure>
-
-        <div class="subsection">
-          <h4 class="subsection-title">Autonomous Platform Development</h4>
-          <div class="two-column-layout">
-            <div>
-              <p>
-                The multi-purpose platform served as a mobile base for harvesting and pollinating systems.
-                This hybrid petrol-electric vehicle achieved autonomous row-following using LiDAR-based orchard structure sensing.
-                Six electric motor/gearbox units provided full electric drive capability while supplying AC and DC power to mounted systems.
-                The platform supported 1 tonne payload capacity with additional fruit storage between rear wheels.
-              </p>
-              <ul>
-                <li><a href="/projects/robotics-platform-kiwifruit-orchards">Read about building the platform</a></li>
-                <li><a href="/projects/autonomous-navigation-kiwifruit-orchards">Read about the autonomous navigation system</a></li>
-              </ul>
-            </div>
-            {% include video-embed.html url="hUT4qLRqMBE" caption="Robotics platform being driven around a kiwifruit orchard" %}
-          </div>
-        </div>
-
-        <div class="subsection">
-          <h4 class="subsection-title">Harvesting System</h4>
-          <div class="two-column-layout">
-            <div>
-              <p>
-                The harvesting system identified kiwifruit in 3D space using stereo cameras and neural networks.
-                It determined optimal picking sequences to minimise damage to neighbouring fruit before directing robotic arms to collect fruit.
-                The integrated approach combined computer vision, machine learning, and precision robotics for orchard operations.
-              </p>
-            </div>
-            {% include video-embed.html url="b4L-oMd0yVk" caption="Kiwifruit harvesting system in operation" %}
-          </div>
-        </div>
-
-        <div class="subsection">
-          <h4 class="subsection-title">Pollination System</h4>
-          <div class="two-column-layout">
-            <div>
-              <p>
-                The pollination system used the same camera and neural network infrastructure to identify flowers in 3D space.
-                It calculated pollen solution trajectory timing to account for vehicle motion, ensuring accurate flower targeting while driving.
-                The system enabled autonomous pollination operations across orchard rows.
-              </p>
-            </div>
-            <figure class="media-container">
-              {% include image.html src="/media/about/pollinator.webp" alt="Pollination" %}
-              <figcaption>Targeted pollination of kiwifruit flower clusters</figcaption>
-            </figure>
-          </div>
-        </div>
+    <h3 class="subsection-title">The wider team's work</h3>
+    <div class="two-column-layout">
+      <div>
+        <p>The harvesting system used stereo cameras and neural networks to locate fruit, then directed robotic arms to pick it. The pollination system identified flowers and aimed a pollen spray while the vehicle moved. Both were tested in orchards, with the results and limitations reported in our <a href="/publications/">publications</a>.</p>
       </div>
+      {% include video-embed.html url="b4L-oMd0yVk" caption="The team's kiwifruit harvesting system" %}
     </div>
+    <figure class="media-container">
+      {% include image.html src="/media/about/pollinator.webp" alt="The pollination module targeting kiwifruit flowers with pollen spray" %}
+      <figcaption>Targeted pollination of kiwifruit flowers</figcaption>
+    </figure>
   </div>
+</div>
 
-  <div class="section">
-    <h2 class="section-title">Education</h2>
-    <div class="work-content">
-      <p>
-        I hold a PhD in electronic engineering from the University of Waikato (2011-2015); my thesis covered the electrical properties of interfacial double layers. Before that, a Master of Engineering with first-class honours (2009) and a Bachelor of Science in electronics and mechatronics (2005-2008).
-      </p>
-    </div>
-  </div>
+<div class="section">
+  <h2 class="section-title">Electronics research and teaching</h2>
+  <div class="work-content">
+    <p>Before working in robotics, I studied electronic engineering at the University of Waikato. My research combined computer models with physical measurements.</p>
+    <p>My <a href="https://hdl.handle.net/10289/4302">Master's research</a> investigated a sensor for measuring power at millimetre-wave frequencies. I simulated the proposed design and built a larger scale model to test the predictions experimentally.</p>
+    <p>My <a href="https://hdl.handle.net/10289/10617">PhD</a> examined electrical behaviour where solids and liquids meet. One part investigated whether flowing water could generate enough electricity to power a water meter. Another compared electrodes in saline solutions with measurements in living tissue, to improve laboratory testing of medical implants.</p>
+    <p>The research code includes an <a href="https://github.com/markhedleyjones/Electrode_Interface_Model">electrode-interface model</a> using Python, ngSpice and SciPy, and <a href="https://github.com/markhedleyjones/pyLabInstruments">pyLabInstruments</a>, a small library for controlling laboratory instruments.</p>
+    <p>Alongside my studies, I demonstrated electronics laboratories and rebuilt an <a href="/projects/electronics-tutorial-website">online tutorial site</a> for first-year students, including the tools lecturers used to write questions.</p>
 
-  <div class="publications-section">
-    <h2 class="section-title">Selected Publications</h2>
-    <ul class="publications-list">
-      {%- assign featured_pubs = site.data.publications | where: "featured", true -%}
-      {%- for pub in featured_pubs -%}
-      <li>
-        <a href="{{ pub.url }}">{{ pub.authors }} ({{ pub.year }}). <em>{{ pub.title }}.</em> {{ pub.venue }}</a>
-      </li>
-      {%- endfor -%}
+    <h3 class="subsection-title">Education</h3>
+    <ul>
+      <li><strong>PhD in Engineering</strong>, 2010-2016.</li>
+      <li><strong>Master of Engineering (First Class Honours)</strong>, 2009-2010.</li>
+      <li><strong>BSc in Electronics</strong>, 2005-2008.</li>
     </ul>
-    <p class="publications-more"><a href="/publications/">See all publications &#x25B8;</a></p>
+    <p>All three degrees are from the University of Waikato.</p>
   </div>
+</div>
 
-  <div class="section">
-    <h2 class="section-title">Open Source &amp; Tools</h2>
-    <div class="work-content">
-      <ul>
-        <li><a href="/projects/container-magic"><strong>Container-Magic</strong></a>: reproducible containerised development environments (my active flagship tool).</li>
-        <li><a href="/projects/cartographer-slam-trajectory-editor"><strong>Cartographer SLAM Trajectory Editor</strong></a>: a browser tool for hand-fixing misaligned submaps and re-optimising Cartographer pose graphs.</li>
-        <li><a href="/projects/dmenu-extended"><strong>dmenu-extended</strong></a>: an extensible launcher menu for Linux.</li>
-        <li><a href="/projects/blender-pcd-io"><strong>Blender PCD I/O</strong></a>: point-cloud import/export for Blender.</li>
-        <li><a href="/projects/calibration-checkerboard-collection"><strong>Calibration checkerboards</strong></a>: print-ready targets, widely used in robotics and computer vision.</li>
-      </ul>
-    </div>
+<div class="section">
+  <h2 class="section-title">Open-source tools and personal projects</h2>
+  <div class="work-content">
+    <p>Some projects start with something I need at work; others are things I want to try.</p>
+    <ul>
+      <li><a href="/projects/container-magic"><strong>Container Magic</strong></a> generates Docker and Podman build environments from a single configuration file.</li>
+      <li><a href="/projects/cartographer-slam-trajectory-editor"><strong>Cartographer trajectory editor</strong></a> lets you correct distorted robot maps in a browser.</li>
+      <li><a href="/projects/dmenu-extended"><strong>dmenu-extended</strong></a> opens files, folders and applications from a keyboard-driven Linux menu.</li>
+      <li><a href="/projects/blender-pcd-io"><strong>Blender PCD I/O</strong></a> imports and exports point clouds so they can be edited in Blender.</li>
+      <li><a href="/projects/calibration-checkerboard-collection"><strong>Calibration checkerboards</strong></a> provides printable patterns and a custom generator for measuring camera distortion.</li>
+    </ul>
+    <p>In the workshop, I've made a <a href="/projects/gamebike">bike that controls racing games</a>, experimented with <a href="/projects/aluminium-foundry">casting aluminium</a>, machined <a href="/projects/cnc-machined-stereo-camera-mount">camera mounts</a> and made <a href="/projects/cider-gift-pack">packaging for homemade cider</a>.</p>
+    <p><a href="/projects/">Browse all projects</a> or read my <a href="/notes/">technical notes</a>.</p>
   </div>
+</div>
 
-  <div class="cv-section">
-    <h2 class="section-title">Curriculum Vitae</h2>
-    <a href="/media/about/MarkHedleyJones-CV.pdf" class="cv-link" target="_blank" rel="noopener" aria-label="View Mark Hedley Jones' CV (PDF, opens in a new tab)">
-      {% include image.html src="/media/about/cv-thumb.webp" alt="CV" %}
-    </a>
-  </div>
+<div class="publications-section">
+  <h2 class="section-title">Publications</h2>
+  <ul class="publications-list publications-summary">
+    {%- for pub in site.data.publications -%}
+    <li>
+      <a href="{{ pub.url }}">
+        <span class="publication-year">{{ pub.year }}</span>
+        <span class="publication-title">{{ pub.title }}</span>
+      </a>
+    </li>
+    {%- endfor -%}
+  </ul>
+  <p class="publications-more"><a href="/publications/">Full citations and author lists</a></p>
+</div>
+
+<div class="cv-section">
+  <h2 class="section-title">Curriculum vitae</h2>
+  <p><a href="/media/about/MarkHedleyJones-CV.pdf" download>Download CV</a></p>
+  <a href="/media/about/MarkHedleyJones-CV.pdf" class="cv-link" aria-label="View CV">
+    {% include image.html src="/media/about/cv-thumb.webp" alt="First page of Mark Hedley Jones' CV" %}
+  </a>
+</div>

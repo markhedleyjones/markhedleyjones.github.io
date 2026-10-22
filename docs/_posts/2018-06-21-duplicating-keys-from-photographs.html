@@ -3,6 +3,7 @@
 layout: project
 title:  "Camera-based Key Duplication"
 date:   2018-06-21 09:01:13 +0000
+last_modified_at: 2026-10-22
 relevance: 4
 permalink: /projects/duplicating-keys-from-photographs
 featureimage: feature.webp
@@ -30,11 +31,11 @@ To duplicate the key, this guide will take you through each of the following ste
   <li>Cut the blank key</li>
 </ol>
 <p>
-  The first step of calibrating the camera was unnecessary with the camera setup I used. The corrections had almost no impact on the image I took, but I'd still reccomend doing them. With lower quality pictures or different lenses, this calibration will becoming increasingly important. I used a Nikon D7000 DSLR camera with a Nikkor 16-85mm lens set at 85mm. Calibration of the camera and lens was done by photographing a checkerboard and running an OpenCV camera calibration script on the checkerboard images. I found that displaying the checkerboard on a computer screen worked quite well. Inkscape was used to trace the key outline and generate CAD files (DXF format). Solidworks and HSMWorks was used to model the key and create the toolpaths for the CNC machine. An OmioCNC X82200 EPL CNC machine was then used to cut the key profile.
+  I used a Nikon D7000 camera with a Nikkor 16-85 mm lens set to 85 mm. After correcting lens distortion with OpenCV, I traced the key in Inkscape and exported a DXF drawing. SolidWorks and HSMWorks turned that drawing into machining toolpaths for an OmioCNC X8-2200 EPL mill.
 </p>
 <h2>Camera calibration</h2>
 <p>
-  The point of camera calibration is to determine how images from a particular camera are distorted. Sources of distortion can be the lens, think fish-eye lenses like a Go-Pro, and alignment of the image sensor to the lens. To account for this, the camera used to photograph the key was also used to photograph a checkerboard pattern from a variety of distances and orientations. Those images were then fed into a Python script that opened these images, finds the corners of the checkerboard patterns. This step was probably not necessary for the quality of photo I took of the key, but was a good exercise anyway.
+  Camera calibration estimates how the camera and lens distort an image. I photographed a checkerboard at several distances and orientations, then used a Python script to find its corners and estimate the correction. Displaying the checkerboard on a computer screen worked for this experiment. The correction made little difference with this lens and setup, but can matter more with other lenses.
 </p>
 <h2>Photographing the key</h2>
 <p>
@@ -59,14 +60,14 @@ To duplicate the key, this guide will take you through each of the following ste
 </p>
 <h2>Cut the blank key</h2>
 <p>
-To hold the key down I cut the shape of the key out from a piece of MDF. A well was cut into the MDF underneath where the profile was to be cut. To keep the key from jumping out of its I screwed a piece of wood over the top while cutting. One mistake I made was assuming that the dimensions of the blank key would be the same as the target key - they wern't. This meant that the profile wasn't cut in the right spot.</p>
+To hold the key down, I cut its outline into a piece of MDF, with a recess beneath the area to be machined. I screwed a piece of wood over the top to hold the key in place. I had assumed that the blank and original key had the same dimensions. They didn't, which offset the cutting profile.</p>
 <div class="image-pair">
   {% include image.html half=true src="/media/projects/duplicating-keys-from-photographs/DSC_5101.webp" alt="Key in CNC jig" %}
   {% include image.html half=true src="/media/projects/duplicating-keys-from-photographs/DSC_5100.webp" alt="CNC cutting the key profile" %}
 </div>
 <h2>Result</h2>
 <p>
-I'm really happy with the shape of the contour in the new key (front), it's smooth and follows the original contours very well. You can see the misalignment between the keys when looking at the fronf of the key (notice the front key sticks out a millimeter or so further). Luckily, the position error of the contour didn't affect the operation of the key, as the following video proves.</p>
+The new key's contour was smooth and closely followed the original. The alignment error is visible at the tip: the front key sticks out about a millimetre further. Despite that offset, it operated the lock, as the video shows.</p>
 <p>
 {% include image.html src="/media/projects/duplicating-keys-from-photographs/DSC_5115.webp" alt="Comparison of new key (dark blue) with original key (light blue)" %}</p>
 {% include video-embed.html url="-KiafLnPxmo" title="Testing a key duplicated from a photograph" %}

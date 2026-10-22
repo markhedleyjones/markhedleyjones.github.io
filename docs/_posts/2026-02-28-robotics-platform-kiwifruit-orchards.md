@@ -11,7 +11,7 @@ description: Building a robotics platform to carry harvesting and pollination ro
 keywords: robotics, kiwifruit, autonomous vehicle, agricultural robotics, ROS, CAN bus, New Zealand, Robotics Plus
 tags: [robotics, agriculture, hardware]
 math: true
-last_modified_at: 2026-03-07
+last_modified_at: 2026-10-22
 related_projects:
   - /projects/autonomous-navigation-kiwifruit-orchards
   - /projects/bosch-indradrive-cs-ros-node
@@ -19,7 +19,7 @@ related_projects:
   - /projects/cnc-machined-stereo-camera-mount
 ---
 
-Between 2015 and 2018, a \$10M government-funded project set out to build autonomous robots for kiwifruit orchards in New Zealand. Four institutions were involved: the University of Waikato, the University of Auckland, Plant and Food Research, and Robotics Plus (commercial partner). The goal was to automate the most labour-intensive parts of kiwifruit production: harvesting and pollination. My role was developing the AMMP (Autonomous Multi-purpose Mobile Platform), a vehicle that would carry harvesting and pollination modules autonomously through kiwifruit orchards. This post is about the construction of that vehicle.
+Between 2015 and 2018, I worked on a research project to automate kiwifruit harvesting and pollination in New Zealand. The team brought together the University of Waikato, the University of Auckland, Plant and Food Research, and Robotics Plus. My role was to develop the vehicle that carried the harvesting and pollination equipment, taking it from an early chassis design through electrical assembly, control software and field trials. Colleagues handled specialist fabrication, including the engine coupling and much of the welding. This post describes how we built the vehicle and what I learnt from it.
 
 <!--more-->
 
@@ -113,7 +113,7 @@ For endurance we went with a series-hybrid setup built around a 16 kW Honda petr
 
 ### Electrical safety
 
-48V you can touch without too much worry, but 96V can hurt you. Designing the vehicle to be safe while dealing with high-voltage DC power influenced a lot of the decisions that followed.
+The 96 V battery system made electrical isolation, fault detection and reliable disconnection important parts of the design.
 
 The chassis was electrically floating, not connected directly to either battery terminal. An isolation monitor watched for any leakage between both the 0V and 96V power buses and the chassis. A single fault, say a positive cable chafing through to the frame, wouldn't complete a circuit. Both positive and negative would have to contact the chassis simultaneously to create a short, which was far less likely.
 

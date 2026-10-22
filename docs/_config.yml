@@ -20,7 +20,7 @@
 
 title: Mark Hedley Jones
 description: >-  # this means to ignore newlines until "baseurl:"
-  Robotics perception engineer working on SLAM, 3D mapping, and autonomous systems.
+  Software, electronics, robotics and workshop projects by Mark Hedley Jones, a New Zealand engineer living in Japan.
 baseurl: ""  # the subpath of your site, e.g. /blog
 url: "https://markhedleyjones.com"
 lang: en-NZ

@@ -3,18 +3,21 @@
 layout: project
 title: "Container Magic"
 date: 2026-02-08
+last_modified_at: 2026-10-22
 relevance: 6
 permalink: /projects/container-magic
 featureimage: logo.webp
 thumb: logo.webp
-description: A tool that generates Docker and Podman container setups from a single YAML file - a Dockerfile plus standalone build and run scripts for development and production.
+description: Define a project's build environment in one file, then generate the Docker or Podman scripts needed to share and run it.
 keywords: Docker, Podman, Dockerfile generator, containers, dev containers, development environment, YAML, DevOps, reproducible builds, BuildKit, GPU, multi-stage builds, conda
 tags: [containers, tools]
 related_projects:
   - /projects/docker-bbq
 ---
 
-Container-magic takes a single YAML configuration file and generates everything needed to build and run a containerised project: a Dockerfile and standalone build and run scripts. It works with any Docker Hub image as a starting point and supports both Docker and Podman.
+Setting up a project often means installing a particular combination of languages, libraries and system packages. Containers keep that environment separate from the host computer and make it easier for someone else to run the same code.
+
+I wrote container-magic to avoid repeating that setup across projects. It takes a single YAML configuration file and generates a Dockerfile plus standalone build and run scripts. It supports both Docker and Podman.
 
 Full documentation - the configuration reference, build steps, user handling, and more - is at [markhedleyjones.com/container-magic](/container-magic/).
 
@@ -100,7 +103,7 @@ commands:
 
 ## Why Generate Dockerfiles?
 
-One benefit of generating Dockerfiles rather than writing them by hand is that container-magic enforces best practices automatically. Generated Dockerfiles always clean up package manager caches after installation (`rm -rf /var/lib/apt/lists/*` for APT, `--no-cache` for APK, `dnf clean all` for DNF), use `--no-install-recommends` to avoid pulling in unnecessary packages, pass `--no-cache-dir` to pip, and combine related operations into single `RUN` statements to minimise layers. These are easy to forget or get wrong when writing Dockerfiles by hand.
+Generating Dockerfiles also takes care of repetitive housekeeping: cleaning package-manager caches, avoiding unnecessary recommended packages, and combining related operations into fewer layers. These details are easy to overlook when copying a setup from one project to the next.
 
 It can also make builds more reproducible and faster: base images can be pinned to their content digest, BuildKit cache mounts let package managers reuse downloaded packages across rebuilds, and Python bytecode is precompiled after pip installs. Build-time secrets are passed via BuildKit secret mounts, so credentials never end up baked into an image layer.
 
@@ -108,7 +111,7 @@ Container-magic is also a development-only tool. The generated Dockerfile, build
 
 ## What I Use It For
 
-I reach for container-magic across a wide range of projects: local development environments, GPU-accelerated AI and machine-learning workloads, web scrapers, and services that run in production. The same single-file workflow scales from a quick throwaway environment to a reproducible production image, which is why it ends up in almost everything I build.
+I use container-magic for local development, GPU workloads, web scrapers and production services. This website's build environment is one example.
 
 ## Other Features
 

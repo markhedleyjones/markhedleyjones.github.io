@@ -3,6 +3,7 @@
 layout: project
 title:  "Python Tone Generator"
 date:   2014-06-29 09:01:13 +0000
+last_modified_at: 2026-10-22
 relevance: 3
 permalink: /projects/python-tone-generator
 featureimage: logo.svg
@@ -12,9 +13,7 @@ keywords: Python, audio, tone generator, frequency sweep, PyAudio, Linux, signal
 tags: [python]
 excerpt_separator: \{% endhighlight %\}
 ---
-This script generates a frequency sweep from 50 Hz to 10 kHz and is easily adjustable. Make sure you've installed pyaudio to make this run.
-
-On Ubuntu: `sudo apt-get install python-pyaudio`
+This script generates a frequency sweep from 50 Hz to 10 kHz. It uses NumPy to calculate the samples and PyAudio to send them to the sound card. The example below is the original code from 2014; see the [PyAudio installation guide](https://people.csail.mit.edu/hubert/pyaudio/) for current setup instructions.
 
 Sometimes it can take a while before it starts playing. It doesn't create smooth waveform transitions between each frequency step so you'll hear pops whenever the frequency changes. If you just need to play one particular frequency you can substitute the usage example for (remember to enter your own frequency, duration, and amplitude)
 

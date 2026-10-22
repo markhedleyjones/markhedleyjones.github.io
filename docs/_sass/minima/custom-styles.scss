@@ -85,12 +85,18 @@
 
   #checkerboard {
     cursor: pointer;
+    padding: 0;
     display: inline-block;
     width: 200px;
     height: 141.417px;
     border: 1px solid var(--color-border);
     box-shadow: 2px 2px 6px var(--color-shadow);
     background-color: var(--color-image-bg);
+
+    &:focus-visible {
+      outline: 3px solid var(--color-link);
+      outline-offset: 3px;
+    }
   }
 
   #generated_checkerboard {
@@ -155,7 +161,6 @@ $grid-gap: 40px;
   p {
     color: var(--color-text-muted);
     margin: 0;
-    max-width: 60ch;
   }
 }
 
@@ -247,9 +252,7 @@ $grid-gap: 40px;
 
 // Notes page
 .notes-page {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 0 $spacing-unit;
+  margin: 0;
 }
 
 .notes-list {
@@ -258,9 +261,12 @@ $grid-gap: 40px;
 }
 
 .note-item {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas: "title date" "description description";
   align-items: baseline;
-  padding: 10px 0;
+  gap: 2px 20px;
+  padding: 14px 0;
   text-decoration: none;
   color: inherit;
   border-bottom: 1px solid var(--color-border);
@@ -283,42 +289,33 @@ $grid-gap: 40px;
 }
 
 .note-item-title {
+  grid-area: title;
+  min-width: 0;
   color: var(--color-link);
 }
 
 .note-item-desc {
+  grid-area: description;
   color: var(--color-text-muted);
-  flex: 1;
-
-  // The separator belongs to the single-line layout, where it sits against the
-  // title. In the stacked layout below it would open a line with a colon.
-  &::before {
-    content: ":";
-    margin-right: 0.35em;
-  }
+  font-size: 0.9em;
+  line-height: 1.5;
 }
 
 .note-item-date {
+  grid-area: date;
   color: var(--color-text-muted);
   font-size: 0.85em;
   white-space: nowrap;
-  margin-left: auto;
-  padding-left: 12px;
 }
 
 @media (max-width: 600px) {
   .note-item {
-    flex-direction: column;
-    gap: 2px;
-  }
-
-  .note-item-desc::before {
-    content: none;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "title" "description" "date";
+    gap: 4px;
   }
 
   .note-item-date {
-    margin-left: 0;
-    padding-left: 0;
     font-size: 0.8em;
   }
 }
@@ -589,18 +586,8 @@ $grid-gap: 40px;
   .profile-lead {
     margin: 0 0 12px 0;
     color: var(--color-text);
-    max-width: 60ch;
     line-height: 1.5;
-  }
-
-  .profile-contact {
-    margin: 0;
-    color: var(--color-text);
-
-    a {
-      color: var(--color-link);
-      text-decoration: none;
-    }
+    text-wrap: pretty;
   }
 
   .section {
@@ -664,11 +651,7 @@ $grid-gap: 40px;
   }
 
   .publications-section {
-    background: var(--color-highlight-bg);
-    padding: 40px;
-    border-radius: $radius-md;
-    margin: 40px 0;
-    border: 1px solid var(--color-border);
+    margin: 60px 0;
   }
 
   .cv-section {
@@ -729,10 +712,6 @@ $grid-gap: 40px;
 
     .profile-header + .section {
       margin-top: 40px;
-    }
-
-    .publications-section {
-      padding: 30px 20px;
     }
 
     .profile-header-inner {
@@ -839,6 +818,16 @@ $grid-gap: 40px;
 }
 
 // Side-by-side images in post content
+.project-aside {
+  float: right;
+  width: 50%;
+  margin: 0 0 1em 1.5em;
+
+  &--small {
+    width: 30%;
+  }
+}
+
 .image-pair {
   display: flex;
   gap: 10px;
@@ -1116,6 +1105,20 @@ $grid-gap: 40px;
   margin-bottom: 24px;
 }
 
+.publications-summary {
+  a {
+    display: grid;
+    grid-template-columns: 4ch minmax(0, 1fr);
+    gap: 20px;
+    padding: 14px 0;
+  }
+
+  .publication-year {
+    color: var(--color-text-muted);
+    font-variant-numeric: tabular-nums;
+  }
+}
+
 .publications-more {
   margin-top: 8px;
 
@@ -1256,6 +1259,12 @@ $grid-gap: 40px;
 // ---------------------------------------------------------------------------
 
 @media (max-width: 768px) {
+  .project-aside {
+    float: none;
+    width: 100%;
+    margin: 1em 0;
+  }
+
   .image-pair {
     flex-direction: column;
 

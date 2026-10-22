@@ -1,10 +1,11 @@
 ---
 
 layout: note
-title:  "ROS2 across Podman containers"
+title:  "ROS 2 across Podman containers"
 date:   2026-02-10
+last_modified_at: 2026-10-22
 permalink: /notes/ros2-across-podman-containers
-description: "podman-compose silently breaks Fast DDS shared memory transport"
+description: "Shared memory for Fast DDS"
 tags: [ros, containers]
 ---
 
@@ -19,7 +20,7 @@ podman run --net host --ipc shareable --name my-publisher ...
 podman run --net host --ipc container:my-publisher --name my-subscriber ...
 ```
 
-## podman-compose doesn't support this
+## podman-compose version support
 
 The Docker Compose equivalent is:
 
@@ -31,7 +32,9 @@ services:
     ipc: service:publisher
 ```
 
-This works with `docker compose`, but `podman-compose` silently ignores the `ipc` directive: it appears in `podman-compose config` output but isn't passed through to `podman run`. Still an [open issue since 2020](https://github.com/containers/podman-compose/issues/218), [confirmed broken](https://github.com/containers/podman-compose/issues/1292) as of v1.5.0. For now you need a shell script with direct `podman run` commands, or use Docker Compose.
+This works with `docker compose`. In `podman-compose` v1.5.0, the `ipc` directive appeared in `podman-compose config` output but was not passed through to `podman run`, as documented in [issue #1292](https://github.com/containers/podman-compose/issues/1292).
+
+Upstream has since merged [support for the service-level `ipc` option](https://github.com/containers/podman-compose/pull/1452), including `service:<name>`. If your installed version does not include that change, use direct `podman run` commands as above or Docker Compose. Check the resulting namespaces rather than relying on the rendered Compose configuration alone.
 
 ## Diagnosing the problem
 
@@ -44,4 +47,4 @@ podman exec container-b ls /proc/self/ns/ipc -la
 # ipc:[4026533663]  ← different = broken
 ```
 
-If they differ, the containers have separate `/dev/shm` and Fast DDS data transfer won't work between them.
+Different IDs show that the containers have separate IPC namespaces. If Fast DDS is trying to use shared memory between them, that is the mismatch to investigate; it does not by itself rule out communication over a network transport.
